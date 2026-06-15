@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MatrixQR | Premium Tech QR Code Studio</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        /* 强制确保生成的二维码大小完美适配 */
+        #qrcode img, #qrcode canvas {
+            display: block !important;
+            width: 180px !important;
+            height: 180px !important;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between antialiased">
+
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[400px] bg-radial from-cyan-500/10 via-transparent to-transparent pointer-events-none z-0"></div>
+
+    <header class="bg-slate-900/60 backdrop-blur-xl border-b border-slate-800/80 sticky top-0 z-50 py-3.5 px-4">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-2 z-10">
+                <div class="w-7 h-7 bg-gradient-to-tr from-cyan-500 to-emerald-400 rounded-lg flex items-center justify-center">
+                    <i data-lucide="qr-code" class="w-4 h-4 text-slate-950 stroke-[2.5]"></i>
+                </div>
+                <span class="text-lg font-black tracking-wider bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">MATRIX<span class="text-cyan-400 font-medium">QR</span></span>
+            </div>
+            <select id="lang-select" onchange="changeLanguage(this.value)" class="bg-slate-800 border border-slate-700 rounded-lg px-2.5 py-1 text-xs text-slate-300 focus:outline-none cursor-pointer">
+                <option value="en">🌐 English</option>
+                <option value="de">🌐 Deutsch</option>
+                <option value="it">🌐 Italiano</option>
+                <option value="tr">🌐 Türkçe</option>
+                <option value="ko">🌐 한국어</option>
+                <option value="zh">🌐 简体中文</option>
+            </select>
+        </div>
+    </header>
+
+    <section class="max-w-6xl mx-auto w-full px-4 mt-8 z-10">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 bg-slate-900/40 p-1.5 rounded-xl border border-slate-800/60">
+            <button onclick="switchTab('wifi')" id="nav-wifi" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer bg-slate-800 text-cyan-400 border border-slate-700/50 shadow-inner">
+                <i data-lucide="wifi" class="w-4 h-4"></i> <span data-i18n="navWifi">WiFi QR</span>
+            </button>
+            <button onclick="switchTab('phone')" id="nav-phone" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer text-slate-400 hover:text-slate-200 border border-transparent">
+                <i data-lucide="phone" class="w-4 h-4"></i> <span data-i18n="navPhone">Phone QR</span>
+            </button>
+            <button onclick="switchTab('vcard')" id="nav-vcard" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer text-slate-400 hover:text-slate-200 border border-transparent">
+                <i data-lucide="contact-2" class="w-4 h-4"></i> <span data-i18n="navVcard">vCard QR</span>
+            </button>
+            <button onclick="openProModal()" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-bold transition-all cursor-pointer bg-gradient-to-r from-amber-500/10 to-orange-500/10 text-amber-400 border border-amber-500/30">
+                <i data-lucide="layers" class="w-4 h-4"></i> <span data-i18n="navPro">Bulk QR</span> 
+            </button>
+        </div>
+    </section>
+
+    <main class="max-w-6xl mx-auto px-4 py-8 flex-1 w-full grid grid-cols-1 md:grid-cols-12 gap-8 items-start z-10">
+        <div class="bg-slate-900/40 backdrop-blur-md rounded-2xl border border-slate-800/80 p-6 md:col-span-7 space-y-6 shadow-xl">
+            <div id="form-wifi" class="space-y-4 tab-form">
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="wifiSsid">Network Name (SSID)</label>
+                    <input type="text" id="wifi-ssid" placeholder="e.g., CyberNet_5G" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="wifiPass">Network Password</label>
+                    <input type="password" id="wifi-pass" placeholder="••••••••" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-500">
+                </div>
+            </div>
+
+            <div id="form-phone" class="space-y-4 tab-form hidden">
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="phoneNum">Phone Number</label>
+                    <input type="tel" id="phone-num" placeholder="e.g., +1 234 567 8900" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-500">
+                </div>
+            </div>
+
+            <div id="form-vcard" class="space-y-4 tab-form hidden">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="cardName">Full Name</label>
+                        <input type="text" id="card-name" placeholder="John Doe" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="cardOrg">Company</label>
+                        <input type="text" id="card-org" placeholder="Matrix Labs Ltd." class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-500">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="cardCell">Mobile Phone</label>
+                    <input type="tel" id="card-cell" placeholder="+1 234 567 8900" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="cardMail">Email Address</label>
+                    <input type="email" id="card-mail" placeholder="john.doe@matrix.com" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-500">
+                </div>
+            </div>
+
+            <button onclick="generateTechQR()" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold py-3.5 px-4 rounded-xl shadow-lg transition-all transform active:scale-[0.99] cursor-pointer text-sm tracking-wide">
+                <span data-i18n="btnGenerate">⚡ RUN MATRIX CORE</span>
+            </button>
+        </div>
+
+        <div class="bg-slate-900/40 backdrop-blur-md rounded-2xl border border-slate-800/80 p-6 md:col-span-5 flex flex-col items-center justify-center text-center space-y-6 md:sticky md:top-24 shadow-xl">
+            <div class="text-xs font-bold uppercase text-slate-500 flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> <span data-i18n="previewTitle">Terminal Preview</span>
+            </div>
+            
+            <div id="qrcode-wrapper" class="bg-white p-6 rounded-2xl border border-slate-200 shadow-2xl min-w-[228px] min-h-[228px] flex items-center justify-center">
+                <div id="qrcode" class="overflow-hidden bg-white"></div>
+            </div>
+
+            <button id="download-btn" onclick="downloadTechQR()" class="hidden w-full bg-slate-800 hover:bg-slate-700/80 text-cyan-400 font-semibold py-3 px-4 rounded-xl border border-cyan-500/20 text-sm cursor-pointer shadow-sm">
+                <i data-lucide="download" class="w-4 h-4 inline-block mr-1.5 -mt-0.5"></i><span data-i18n="btnDownload">Export PNG Vector</span>
+            </button>
+            <p id="tip-text" class="text-xs text-slate-500 tracking-wide" data-i18n="tipText">Awaiting terminal parameters from left module...</p>
+        </div>
+    </main>
+
+    <div id="pro-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-slate-900 border border-amber-500/30 rounded-2xl max-w-sm w-full p-6 text-center space-y-5 shadow-2xl relative">
+            <button onclick="closeProModal()" class="absolute top-4 right-4 text-slate-500 cursor-pointer"><i data-lucide="x" class="w-5 h-5"></i></button>
+            <div class="w-12 h-12 bg-amber-500/10 border border-amber-500/20 rounded-xl flex items-center justify-center mx-auto text-amber-400">
+                <i data-lucide="shield-alert" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-base font-bold text-slate-100" data-i18n="proTitle">Matrix Bulk Core</h3>
+            <p class="text-xs text-slate-400 leading-relaxed" data-i18n="proDesc">Batch compilation of QR matrices is restricted to premium accounts.</p>
+            <button onclick="alert('Redirecting...')" class="w-full bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 font-extrabold py-3 px-4 rounded-xl text-xs tracking-wider cursor-pointer">
+                🚀 <span data-i18n="proBtn">UNLOCK CORE • $4.99/MO</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let currentMode = 'wifi';
+        let currentLang = 'en'; // 🛠️ 默认语言设置为英文
+
+        // 六国语言翻译包
+        const i18n = {
+            en: {
+                navWifi: "WiFi QR", navPhone: "Phone QR", navVcard: "vCard QR", navPro: "Bulk QR",
+                wifiSsid: "Network Name (SSID)", wifiPass: "Network Password",
+                phoneNum: "Phone Number", cardName: "Full Name", cardOrg: "Company",
+                cardCell: "Mobile Phone", cardMail: "Email Address", btnGenerate: "⚡ RUN MATRIX CORE",
+                previewTitle: "Terminal Preview", btnDownload: "Export PNG Vector",
+                tipText: "Awaiting terminal parameters from left module...",
+                proTitle: "Matrix Bulk Core", proDesc: "Batch compilation of QR matrices is restricted to premium accounts.",
+                proBtn: "UNLOCK CORE • $4.99/MO", errSsid: "Missing Network Parameter (SSID)", errPhone: "Missing Communications Number", errName: "Missing Personal Identity Marker"
+            },
+            de: {
+                navWifi: "WLAN QR", navPhone: "Telefon QR", navVcard: "vCard QR", navPro: "Bulk QR",
+                wifiSsid: "Netzwerkname (SSID)", wifiPass: "Netzwerkpasswort",
+                phoneNum: "Telefonnummer", cardName: "Vollständiger Name", cardOrg: "Unternehmen",
+                cardCell: "Mobiltelefon", cardMail: "E-Mail-Adresse", btnGenerate: "⚡ MATRIX-KERN AUSFÜHREN",
+                previewTitle: "Terminal-Vorschau", btnDownload: "PNG-Vektor exportieren",
+                tipText: "Warten auf Terminalparameter vom linken Modul...",
+                proTitle: "Matrix-Massenkern", proDesc: "Die Batch-Kompilierung von QR-Matrizen ist Premium-Konten vorbehalten.",
+                proBtn: "KERN FREISCHALTEN • 4,99 €/Monat", errSsid: "Fehlender Netzwerkparameter (SSID)", errPhone: "Fehlende Kommunikationsnummer", errName: "Fehlendes persönliches Identitätsmerkmal"
+            },
+            it: {
+                navWifi: "WiFi QR", navPhone: "Telefono QR", navVcard: "vCard QR", navPro: "Bulk QR",
+                wifiSsid: "Nome della rete (SSID)", wifiPass: "Password della rete",
+                phoneNum: "Numero di telefono", cardName: "Nome completo", cardOrg: "Azienda",
+                cardCell: "Cellulare", cardMail: "Indirizzo e-mail", btnGenerate: "⚡ ESEGUI CORE MATRIX",
+                previewTitle: "Anteprima del terminale", btnDownload: "Esporta vettore PNG",
+                tipText: "In attesa dei parametri del terminale dal modulo sinistro...",
+                proTitle: "Core Matrix di massa", proDesc: "La compilazione batch di matrici QR è limitata agli account premium.",
+                proBtn: "SBLOCCA CORE • €4.99/MESE", errSsid: "Parametro di rete mancante (SSID)", errPhone: "Numero di comunicazione mancante", errName: "Indicatore di identità personale mancante"
+            },
+            tr: {
+                navWifi: "WiFi QR", navPhone: "Telefon QR", navVcard: "vCard QR", navPro: "Toplu QR",
+                wifiSsid: "Ağ Adı (SSID)", wifiPass: "Ağ Şifresi",
+                phoneNum: "Telefon Numarası", cardName: "Ad Soyad", cardOrg: "Şirket",
+                cardCell: "Cep Telefonu", cardMail: "E-posta Adresi", btnGenerate: "⚡ MATRİS ÇEKİRDEĞİNİ ÇALIŞTIR",
+                previewTitle: "Terminal Önizleme", btnDownload: "PNG Vektörünü Dışa Aktar",
+                tipText: "Sol modülden terminal parametreleri bekleniyor...",
+                proTitle: "Toplu Matris Çekirdeği", proDesc: "QR matrislerinin toplu derlenmesi premium hesaplarla sınırlıdır.",
+                proBtn: "ÇEKİRDEK KİLİDİNİ AÇ • $4.99/AY", errSsid: "Eksik Ağ Parametresi (SSID)", errPhone: "Eksik İletişim Numarası", errName: "Eksik Kişisel Kimlik İşaretçisi"
+            },
+            ko: {
+                navWifi: "WiFi QR", navPhone: "전화번호 QR", navVcard: "전자 명함", navPro: "대량 생성",
+                wifiSsid: "네트워크 이름 (SSID)", wifiPass: "네트워크 비밀번호",
+                phoneNum: "전화번호", cardName: "전체 이름", cardOrg: "회사명",
+                cardCell: "휴대폰 번호", cardMail: "이메일 주소", btnGenerate: "⚡ 매트릭스 코어 실행",
+                previewTitle: "터미널 실시간 미리보기", btnDownload: "무워터마크 PNG 내보내기",
+                tipText: "왼쪽 모듈의 터미널 매개변수 입력을 기다리는 중...",
+                proTitle: "매트릭스 대량 컴파일", proDesc: "대규모 QR 매트릭스의 일괄 컴파일 기능은 프리미엄 계정 전용입니다.",
+                proBtn: "코어 해제 • 월 $4.99", errSsid: "네트워크 필수 매개변수(SSID) 누락", errPhone: "통신 단말기 번호 누락", errName: "개인 식별 마커 누락"
+            },
+            zh: {
+                navWifi: "WiFi 二维码", navPhone: "手机号二维码", navVcard: "电子名片", navPro: "批量生成",
+                wifiSsid: "无线网络名称 (SSID)", wifiPass: "无线网络密码",
+                phoneNum: "手机号码", cardName: "真实姓名", cardOrg: "公司名称",
+                cardCell: "移动电话", cardMail: "电子邮箱", btnGenerate: "⚡ 执行矩阵生成",
+                previewTitle: "终端实时预览", btnDownload: "导出无水印 PNG",
+                tipText: "正在等待左侧模块输入终端参数...",
+                proTitle: "矩阵批量编译", proDesc: "批量生成大规模二维码阵列属于特权核心功能。",
+                proBtn: "解锁高级核心 • $4.99/月", errSsid: "缺少网络必要参数 (SSID)", errPhone: "通讯终端号码未填", errName: "身份标志名未输入"
+            }
+        };
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18n[lang][key]) el.innerText = i18n[lang][key];
+            });
+            
+            // 同步修改 Input 框的 Placeholder
+            updatePlaceholders(lang);
+        }
+
+        function updatePlaceholders(lang) {
+            const placeholders = {
+                en: { ssid: "e.g., CyberNet_5G", phone: "e.g., +1 234 567 8900", name: "John Doe", org: "Matrix Labs Ltd." },
+                de: { ssid: "z.B. CyberNet_5G", phone: "z.B. +49 170 1234567", name: "Max Mustermann", org: "Matrix GmbH" },
+                it: { ssid: "es. CyberNet_5G", phone: "es. +39 333 1234567", name: "Mario Rossi", org: "Matrix S.r.l." },
+                tr: { ssid: "örn. CyberNet_5G", phone: "örn. +90 532 123 4567", name: "Ahmet Yılmaz", org: "Matrix Şti." },
+                ko: { ssid: "예: CyberNet_5G", phone: "예: +82 10 1234 5678", name: "홍길동", org: "매트릭스 주식회사" },
+                zh: { ssid: "例如：CyberNet_5G", phone: "例如：+86 13800138000", name: "张三", org: "科技矩阵有限公司" }
+            };
+            
+            document.getElementById('wifi-ssid').placeholder = placeholders[lang].ssid;
+            document.getElementById('phone-num').placeholder = placeholders[lang].phone;
+            document.getElementById('card-name').placeholder = placeholders[lang].name;
+            document.getElementById('card-org').placeholder = placeholders[lang].org;
+        }
+
+        function switchTab(mode) {
+            currentMode = mode;
+            ['wifi', 'phone', 'vcard'].forEach(m => {
+                const btn = document.getElementById(`nav-${m}`);
+                const form = document.getElementById(`form-${m}`);
+                if (m === mode) {
+                    btn.className = "flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer bg-slate-800 text-cyan-400 border border-slate-700/50 shadow-inner";
+                    if(form) form.classList.remove('hidden');
+                } else {
+                    btn.className = "flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer text-slate-400 hover:text-slate-200 border border-transparent";
+                    if(form) form.classList.add('hidden');
+                }
+            });
+        }
+
+        function openProModal() {
+            const modal = document.getElementById('pro-modal');
+            modal.classList.remove('hidden');
+            setTimeout(() => modal.classList.remove('opacity-0'), 10);
+        }
+        function closeProModal() {
+            const modal = document.getElementById('pro-modal');
+            modal.classList.add('opacity-0');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        }
+
+        function generateTechQR() {
+            let qrText = "";
+            
+            if (currentMode === 'wifi') {
+                const ssid = document.getElementById('wifi-ssid').value.trim();
+                const pass = document.getElementById('wifi-pass').value.trim();
+                if(!ssid) return alert(i18n[currentLang].errSsid);
+                qrText = `WIFI:T:WPA;S:${ssid};P:${pass};;`;
+            } else if (currentMode === 'phone') {
+                const phone = document.getElementById('phone-num').value.trim();
+                if(!phone) return alert(i18n[currentLang].errPhone);
+                qrText = `tel:${phone}`;
+            } else if (currentMode === 'vcard') {
+                const name = document.getElementById('card-name').value.trim();
+                const org = document.getElementById('card-org').value.trim();
+                const cell = document.getElementById('card-cell').value.trim();
+                const mail = document.getElementById('card-mail').value.trim();
+                if(!name) return alert(i18n[currentLang].errName);
+                
+                qrText = `BEGIN:VCARD\nVERSION:3.0\nN:${name}\nORG:${org}\nTEL:${cell}\nEMAIL:${mail}\nEND:VCARD`;
+            }
+
+            const targetContainer = document.getElementById('qrcode');
+            targetContainer.innerHTML = ""; 
+            
+            new QRCode(targetContainer, {
+                text: qrText,
+                width: 180,
+                height: 180,
+                colorDark : "#020617",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+
+            document.getElementById('download-btn').classList.remove('hidden');
+            document.getElementById('tip-text').classList.add('hidden');
+        }
+
+        function downloadTechQR() {
+            const img = document.querySelector('#qrcode img');
+            if(img && img.src) {
+                const link = document.createElement('a');
+                link.download = `matrix-qr-${currentMode}.png`;
+                link.href = img.src;
+                link.click();
+            }
+        }
+
+        window.onload = function() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+            changeLanguage('en'); // 🛠️ 初始化默认语言修改为：英文(en)
+        }
+    </script>
+</body>
+</html>
