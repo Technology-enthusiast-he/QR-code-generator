@@ -8,7 +8,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
-        /* 强制确保生成的二维码大小完美适配 */
+        
         #qrcode img, #qrcode canvas {
             display: block !important;
             width: 180px !important;
@@ -135,9 +135,9 @@
 
     <script>
         let currentMode = 'wifi';
-        let currentLang = 'en'; // 🛠️ 默认语言设置为英文
+        let currentLang = 'en'; // 🛠️ 
 
-        // 六国语言翻译包
+        
         const i18n = {
             en: {
                 navWifi: "WiFi QR", navPhone: "Phone QR", navVcard: "vCard QR", navPro: "Bulk QR",
@@ -208,7 +208,7 @@
                 if (i18n[lang][key]) el.innerText = i18n[lang][key];
             });
             
-            // 同步修改 Input 框的 Placeholder
+            
             updatePlaceholders(lang);
         }
 
@@ -306,7 +306,7 @@
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
             }
-            changeLanguage('en'); // 🛠️ 初始化默认语言修改为：英文(en)
+            changeLanguage('en'); 
         }
     </script>
 </body>
