@@ -9,11 +9,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
         
+        #qrcode {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 180px;
+            height: 180px;
+            margin: 0 auto;
+        }
         #qrcode img, #qrcode canvas {
             display: block !important;
-            width: 180px !important;
-            height: 180px !important;
-            margin: 0 auto;
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: contain;
         }
     </style>
 </head>
@@ -108,7 +116,7 @@
                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> <span data-i18n="previewTitle">Terminal Preview</span>
             </div>
             
-            <div id="qrcode-wrapper" class="bg-white p-6 rounded-2xl border border-slate-200 shadow-2xl min-w-[228px] min-h-[228px] flex items-center justify-center">
+            <div id="qrcode-wrapper" class="bg-white p-6 rounded-2xl border border-slate-200 shadow-2xl w-[228px] h-[228px] flex items-center justify-center">
                 <div id="qrcode" class="overflow-hidden bg-white"></div>
             </div>
 
@@ -135,9 +143,8 @@
 
     <script>
         let currentMode = 'wifi';
-        let currentLang = 'en'; // 🛠️ 
+        let currentLang = 'en';
 
-        
         const i18n = {
             en: {
                 navWifi: "WiFi QR", navPhone: "Phone QR", navVcard: "vCard QR", navPro: "Bulk QR",
@@ -207,8 +214,6 @@
                 const key = el.getAttribute('data-i18n');
                 if (i18n[lang][key]) el.innerText = i18n[lang][key];
             });
-            
-            
             updatePlaceholders(lang);
         }
 
@@ -221,7 +226,6 @@
                 ko: { ssid: "예: CyberNet_5G", phone: "예: +82 10 1234 5678", name: "홍길동", org: "매트릭스 주식회사" },
                 zh: { ssid: "例如：CyberNet_5G", phone: "例如：+86 13800138000", name: "张三", org: "科技矩阵有限公司" }
             };
-            
             document.getElementById('wifi-ssid').placeholder = placeholders[lang].ssid;
             document.getElementById('phone-num').placeholder = placeholders[lang].phone;
             document.getElementById('card-name').placeholder = placeholders[lang].name;
@@ -256,7 +260,6 @@
 
         function generateTechQR() {
             let qrText = "";
-            
             if (currentMode === 'wifi') {
                 const ssid = document.getElementById('wifi-ssid').value.trim();
                 const pass = document.getElementById('wifi-pass').value.trim();
@@ -277,8 +280,7 @@
             }
 
             const targetContainer = document.getElementById('qrcode');
-            targetContainer.innerHTML = ""; 
-            
+            targetContainer.innerHTML = "";
             new QRCode(targetContainer, {
                 text: qrText,
                 width: 180,
@@ -287,7 +289,6 @@
                 colorLight : "#ffffff",
                 correctLevel : QRCode.CorrectLevel.H
             });
-
             document.getElementById('download-btn').classList.remove('hidden');
             document.getElementById('tip-text').classList.add('hidden');
         }
@@ -306,7 +307,7 @@
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
             }
-            changeLanguage('en'); 
+            changeLanguage('en');
         }
     </script>
 </body>
