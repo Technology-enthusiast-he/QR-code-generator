@@ -2,7 +2,8 @@
 
 MatrixQR is a clean, modern, and high-performance client-side QR Code generator built with Tailwind CSS v4, Lucide Icons, and QRCode.js. It supports multiple languages and works entirely offline with zero server overhead.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F<your-github-username>%2F<your-repo-name>)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2F<
+Technology-enthusiast-he>%2F<your-repo-name>)
 
 ## 🌟 Features
 * **Multiple Formats:** Supports WiFi Network configurations, Communications Phone numbers, and vCard Electronic Business Cards.
