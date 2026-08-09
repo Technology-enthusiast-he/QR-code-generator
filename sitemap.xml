@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- 首页：权重最高 -->
   <url>
     <loc>https://www.matrixqr.cc/</loc>
-    <lastmod>2026-08-09</lastmod> <!-- 建议每次更新代码后修改此日期 -->
+    <lastmod>2026-08-09</lastmod> 
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
-
-  <!-- 如果以后有独立的功能页，可以加在这里，例如： -->
   <!--
   <url>
     <loc>https://www.matrixqr.cc/wifi-generator</loc>
