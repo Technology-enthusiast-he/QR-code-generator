@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Create a WiFi QR Code - MatrixQR Blog</title>
+    <meta name="description" content="Step by step guide to creating WiFi QR codes.">
+    
+    <link rel="stylesheet" href="../../style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="min-h-screen flex flex-col relative">
+
+    <div class="bg-glow"></div>
+
+    
+    <header class="w-full border-b border-slate-800 bg-slate-950/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-3xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="../../index.html" class="flex items-center gap-2 text-slate-400 hover:text-white transition-colors text-sm font-medium">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> BACK TO BLOG
+            </a>
+            <a href="https://www.matrixqr.cc" class="text-cyan-400 text-sm font-bold hover:underline">
+                OPEN GENERATOR ↗
+            </a>
+        </div>
+    </header>
+
+    
+    <article class="flex-1 w-full max-w-3xl mx-auto px-6 py-12 relative z-10 prose prose-invert">
+        
+        <header class="mb-10 border-b border-slate-800 pb-8">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="px-2 py-1 bg-cyan-500/10 text-cyan-400 text-xs font-bold rounded border border-cyan-500/20">GUIDE</span>
+                <span class="text-slate-500 text-sm font-mono">Aug 10, 2026 • 5 min read</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-black text-white leading-tight">
+                How to Create a Secure WiFi QR Code
+            </h1>
+        </header>
+
+        <div class="content-body">
+            <p class="lead text-lg text-slate-300">
+                Sharing WiFi passwords is a hassle. Typing long strings of characters on a small phone screen is frustrating. Here is how to solve it using MatrixQR.
+            </p>
+
+            <h2>Why use a QR Code for WiFi?</h2>
+            <p>
+                WiFi QR codes use a standard string format (<code>WIFI:S:MyNetwork;T:WPA;P:MyPassword;;</code>) that smartphones can natively understand.
+            </p>
+            <ul class="list-disc pl-5 space-y-2 text-slate-400">
+                <li><strong>Security:</strong> No need to write passwords on a whiteboard.</li>
+                <li><strong>Speed:</strong> Guests connect in seconds.</li>
+                <li><strong>Aesthetics:</strong> Looks professional in cafes or offices.</li>
+            </ul>
+
+            <h2>Step-by-Step Guide</h2>
+            <ol class="list-decimal pl-5 space-y-4 text-slate-400">
+                <li>Open <a href="https://www.matrixqr.cc" class="text-cyan-400 hover:underline">MatrixQR.cc</a>.</li>
+                <li>Select the <strong>WiFi QR</strong> tab.</li>
+                <li>Enter your Network Name (SSID) exactly as it appears.</li>
+                <li>Select your encryption type (usually WPA/WPA2).</li>
+                <li>Enter your password and click <strong>Generate</strong>.</li>
+            </ol>
+
+            <div class="bg-slate-900 p-6 rounded-xl border border-slate-800 my-8">
+                <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2">
+                    <i data-lucide="shield-check" class="w-5 h-5 text-emerald-400"></i> Pro Tip
+                </h3>
+                <p class="text-slate-400 text-sm m-0">
+                    If you have a "Guest Network" on your router, generate a QR code for that instead of your main network. It keeps your IoT devices safe!
+                </p>
+            </div>
+        </div>
+
+    </article>
+
+    <footer class="w-full border-t border-slate-800 bg-slate-950 py-8 mt-auto">
+        <div class="max-w-3xl mx-auto px-6 text-center">
+            <p class="text-slate-600 text-sm">© 2026 MatrixQR Blog.</p>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>
