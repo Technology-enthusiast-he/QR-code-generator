@@ -17,7 +17,7 @@
     <meta property="og:title" content="MatrixQR | Premium Tech QR Code Studio" />
     <meta property="og:description" content="Generate secure, high-quality QR codes for WiFi and Business Cards instantly. Zero server overhead." />
     
-
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
@@ -331,12 +331,10 @@
         const idleState = document.getElementById('idle-state');
         const qrResult = document.getElementById('qr-result');
         
-        idleState.style.opacity = '0'; 
-        setTimeout(() => {
+        idleState.style.opacity = '0';         setTimeout(() => {
             idleState.style.display = 'none';
             qrResult.classList.remove('hidden'); 
-            
-            setTimeout(() => qrResult.classList.add('scale-100'), 10);
+                        setTimeout(() => qrResult.classList.add('scale-100'), 10);
         }, 300);
 
         
