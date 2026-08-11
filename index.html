@@ -287,39 +287,63 @@
         }
 
         function generateTechQR() {
-            let qrText = "";
-            if (currentMode === 'wifi') {
-                const ssid = document.getElementById('wifi-ssid').value.trim();
-                const pass = document.getElementById('wifi-pass').value.trim();
-                if(!ssid) return alert(i18n[currentLang].errSsid);
-                qrText = `WIFI:T:WPA;S:${ssid};P:${pass};;`;
-            } else if (currentMode === 'phone') {
-                const phone = document.getElementById('phone-num').value.trim();
-                if(!phone) return alert(i18n[currentLang].errPhone);
-                qrText = `tel:${phone}`;
-            } else if (currentMode === 'vcard') {
-                const name = document.getElementById('card-name').value.trim();
-                const org = document.getElementById('card-org').value.trim();
-                const cell = document.getElementById('card-cell').value.trim();
-                const mail = document.getElementById('card-mail').value.trim();
-                if(!name) return alert(i18n[currentLang].errName);
-                
-                qrText = `BEGIN:VCARD\nVERSION:3.0\nN:${name}\nORG:${org}\nTEL:${cell}\nEMAIL:${mail}\nEND:VCARD`;
-            }
+    let qrText = "";
+    
+    if (currentMode === 'wifi') {
+        const ssid = document.getElementById('wifi-ssid').value.trim();
+        const pass = document.getElementById('wifi-pass').value.trim();
+        if(!ssid) return alert(i18n[currentLang].errSsid);
+        qrText = `WIFI:T:WPA;S:${ssid};P:${pass};;`;
+    } else if (currentMode === 'phone') {
+        const phone = document.getElementById('phone-num').value.trim();
+        if(!phone) return alert(i18n[currentLang].errPhone);
+        qrText = `tel:${phone}`;
+    } else if (currentMode === 'vcard') {
+        const name = document.getElementById('card-name').value.trim();
+        const org = document.getElementById('card-org').value.trim();
+        const cell = document.getElementById('card-cell').value.trim();
+        const mail = document.getElementById('card-mail').value.trim();
+        if(!name) return alert(i18n[currentLang].errName);
+        qrText = `BEGIN:VCARD\nVERSION:3.0\nN:${name}\nORG:${org}\nTEL:${cell}\nEMAIL:${mail}\nEND:VCARD`;
+    }
 
-            const targetContainer = document.getElementById('qrcode');
-            targetContainer.innerHTML = "";
-            new QRCode(targetContainer, {
-                text: qrText,
-                width: 180,
-                height: 180,
-                colorDark : "#020617",
-                colorLight : "#ffffff",
-                correctLevel : QRCode.CorrectLevel.H
-            });
-            document.getElementById('download-btn').classList.remove('hidden');
-            document.getElementById('tip-text').classList.add('hidden');
-        }
+    
+    
+    const tempDiv = document.createElement('div');
+    new QRCode(tempDiv, {
+        text: qrText,
+        width: 180,
+        height: 180,
+        colorDark : "#020617",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+    });
+
+    
+    setTimeout(() => {
+        const qrImgSrc = tempDiv.querySelector('img').src;
+        
+        
+        const qrImage = document.getElementById('qr-image');
+        qrImage.src = qrImgSrc;
+
+        
+        const idleState = document.getElementById('idle-state');
+        const qrResult = document.getElementById('qr-result');
+        
+        idleState.style.opacity = '0'; 
+        setTimeout(() => {
+            idleState.style.display = 'none';
+            qrResult.classList.remove('hidden'); 
+            
+            setTimeout(() => qrResult.classList.add('scale-100'), 10);
+        }, 300);
+
+        
+        document.getElementById('download-btn').classList.remove('hidden');
+        document.getElementById('tip-text').classList.add('hidden');
+    }, 100); 
+}
 
         function downloadTechQR() {
             const img = document.querySelector('#qrcode img');
