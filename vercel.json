@@ -73,11 +73,5 @@
       ]
     }
   ],
-  "redirects": [
-    {
-      "source": "/www.matrixqr.cc",
-      "destination": "https://www.matrixqr.cc",
-      "permanent": true
-    }
-  ]
+  "redirects": []
 }
