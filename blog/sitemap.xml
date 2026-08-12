@@ -25,6 +25,4 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- 如果有更多文章，请继续复制上面的 <url> ... </url> 块并修改链接 -->
-
-</urlset>
+  </urlset>
