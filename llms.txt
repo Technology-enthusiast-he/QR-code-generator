@@ -1,4 +1,4 @@
-# MatrixQR
+# MatrixQR QR Code Generator
 > MatrixQR is a free, secure, client-side QR code generator with a premium tech aesthetic.
 
 ## Main Tool
