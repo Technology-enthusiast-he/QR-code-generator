@@ -12,7 +12,8 @@ MatrixQR is a clean, modern, and high-performance client-side QR Code generator 
 
 ## 📂 Deployment on Vercel
 This project is fully optimized for Vercel edge networks. Since it contains only static files, it deploys instantly with zero configuration.
-
+- **Live App**: [MatrixQR Studio](https://matrixqr.cc)
+- **Tech Blog**: [MatrixQR Blog](https://blog.matrixqr.cc)
 ---
 
 ### 简体中文说明
