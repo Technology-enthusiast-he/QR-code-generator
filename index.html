@@ -4,34 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    
     <title>MatrixQR | Premium Tech QR Code Studio - Free WiFi & vCard Generator</title>
     <meta name="description" content="MatrixQR is a free, client-side QR code generator. Create WiFi, Phone, and vCard QR codes instantly with a premium tech aesthetic. No data tracking, works offline.">
     <meta name="keywords" content="QR code generator, WiFi QR, vCard QR, free QR code, MatrixQR, offline tool">
     <meta name="author" content="MatrixQR Team">
     <link rel="canonical" href="https://www.matrixqr.cc/" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="64x64">
-    <!-- Open Graph / Social Media (Facebook, Twitter, LinkedIn) -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.matrixqr.cc/" />
-    <meta property="og:title" content="MatrixQR | Premium Tech QR Code Studio" />
-    <meta property="og:description" content="Generate secure, high-quality QR codes for WiFi and Business Cards instantly. Zero server overhead." />
+
     
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.matrixqr.cc/" />
+<meta property="og:site_name" content="MatrixQR" />
+<meta property="og:title" content="MatrixQR | Premium Tech QR Code Studio" />
+<meta property="og:description" content="Generate secure, high-quality QR codes for WiFi and Business Cards instantly. Zero server overhead & 100% privacy." />
+
+<!-- 封面大图：建议尺寸 1200 x 630 px，请确保服务器根目录放置了 og-cover.png 图片 -->
+<meta property="og:image" content="https://www.matrixqr.cc/og-cover.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="MatrixQR Code Studio Preview" />
+<!-- ================================================================== -->
+
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     
     <style>
-        
         #qrcode { display: flex; justify-content: center; align-items: center; width: 180px; height: 180px; margin: 0 auto; }
         #qrcode img, #qrcode canvas { display: block !important; width: 100% !important; height: 100% !important; object-fit: contain; }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between antialiased">
-
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[400px] bg-radial from-cyan-500/10 via-transparent to-transparent pointer-events-none z-0"></div>
 
+    <!-- Header -->
     <header class="bg-slate-900/60 backdrop-blur-xl border-b border-slate-800/80 sticky top-0 z-50 py-3.5 px-4">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-2 z-10">
@@ -51,6 +59,7 @@
         </div>
     </header>
 
+    <!-- Navigation Tabs -->
     <section class="max-w-6xl mx-auto w-full px-4 mt-8 z-10">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 bg-slate-900/40 p-1.5 rounded-xl border border-slate-800/60">
             <button onclick="switchTab('wifi')" id="nav-wifi" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer bg-slate-800 text-cyan-400 border border-slate-700/50 shadow-inner">
@@ -68,8 +77,9 @@
         </div>
     </section>
 
+    <!-- Main Content -->
     <main class="max-w-6xl mx-auto px-4 py-8 flex-1 w-full grid grid-cols-1 md:grid-cols-12 gap-8 items-start z-10">
-        
+        <!-- Left Column: Inputs -->
         <div class="bg-slate-900/40 backdrop-blur-md rounded-2xl border border-slate-800/80 p-6 md:col-span-7 space-y-6 shadow-xl">
             <div id="form-wifi" class="space-y-4 tab-form">
                 <div>
@@ -115,7 +125,7 @@
             </button>
         </div>
 
-        
+        <!-- Right Column: Preview & Download -->
         <div class="md:col-span-5 flex flex-col items-center justify-center w-full">
             <div class="flex items-center justify-center mb-6 space-x-2">
                 <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
@@ -149,6 +159,8 @@
             </div>
         </div>
     </main>
+
+    <!-- Modal -->
     <div id="pro-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
         <div class="bg-slate-900 border border-amber-500/30 rounded-2xl max-w-sm w-full p-6 text-center space-y-5 shadow-2xl relative">
             <button onclick="closeProModal()" class="absolute top-4 right-4 text-slate-500 cursor-pointer"><i data-lucide="x" class="w-5 h-5"></i></button>
@@ -163,6 +175,7 @@
         </div>
     </div>
 
+    <!-- JavaScript -->
     <script>
         let currentMode = 'wifi';
         let currentLang = 'en';
@@ -274,6 +287,7 @@
             modal.classList.remove('hidden');
             setTimeout(() => modal.classList.remove('opacity-0'), 10);
         }
+
         function closeProModal() {
             const modal = document.getElementById('pro-modal');
             modal.classList.add('opacity-0');
@@ -281,78 +295,74 @@
         }
 
         function generateTechQR() {
-    let qrText = "";
-    
-    if (currentMode === 'wifi') {
-        const ssid = document.getElementById('wifi-ssid').value.trim();
-        const pass = document.getElementById('wifi-pass').value.trim();
-        if(!ssid) return alert(i18n[currentLang].errSsid);
-        qrText = `WIFI:T:WPA;S:${ssid};P:${pass};;`;
-    } else if (currentMode === 'phone') {
-        const phone = document.getElementById('phone-num').value.trim();
-        if(!phone) return alert(i18n[currentLang].errPhone);
-        qrText = `tel:${phone}`;
-    } else if (currentMode === 'vcard') {
-        const name = document.getElementById('card-name').value.trim();
-        const org = document.getElementById('card-org').value.trim();
-        const cell = document.getElementById('card-cell').value.trim();
-        const mail = document.getElementById('card-mail').value.trim();
-        if(!name) return alert(i18n[currentLang].errName);
-        qrText = `BEGIN:VCARD\nVERSION:3.0\nN:${name}\nORG:${org}\nTEL:${cell}\nEMAIL:${mail}\nEND:VCARD`;
-    }
+            let qrText = "";
+            if (currentMode === 'wifi') {
+                const ssid = document.getElementById('wifi-ssid').value.trim();
+                const pass = document.getElementById('wifi-pass').value.trim();
+                if(!ssid) return alert(i18n[currentLang].errSsid);
+                qrText = `WIFI:T:WPA;S:${ssid};P:${pass};;`;
+            } else if (currentMode === 'phone') {
+                const phone = document.getElementById('phone-num').value.trim();
+                if(!phone) return alert(i18n[currentLang].errPhone);
+                qrText = `tel:${phone}`;
+            } else if (currentMode === 'vcard') {
+                const name = document.getElementById('card-name').value.trim();
+                const org = document.getElementById('card-org').value.trim();
+                const cell = document.getElementById('card-cell').value.trim();
+                const mail = document.getElementById('card-mail').value.trim();
+                if(!name) return alert(i18n[currentLang].errName);
+                qrText = `BEGIN:VCARD\nVERSION:3.0\nN:${name}\nORG:${org}\nTEL:${cell}\nEMAIL:${mail}\nEND:VCARD`;
+            }
 
-    
-    const tempDiv = document.createElement('div');
-    new QRCode(tempDiv, {
-        text: qrText,
-        width: 180,
-        height: 180,
-        colorDark : "#020617",
-        colorLight : "#ffffff",
-        correctLevel : QRCode.CorrectLevel.H
-    });
+            const tempDiv = document.createElement('div');
+            new QRCode(tempDiv, {
+                text: qrText,
+                width: 180,
+                height: 180,
+                colorDark : "#020617",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            });
 
-    setTimeout(() => {
-        const qrImgSrc = tempDiv.querySelector('img').src;
-        
-        const qrImage = document.getElementById('qr-image');
-        qrImage.src = qrImgSrc;
+            setTimeout(() => {
+                const qrImgSrc = tempDiv.querySelector('img').src;
+                const qrImage = document.getElementById('qr-image');
+                qrImage.src = qrImgSrc;
 
-        const idleState = document.getElementById('idle-state');
-        const qrResult = document.getElementById('qr-result');
-        
-        idleState.style.opacity = '0';
-        setTimeout(() => {
-            idleState.style.display = 'none';
-            qrResult.classList.remove('hidden'); 
-            setTimeout(() => qrResult.classList.add('scale-100'), 10);
-        }, 300);
+                const idleState = document.getElementById('idle-state');
+                const qrResult = document.getElementById('qr-result');
+                
+                idleState.style.opacity = '0';
+                setTimeout(() => {
+                    idleState.style.display = 'none';
+                    qrResult.classList.remove('hidden'); 
+                    setTimeout(() => qrResult.classList.add('scale-100'), 10);
+                }, 300);
 
-        
-        const downloadBtn = document.getElementById('download-btn');
-        if (downloadBtn) {
-            downloadBtn.classList.remove('hidden');
-            downloadBtn.classList.add('flex');
+                const downloadBtn = document.getElementById('download-btn');
+                if (downloadBtn) {
+                    downloadBtn.classList.remove('hidden');
+                    downloadBtn.classList.add('flex');
+                }
+                
+                const tipText = document.getElementById('tip-text');
+                if (tipText) {
+                    tipText.classList.add('hidden');
+                }
+            }, 100); 
         }
-        
-        const tipText = document.getElementById('tip-text');
-        if (tipText) {
-            tipText.classList.add('hidden');
-        }
-    }, 100); 
-}
 
         function downloadTechQR() {
-    const qrImg = document.getElementById('qr-image');
-    if (qrImg && qrImg.src) {
-        const link = document.createElement('a');
-        link.download = `matrix-qr-${currentMode}.png`;
-        link.href = qrImg.src;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    }
-}
+            const qrImg = document.getElementById('qr-image');
+            if (qrImg && qrImg.src) {
+                const link = document.createElement('a');
+                link.download = `matrix-qr-${currentMode}.png`;
+                link.href = qrImg.src;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        }
 
         window.onload = function() {
             if (typeof lucide !== 'undefined') {
@@ -361,23 +371,21 @@
             changeLanguage('en');
         }
     </script>
-    
+
     <!-- Footer -->
     <footer class="py-6 text-center text-xs text-slate-500 border-t border-slate-800">
-    <p class="flex items-center justify-center gap-3 flex-wrap">
-        <span>© 2026 MatrixQR Studio. Client-side & Privacy First.</span>
-        <span class="text-slate-700">•</span>
-        
-        <a href="https://blog.matrixqr.cc" target="_blank" class="text-cyan-400 hover:underline flex items-center gap-1">
-            Blog
-        </a>
-        <span class="text-slate-700">•</span>
-        
-        <a href="https://blog.matrixqr.cc/posts/privacy-policy.html" target="_blank" class="text-slate-400 hover:text-cyan-400 transition-colors">
-            Privacy Policy
-        </a>
-    </p>
-</footer>
+        <p class="flex items-center justify-center gap-3 flex-wrap">
+            <span>© 2026 MatrixQR Studio. Client-side & Privacy First.</span>
+            <span class="text-slate-700">•</span>
+            <a href="https://blog.matrixqr.cc" target="_blank" class="text-cyan-400 hover:underline flex items-center gap-1">
+                Blog
+            </a>
+            <span class="text-slate-700">•</span>
+            <a href="https://blog.matrixqr.cc/posts/privacy-policy.html" target="_blank" class="text-slate-400 hover:text-cyan-400 transition-colors">
+                Privacy Policy
+            </a>
+        </p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
