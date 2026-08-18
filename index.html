@@ -48,7 +48,11 @@
                 </div>
                 <span class="text-lg font-black tracking-wider bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">MATRIX<span class="text-cyan-400 font-medium">QR</span></span>
             </div>
-            <select id="lang-select" onchange="changeLanguage(this.value)" class="bg-slate-800 border border-slate-700 rounded-lg px-2.5 py-1 text-xs text-slate-300 focus:outline-none cursor-pointer">
+            <select 
+    id="lang-select" 
+    aria-label="Select Language" 
+    onchange="changeLanguage(this.value)" 
+    class="bg-slate-800 border border-slate-700 rounded-lg px-2.5 py-1 text-xs text-slate-300 focus:outline-none cursor-pointer">
                 <option value="en">🌐 English</option>
                 <option value="de">🌐 Deutsch</option>
                 <option value="it">🌐 Italiano</option>
