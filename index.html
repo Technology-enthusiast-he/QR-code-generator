@@ -31,10 +31,57 @@
     
     <script src="https://unpkg.com/lucide@latest" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     
     <style>
         #qrcode { display: flex; justify-content: center; align-items: center; width: 180px; height: 180px; margin: 0 auto; }
         #qrcode img, #qrcode canvas { display: block !important; width: 100% !important; height: 100% !important; object-fit: contain; }
+        
+        /* 待机状态网格背景 */
+        #idle-state {
+            background-image: 
+                linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)),
+                linear-gradient(90deg, rgba(56, 189, 248, 0.1) 1px, transparent 1px),
+                linear-gradient(rgba(56, 189, 248, 0.1) 1px, transparent 1px);
+            background-size: 100% 100%, 20px 20px, 20px 20px;
+        }
+        
+        /* 待机图标呼吸动画 */
+        .animate-pulse-slow {
+            animation: pulse-glow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.4; transform: scale(0.95); }
+            50% { opacity: 1; transform: scale(1.05); filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.6)); }
+        }
+        
+        /* 二维码扫描光效 */
+        .qr-active-scan::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.2), transparent);
+            transform: skewX(-20deg);
+            animation: scan-light 2.5s infinite linear;
+            pointer-events: none;
+            z-index: 20;
+        }
+        @keyframes scan-light {
+            0% { left: -100%; }
+            100% { left: 200%; }
+        }
+        
+        /* 按钮点击反馈 */
+        button:active { transform: scale(0.98); }
+        
+        /* 输入框聚焦发光 */
+        input:focus, textarea:focus {
+            box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.3), 0 0 15px rgba(6, 182, 212, 0.1);
+            border-color: #06b6d4 !important;
+        }
     </style>
 </head>
 <body class="bg-slate-950 text-[#ffffff] min-h-screen flex flex-col justify-between antialiased">
