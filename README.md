@@ -15,6 +15,7 @@ This project is fully optimized for Vercel edge networks. Since it contains only
 - **Live App**: [MatrixQR Studio](https://www.matrixqr.cc)
 - **Tech Blog**: [MatrixQR Blog](https://blog.matrixqr.cc)
 ---
+![MatrixQR - The privacy-first QR generator on Product Hunt](https://api.producthunt.com/widgets/images/featured-badge/matrixqr.svg)](https://www.producthunt.com/products/matrixqr)
 
 ### 简体中文说明
 
