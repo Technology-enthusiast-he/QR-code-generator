@@ -14,10 +14,10 @@ MatrixQR is a clean, modern, and high-performance client-side QR Code generator 
 This project is fully optimized for Vercel edge networks. Since it contains only static files, it deploys instantly with zero configuration.
 - **Live App**: [MatrixQR Studio](https://www.matrixqr.cc)
 - **Tech Blog**: [MatrixQR Blog](https://blog.matrixqr.cc)
----
 <a href="https://www.producthunt.com/posts/matrixqr?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-matrixqr" target="_blank" rel="noopener noreferrer">
   <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=matrixqr&theme=light" alt="MatrixQR - The privacy-first QR generator on Product Hunt | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" />
 </a>
+---
 
 ### 简体中文说明
 
