@@ -29,8 +29,21 @@
     <link rel="preload" href="/style.css" as="style" onload="this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/style.css" media="print" onload="this.media='all'"></noscript>
     
-    <script src="https://unpkg.com/lucide@1.38.0/dist/umd/lucide.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+    <script src="libs/lucide.min.js" defer></script>
+
+
+<script src="libs/qrcode.min.js"></script>
+
+
+<script>
+    
+    window.onload = function() {
+        lucide.createIcons();
+    };
+</script>
+
+
+
     
     <style>
         #qrcode { display: flex; justify-content: center; align-items: center; width: 180px; height: 180px; margin: 0 auto; }
