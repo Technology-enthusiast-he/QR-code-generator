@@ -54,28 +54,26 @@
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[400px] bg-radial from-cyan-500/10 via-transparent to-transparent pointer-events-none z-0"></div>
     <h1 class="sr-only">Free Online QR Code Generator - Create WiFi & vCard QR Codes</h1>
     <!-- Header -->
-    <header class="bg-slate-900/60 backdrop-blur-xl border-b border-slate-800/80 sticky top-0 z-50 py-3.5 px-4">
-        <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-2 z-10">
-                <div class="w-7 h-7 bg-gradient-to-tr from-cyan-500 to-emerald-400 rounded-lg flex items-center justify-center">
-                    <i data-lucide="qr-code" class="w-4 h-4 text-slate-950 stroke-[2.5]"></i>
-                </div>
-                <span class="text-lg font-black tracking-wider bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">MATRIX<span class="text-cyan-400 font-medium">QR</span></span>
-            </div>
-            <select 
-    id="lang-select" 
-    aria-label="Select Language" 
-    onchange="changeLanguage(this.value)" 
-    class="bg-slate-800 border border-slate-700 rounded-lg px-2.5 py-1 text-xs text-slate-300 focus:outline-none cursor-pointer">
-                <option value="en">🌐 English</option>
-                <option value="de">🌐 Deutsch</option>
-                <option value="it">🌐 Italiano</option>
-                <option value="tr">🌐 Türkçe</option>
-                <option value="ko">🌐 한국어</option>
-                <option value="zh">🌐 简体中文</option>
-            </select>
+    <!-- 修改后的 Header -->
+<header class="w-full bg-[#FDFBF7] border-b border-[#E8E2D5] py-4 px-6 md:px-12 flex justify-between items-center transition-colors">
+    <!-- Logo 区域 -->
+    <div class="flex items-center gap-3">
+        <div class="w-9 h-9 bg-slate-950 rounded-xl flex items-center justify-center font-bold text-cyan-400 text-lg shadow-sm">
+            ⚡
         </div>
-    </header>
+        <span class="text-xl font-black tracking-wider text-[#2C2A29]">
+            MATRIX<span class="text-cyan-600">QR</span>
+        </span>
+    </div>
+
+    <!-- 右侧语言选择器器区 -->
+    <div class="flex items-center gap-4">
+        <select class="bg-white border border-[#E8E2D5] text-[#2C2A29] text-xs font-semibold px-3 py-1.5 rounded-lg focus:outline-none focus:border-cyan-500 shadow-sm">
+            <option value="en">🌐 English</option>
+            <option value="zh">🌐 中文</option>
+        </select>
+    </div>
+</header>
 
     <!-- Navigation Tabs -->
     <section class="max-w-6xl mx-auto w-full px-4 mt-8 z-10">
