@@ -10,41 +10,25 @@
     <meta name="author" content="MatrixQR Team">
     <link rel="canonical" href="https://www.matrixqr.cc/" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="64x64">
-    <link rel="stylesheet" href="style.css">
-    
 
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.matrixqr.cc/" />
-<meta property="og:site_name" content="MatrixQR" />
-<meta property="og:title" content="MatrixQR | Premium Tech QR Code Studio" />
-<meta property="og:description" content="Generate secure, high-quality QR codes for WiFi and Business Cards instantly. Zero server overhead & 100% privacy." />
-
-
-<meta property="og:image" content="https://www.matrixqr.cc/og-cover.png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="MatrixQR Code Studio Preview" />
-<!-- ================================================================== -->
+    <!-- ✅ 核心修复：引入 Tailwind CSS (解决样式丢失问题) -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     
-    <link rel="preload" href="/style.css" as="style" onload="this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/style.css" media="print" onload="this.media='all'"></noscript>
+    <!-- Open Graph 社交标签 -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.matrixqr.cc/" />
+    <meta property="og:site_name" content="MatrixQR" />
+    <meta property="og:title" content="MatrixQR | Premium Tech QR Code Studio" />
+    <meta property="og:description" content="Generate secure, high-quality QR codes for WiFi and Business Cards instantly. Zero server overhead & 100% privacy." />
+    <meta property="og:image" content="https://www.matrixqr.cc/og-cover.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="MatrixQR Code Studio Preview" />
     
+    <!-- JS 依赖库 -->
     <script src="libs/lucide.min.js" defer></script>
+    <script src="libs/qrcode.min.js"></script>
 
-
-<script src="libs/qrcode.min.js"></script>
-
-
-<script>
-    
-    window.onload = function() {
-        lucide.createIcons();
-    };
-</script>
-
-
-
-    
     <style>
         #qrcode { display: flex; justify-content: center; align-items: center; width: 180px; height: 180px; margin: 0 auto; }
         #qrcode img, #qrcode canvas { display: block !important; width: 100% !important; height: 100% !important; object-fit: contain; }
