@@ -74,10 +74,11 @@
         <i data-lucide="contact-2" class="w-4 h-4"></i> <span data-i18n="navVcard">vCard QR</span>
     </button>
 
-    <!-- 👇【新增的子站内链入口】 👇 -->
-    <a href="https://menu.matrixqr.cc/" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer text-emerald-400 hover:bg-emerald-500/10 border border-emerald-500/20">
-        <i data-lucide="utensils" class="w-4 h-4"></i> <span>Menu QR</span>
-    </a>
+    
+    <button onclick="switchTab('menu')" id="nav-menu" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer text-slate-400 hover:text-slate-200 border border-transparent">
+<a href="https://menu.matrixqr.cc/" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer text-emerald-400 hover:bg-emerald-500/10 border border-emerald-500/20">
+        <i data-lucide="menu" class="w-4 h-4"></i> <span data-i18n="navMenu">Menu QR</span></a>
+</button>
 
     <button onclick="openProModal()" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-bold transition-all cursor-pointer bg-gradient-to-r from-amber-500/10 to-orange-500/10 text-amber-400 border border-amber-500/30">
         <i data-lucide="layers" class="w-4 h-4"></i> <span data-i18n="navPro">Bulk QR</span> 
