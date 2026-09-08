@@ -3,7 +3,8 @@ name: "IndexNow Push"
 on:
   push:
     branches:
-      - main 
+      - main
+      - master
 
 jobs:
   indexnow:
@@ -14,7 +15,7 @@ jobs:
           curl -v -X POST "https://api.indexnow.org/indexnow" \
           -H "Content-Type: application/json; charset=utf-8" \
           -d '{
-            "host": "www.matrixqr.cc/",
+            "host": "www.matrixqr.cc",
             "key": "128b266e75164b4d9796276d274dbf5d",
             "keyLocation": "https://www.matrixqr.cc/128b266e75164b4d9796276d274dbf5d.txt",
             "urlList": [
@@ -22,6 +23,6 @@ jobs:
             ]
           }'
 
-- name: Ping Google Sitemap
+      - name: Ping Google Sitemap
         run: |
           curl "https://www.google.com/ping?sitemap=https://www.matrixqr.cc/sitemap.xml"
