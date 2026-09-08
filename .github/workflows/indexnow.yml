@@ -21,3 +21,7 @@ jobs:
               "https://www.matrixqr.cc/"
             ]
           }'
+
+- name: Ping Google Sitemap
+        run: |
+          curl "https://www.google.com/ping?sitemap=https://www.matrixqr.cc/sitemap.xml"
