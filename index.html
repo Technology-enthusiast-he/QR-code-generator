@@ -190,67 +190,67 @@
         let currentLang = 'en';
 
         const i18n = {
-            en: {
-                navWifi: "WiFi QR", navPhone: "Phone QR", navVcard: "vCard QR", navPro: "Bulk QR",
-                wifiSsid: "Network Name (SSID)", wifiPass: "Network Password",
-                phoneNum: "Phone Number", cardName: "Full Name", cardOrg: "Company",
-                cardCell: "Mobile Phone", cardMail: "Email Address", btnGenerate: "⚡ RUN MATRIX CORE",
-                previewTitle: "Terminal Preview", btnDownload: "Export PNG Vector",
-                tipText: "Awaiting terminal parameters from left module...",
-                proTitle: "Matrix Bulk Core", proDesc: "Batch compilation of QR matrices is restricted to premium accounts.",
-                proBtn: "UNLOCK CORE • $0.00/MO", errSsid: "Missing Network Parameter (SSID)", errPhone: "Missing Communications Number", errName: "Missing Personal Identity Marker"
-            },
-            de: {
-                navWifi: "WLAN QR", navPhone: "Telefon QR", navVcard: "vCard QR", navPro: "Bulk QR",
-                wifiSsid: "Netzwerkname (SSID)", wifiPass: "Netzwerkpasswort",
-                phoneNum: "Telefonnummer", cardName: "Vollständiger Name", cardOrg: "Unternehmen",
-                cardCell: "Mobiltelefon", cardMail: "E-Mail-Adresse", btnGenerate: "⚡ MATRIX-KERN AUSFÜHREN",
-                previewTitle: "Terminal-Vorschau", btnDownload: "PNG-Vektor exportieren",
-                tipText: "Warten auf Terminalparameter vom linken Modul...",
-                proTitle: "Matrix-Massenkern", proDesc: "Die Batch-Kompilierung von QR-Matrizen ist Premium-Konten vorbehalten.",
-                proBtn: "KERN FREISCHALTEN • 0.00€/Monat", errSsid: "Fehlender Netzwerkparameter (SSID)", errPhone: "Fehlende Kommunikationsnummer", errName: "Fehlendes persönliches Identitätsmerkmal"
-            },
-            it: {
-                navWifi: "WiFi QR", navPhone: "Telefono QR", navVcard: "vCard QR", navPro: "Bulk QR",
-                wifiSsid: "Nome della rete (SSID)", wifiPass: "Password della rete",
-                phoneNum: "Numero di telefono", cardName: "Nome completo", cardOrg: "Azienda",
-                cardCell: "Cellulare", cardMail: "Indirizzo e-mail", btnGenerate: "⚡ ESEGUI CORE MATRIX",
-                previewTitle: "Anteprima del terminale", btnDownload: "Esporta vettore PNG",
-                tipText: "In attesa dei parametri del terminale dal modulo sinistro...",
-                proTitle: "Core Matrix di massa", proDesc: "La compilazione batch di matrici QR è limitata agli account premium.",
-                proBtn: "SBLOCCA CORE • €0.00/MESE", errSsid: "Parametro di rete mancante (SSID)", errPhone: "Numero di comunicazione mancante", errName: "Indicatore di identità personale mancante"
-            },
-            tr: {
-                navWifi: "WiFi QR", navPhone: "Telefon QR", navVcard: "vCard QR", navPro: "Toplu QR",
-                wifiSsid: "Ağ Adı (SSID)", wifiPass: "Ağ Şifresi",
-                phoneNum: "Telefon Numarası", cardName: "Ad Soyad", cardOrg: "Şirket",
-                cardCell: "Cep Telefonu", cardMail: "E-posta Adresi", btnGenerate: "⚡ MATRİS ÇEKİRDEĞİNİ ÇALIŞTIR",
-                previewTitle: "Terminal Önizleme", btnDownload: "PNG Vektörünü Dışa Aktar",
-                tipText: "Sol modülden terminal parametreleri bekleniyor...",
-                proTitle: "Toplu Matris Çekirdeği", proDesc: "QR matrislerinin toplu derlenmesi premium hesaplarla sınırlıdır.",
-                proBtn: "ÇEKİRDEK KİLİDİNİ AÇ • $0.00/AY", errSsid: "Eksik Ağ Parametresi (SSID)", errPhone: "Eksik İletişim Numarası", errName: "Eksik Kişisel Kimlik İşaretçisi"
-            },
-            ko: {
-                navWifi: "WiFi QR", navPhone: "전화번호 QR", navVcard: "전자 명함", navPro: "대량 생성",
-                wifiSsid: "네트워크 이름 (SSID)", wifiPass: "네트워크 비밀번호",
-                phoneNum: "전화번호", cardName: "전체 이름", cardOrg: "회사명",
-                cardCell: "휴대폰 번호", cardMail: "이메일 주소", btnGenerate: "⚡ 매트릭스 코어 실행",
-                previewTitle: "터미널 실시간 미리보기", btnDownload: "무워터마크 PNG 내보내기",
-                tipText: "왼쪽 모듈의 터미널 매개변수 입력을 기다리는 중...",
-                proTitle: "매트릭스 대량 컴파일", proDesc: "대규모 QR 매트릭스의 일괄 컴파일 기능은 프리미엄 계정 전용입니다.",
-                proBtn: "코어 해제 • 월 $0.00", errSsid: "네트워크 필수 매개변수(SSID) 누락", errPhone: "통신 단말기 번호 누락", errName: "개인 식별 마커 누락"
-            },
-            zh: {
-                navWifi: "WiFi 二维码", navPhone: "手机号二维码", navVcard: "电子名片", navPro: "批量生成",
-                wifiSsid: "无线网络名称 (SSID)", wifiPass: "无线网络密码",
-                phoneNum: "手机号码", cardName: "真实姓名", cardOrg: "公司名称",
-                cardCell: "移动电话", cardMail: "电子邮箱", btnGenerate: "⚡ 执行矩阵生成",
-                previewTitle: "终端实时预览", btnDownload: "导出无水印 PNG",
-                tipText: "正在等待左侧模块输入终端参数...",
-                proTitle: "矩阵批量编译", proDesc: "批量生成大规模二维码阵列属于特权核心功能。",
-                proBtn: "解锁高级核心 • $0.00/月", errSsid: "缺少网络必要参数 (SSID)", errPhone: "通讯终端号码未填", errName: "身份标志名未输入"
-            }
-        };
+    en: {
+        navWifi: "WiFi QR", navPhone: "Phone QR", navVcard: "vCard QR", navMenu: "Menu QR", navPro: "Bulk QR",
+        wifiSsid: "Network Name (SSID)", wifiPass: "Network Password",
+        phoneNum: "Phone Number", cardName: "Full Name", cardOrg: "Company",
+        cardCell: "Mobile Phone", cardMail: "Email Address", btnGenerate: "⚡ RUN MATRIX CORE",
+        previewTitle: "Terminal Preview", btnDownload: "Export PNG Vector",
+        tipText: "Awaiting terminal parameters from left module...",
+        proTitle: "Matrix Bulk Core", proDesc: "Batch compilation of QR matrices is restricted to premium accounts.",
+        proBtn: "UNLOCK CORE • $0.00/MO", errSsid: "Missing Network Parameter (SSID)", errPhone: "Missing Communications Number", errName: "Missing Personal Identity Marker"
+    },
+    de: {
+        navWifi: "WLAN QR", navPhone: "Telefon QR", navVcard: "vCard QR", navMenu: "Menü-QR", navPro: "Bulk QR",
+        wifiSsid: "Netzwerkname (SSID)", wifiPass: "Netzwerkpasswort",
+        phoneNum: "Telefonnummer", cardName: "Vollständiger Name", cardOrg: "Unternehmen",
+        cardCell: "Mobiltelefon", cardMail: "E-Mail-Adresse", btnGenerate: "⚡ MATRIX-KERN AUSFÜHREN",
+        previewTitle: "Terminal-Vorschau", btnDownload: "PNG-Vektor exportieren",
+        tipText: "Warten auf Terminalparameter vom linken Modul...",
+        proTitle: "Matrix-Massenkern", proDesc: "Die Batch-Kompilierung von QR-Matrizen ist Premium-Konten vorbehalten.",
+        proBtn: "KERN FREISCHALTEN • 0.00€/Monat", errSsid: "Fehlender Netzwerkparameter (SSID)", errPhone: "Fehlende Kommunikationsnummer", errName: "Fehlendes persönliches Identitätsmerkmal"
+    },
+    it: {
+        navWifi: "WiFi QR", navPhone: "Telefono QR", navVcard: "vCard QR", navMenu: "Menu QR", navPro: "Bulk QR",
+        wifiSsid: "Nome della rete (SSID)", wifiPass: "Password della rete",
+        phoneNum: "Numero di telefono", cardName: "Nome completo", cardOrg: "Azienda",
+        cardCell: "Cellulare", cardMail: "Indirizzo e-mail", btnGenerate: "⚡ ESEGUI CORE MATRIX",
+        previewTitle: "Anteprima del terminale", btnDownload: "Esporta vettore PNG",
+        tipText: "In attesa dei parametri del terminale dal modulo sinistro...",
+        proTitle: "Core Matrix di massa", proDesc: "La compilazione batch di matrici QR è limitata agli account premium.",
+        proBtn: "SBLOCCA CORE • €0.00/MESE", errSsid: "Parametro di rete mancante (SSID)", errPhone: "Numero di comunicazione mancante", errName: "Indicatore di identità personale mancante"
+    },
+    tr: {
+        navWifi: "WiFi QR", navPhone: "Telefon QR", navVcard: "vCard QR", navMenu: "Menü QR", navPro: "Toplu QR",
+        wifiSsid: "Ağ Adı (SSID)", wifiPass: "Ağ Şifresi",
+        phoneNum: "Telefon Numarası", cardName: "Ad Soyad", cardOrg: "Şirket",
+        cardCell: "Cep Telefonu", cardMail: "E-posta Adresi", btnGenerate: "⚡ MATRİS ÇEKİRDEĞİNİ ÇALIŞTIR",
+        previewTitle: "Terminal Önizleme", btnDownload: "PNG Vektörünü Dışa Aktar",
+        tipText: "Sol modülden terminal parametreleri bekleniyor...",
+        proTitle: "Toplu Matris Çekirdeği", proDesc: "QR matrislerinin toplu derlenmesi premium hesaplarla sınırlıdır.",
+        proBtn: "ÇEKİRDEK KİLİDİNİ AÇ • $0.00/AY", errSsid: "Eksik Ağ Parametresi (SSID)", errPhone: "Eksik İletişim Numarası", errName: "Eksik Kişisel Kimlik İşaretçisi"
+    },
+    ko: {
+        navWifi: "WiFi QR", navPhone: "전화번호 QR", navVcard: "전자 명함", navMenu: "메뉴 QR", navPro: "대량 생성",
+        wifiSsid: "네트워크 이름 (SSID)", wifiPass: "네트워크 비밀번호",
+        phoneNum: "전화번호", cardName: "전체 이름", cardOrg: "회사명",
+        cardCell: "휴대폰 번호", cardMail: "이메일 주소", btnGenerate: "⚡ 매트릭스 코어 실행",
+        previewTitle: "터미널 실시간 미리보기", btnDownload: "무워터마크 PNG 내보내기",
+        tipText: "왼쪽 모듈의 터미널 매개변수 입력을 기다리는 중...",
+        proTitle: "매트릭스 대량 컴파일", proDesc: "대규모 QR 매트릭스의 일괄 컴파일 기능은 프리미엄 계정 전용입니다.",
+        proBtn: "코어 해제 • 월 $0.00", errSsid: "네트워크 필수 매개변수(SSID) 누락", errPhone: "통신 단말기 번호 누락", errName: "개인 식별 마커 누락"
+    },
+    zh: {
+        navWifi: "WiFi 二维码", navPhone: "手机号二维码", navVcard: "电子名片", navMenu: "菜单二维码", navPro: "批量生成",
+        wifiSsid: "无线网络名称 (SSID)", wifiPass: "无线网络密码",
+        phoneNum: "手机号码", cardName: "真实姓名", cardOrg: "公司名称",
+        cardCell: "移动电话", cardMail: "电子邮箱", btnGenerate: "⚡ 执行矩阵生成",
+        previewTitle: "终端实时预览", btnDownload: "导出无水印 PNG",
+        tipText: "正在等待左侧模块输入终端参数...",
+        proTitle: "矩阵批量编译", proDesc: "批量生成大规模二维码阵列属于特权核心功能。",
+        proBtn: "解锁高级核心 • $0.00/月", errSsid: "缺少网络必要参数 (SSID)", errPhone: "通讯终端号码未填", errName: "身份标志名未输入"
+    }
+};
 
         function changeLanguage(lang) {
             currentLang = lang;
