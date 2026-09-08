@@ -14,7 +14,7 @@ jobs:
           curl -v -X POST "https://api.indexnow.org/indexnow" \
           -H "Content-Type: application/json; charset=utf-8" \
           -d '{
-            "host": "matrixqr.cc/",
+            "host": "www.matrixqr.cc/",
             "key": "128b266e75164b4d9796276d274dbf5d",
             "keyLocation": "https://www.matrixqr.cc/128b266e75164b4d9796276d274dbf5d.txt",
             "urlList": [
