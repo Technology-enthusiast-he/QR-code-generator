@@ -3,11 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
-    "postbuild": "node generate-sitemap.js" 
+    "build": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --minify", 
   },
   "devDependencies": {
-    "tailwindcss": "^3.4.1",
-    "sitemap": "^7.1.1" 
+    "tailwindcss": "^3.4.1", 
   }
 }
