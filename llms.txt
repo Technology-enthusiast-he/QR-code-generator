@@ -18,3 +18,7 @@
 - **Architecture**: Static Web Application (Client-Side Only).
 - **Core Dependencies**: Pure JavaScript / Modern Web APIs.
 - **Data Persistence**: Zero server storage.
+
+## Optional / Full Documentation
+
+- [Full Specification & Guide](https://www.matrixqr.cc/llms-full.txt): Complete feature specs, privacy architecture, and user guides for MatrixQR.
