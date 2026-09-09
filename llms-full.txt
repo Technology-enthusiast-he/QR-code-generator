@@ -1,0 +1,103 @@
+# MatrixQR QR Code Generator - Full Documentation
+
+> MatrixQR is a free, secure, privacy-focused, and client-side QR code generator with a premium tech aesthetic. Designed for privacy-conscious users and developers, all QR code generation logic runs locally in the user's browser with zero server interaction.
+
+---
+
+## Table of Contents
+
+1. [Overview & Philosophy](#overview--philosophy)
+2. [Core Features](#core-features)
+3. [Supported QR Code Types](#supported-qr-code-types)
+4. [Privacy & Security Architecture](#privacy--security-architecture)
+5. [Usage Guide](#usage-guide)
+6. [Technical Architecture](#technical-architecture)
+7. [Frequently Asked Questions (FAQ)](#frequently-asked-questions-faq)
+8. [Links & Resources](#links--resources)
+
+---
+
+## Overview & Philosophy
+
+MatrixQR is built to address privacy concerns associated with commercial QR code generators that often track usage, redirect links through proprietary servers, or charge for basic custom features.
+
+- **URL**: https://www.matrixqr.cc/
+- **Primary Goal**: Provide an instant, transparent, and beautiful QR code generation utility.
+- **License**: Free to use for personal and commercial purposes.
+
+---
+
+## Core Features
+
+- **100% Client-Side Processing**: No network calls are made during the creation, customization, or rendering of QR codes.
+- **High Customization Options**:
+  - Color styling (Foreground / Background gradient or solid colors).
+  - Shape customization (square modules, rounded dots, custom eyes).
+  - Branding integration (Embedding custom PNG/SVG logos in the center).
+- **Export Formats**: High-resolution PNG and vector-based SVG formats for print and digital publishing.
+- **Offline Reliability**: Can be saved or installed as a PWA / offline static utility.
+
+---
+
+## Supported QR Code Types
+
+1. **URL / Link**: Encode web addresses, deep links, or specific page paths.
+2. **WiFi Network Configuration**:
+   - Fields: Network Name (SSID), Password, Encryption Type (WPA/WPA2/WPA3/WEP/None), Hidden SSID toggle.
+   - Purpose: Allows mobile devices to join WiFi networks seamlessly by scanning.
+3. **vCard (Electronic Business Card)**:
+   - Fields: Full Name, Organization, Title, Phone Number, Email, Address, Website.
+   - Purpose: Direct import of contact details into phone address books upon scanning.
+4. **Plain Text**: Encode arbitrary text messages, cryptographic addresses, or plain notes up to standard QR payload capacity.
+
+---
+
+## Privacy & Security Architecture
+
+MatrixQR adheres to strict privacy-by-design principles:
+
+- **No Server Processing**: QR codes are rendered locally via HTML5 `<canvas>` or SVG manipulation engines.
+- **Zero Telemetry on Payloads**: The text, passwords, URLs, or contact information entered into the generator never leave the local client environment.
+- **Static Hosting**: Served via CDN-cached static files on Vercel without active backend API database connections.
+
+---
+
+## Usage Guide
+
+1. **Navigate to the Studio**: Open [https://www.matrixqr.cc/](https://www.matrixqr.cc/).
+2. **Select Type**: Choose between URL, WiFi, vCard, or Plain Text tabs.
+3. **Enter Data**: Fill in the required fields.
+4. **Customize Visuals**:
+   - Adjust colors and corner shapes.
+   - Upload an optional center logo (image is processed locally).
+5. **Download / Export**: Click to download the generated QR code in `.png` or `.svg` format.
+
+---
+
+## Technical Architecture
+
+- **Hosting Platform**: Vercel (Edge Static Hosting).
+- **Domain**: `matrixqr.cc`
+- **Frontend Stack**: Modern JavaScript / HTML5 Canvas / Web APIs.
+- **Routing & Sitemap**: Clean URL structure, verified via Google Search Console, with sitemap integration.
+
+---
+
+## Frequently Asked Questions (FAQ)
+
+### Q: Do MatrixQR codes expire?
+A: No. MatrixQR generates static QR codes. The encoded data is written directly into the matrix payload and will work indefinitely as long as the underlying target URL or data remains active.
+
+### Q: Are my WiFi passwords or contact details safe?
+A: Yes. Because all computations occur in your local web browser, no server ever receives or logs your inputs.
+
+### Q: Can I use MatrixQR for commercial projects?
+A: Yes. All exported QR code graphics can be used freely for commercial print materials, packaging, marketing campaigns, or personal use.
+
+---
+
+## Links & Resources
+
+- [Main Application Studio](https://www.matrixqr.cc/)
+- [LLM Context File](https://www.matrixqr.cc/llms.txt)
+- [Full Documentation File](https://www.matrixqr.cc/llms-full.txt)
