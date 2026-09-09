@@ -1,5 +1,20 @@
 # MatrixQR QR Code Generator
-> MatrixQR is a free, secure, client-side QR code generator with a premium tech aesthetic.
+
+> MatrixQR is a free, secure, privacy-focused, and client-side QR code generator with a premium tech aesthetic.
 
 ## Main Tool
-- [MatrixQR Studio](https://www.matrixqr.cc/): Generate WiFi, vCard, and URL QR codes instantly. No data tracking, works offline.
+
+- [MatrixQR Studio](https://www.matrixqr.cc/): Generate WiFi, vCard, Text, and URL QR codes instantly. No data tracking, works completely offline.
+
+## Core Features
+
+- **Supported Types**: WiFi connection, vCard/Contact, URL/Website, Plain Text.
+- **Privacy & Security**: Purely client-side execution using JavaScript. No user data, generated content, or logs are transmitted to any server.
+- **Customization**: Supports logo overlay, custom colors, round/square module patterns, and high-resolution PNG/SVG exports.
+- **Offline Capable**: Fully functional without an active internet connection.
+
+## Key Technical Specs
+
+- **Architecture**: Static Web Application (Client-Side Only).
+- **Core Dependencies**: Pure JavaScript / Modern Web APIs.
+- **Data Persistence**: Zero server storage.
