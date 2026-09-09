@@ -425,49 +425,70 @@
     </script>
 
     <!-- Footer -->
-    <footer class="py-6 text-center text-xs text-slate-400 border-t border-slate-800">
-        <p class="flex items-center justify-center gap-3 flex-wrap">
-            <span>© 2026 MatrixQR Studio. Client-side & Privacy First.</span>
-            <span class="text-slate-700">•</span>
-            <a href="https://blog.matrixqr.cc/" class="text-cyan-400 hover:underline flex items-center gap-1 py-2 px-3 rounded-md">
+<footer class="py-8 text-center text-xs text-slate-400 border-t border-slate-800 bg-slate-950/60">
+    <div class="max-w-6xl mx-auto px-4 space-y-4">
+        
+        <!-- 1. Brand Copyright & Trust Badges (GDPR / SSL) -->
+        <div class="flex items-center justify-center gap-3 flex-wrap text-slate-300 font-medium">
+            <span>© 2026 MatrixQR Studio. All rights reserved.</span>
+            <span class="text-slate-700 hidden sm:inline">•</span>
+            
+            <!-- GDPR Ready Badge -->
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[11px] font-mono">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                GDPR Ready
+            </span>
+
+            <!-- SSL / Privacy Badge -->
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-[11px] font-mono">
+                🛡️ Client-Side Privacy
+            </span>
+        </div>
+
+        <!-- 2. Navigation Links -->
+        <p class="flex items-center justify-center gap-2 flex-wrap">
+            <a href="https://blog.matrixqr.cc/" class="text-slate-400 hover:text-cyan-400 hover:underline py-2 px-3 rounded-md transition-colors">
                 Blog
             </a>
             <span class="text-slate-700">•</span>
 
-            <a href="https://menu.matrixqr.cc/" class="text-cyan-400 hover:underline flex items-center gap-1 py-2 px-3 rounded-md" title="Free Digital Menu QR Code Generator">
+            <a href="https://menu.matrixqr.cc/" class="text-slate-400 hover:text-cyan-400 hover:underline py-2 px-3 rounded-md transition-colors" title="Free Digital Menu QR Code Generator">
                 Digital Menu QR
             </a>
             <span class="text-slate-700">•</span>
 
-            <a href="https://blog.matrixqr.cc/posts/privacy-policy" class="inline-flex items-center justify-center px-6 py-3 min-w-[48px] min-h-[48px] touch-manipulation" aria-label="Read our Privacy Policy">
+            <a href="https://blog.matrixqr.cc/posts/privacy-policy" class="text-slate-400 hover:text-cyan-400 hover:underline inline-flex items-center justify-center px-3 py-2 min-w-[48px] min-h-[48px] touch-manipulation transition-colors" aria-label="Read our Privacy Policy">
                 Privacy Policy
             </a>
         </p>
-        
-        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;" class="mt-4">
-            <!-- 1. Product Hunt Badge -->
+
+        <!-- 3. External Platform Backlinks / Badges -->
+        <div class="flex items-center justify-center gap-4 flex-wrap pt-2">
+            <!-- Product Hunt Badge -->
             <a href="https://www.producthunt.com/products/matrixqr?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-matrixqr"
                target="_blank"
                rel="noopener noreferrer"
-               style="display: inline-flex; align-items: center; justify-content: center; min-height: 54px;">
+               class="inline-flex items-center justify-center min-h-[54px] hover:opacity-90 transition-opacity">
               <img alt="MatrixQR - The privacy-first QR generator on Product Hunt"
                    width="250" height="54"
                    src="product-hunt-badge.svg"
                    fetchpriority="high"
-                   style="display: block; width: 250px; height: 54px;" />
+                   class="block w-[250px] h-[54px]" />
             </a>
 
-            <!-- 2. SaaSFame Badge -->
+            <!-- SaaSFame Badge -->
             <a href="https://saasfame.com/item/matrixqr"
                target="_blank"
                rel="noopener noreferrer"
-               style="display: inline-flex; align-items: center; min-height: 54px;">
+               class="inline-flex items-center justify-center min-h-[54px] hover:opacity-90 transition-opacity">
               <img src="https://saasfame.com/badge-light.svg"
                    alt="Featured on saasfame.com"
                    height="54" width="160"
-                   style="height: 54px; width: 160px; display: block;" />
+                   class="block w-[160px] h-[54px]" />
             </a>
         </div>
-    </footer>
+
+    </div>
+</footer>
 </body>
 </html>
