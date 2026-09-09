@@ -11,9 +11,7 @@
     <link rel="canonical" href="https://www.matrixqr.cc/" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="64x64">
 
-    
     <link rel="stylesheet" href="/dist/output.css">
-    
     
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.matrixqr.cc/" />
@@ -25,7 +23,52 @@
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="MatrixQR Code Studio Preview" />
     
-    
+    <!-- Schema Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://www.matrixqr.cc/#website",
+          "url": "https://www.matrixqr.cc/",
+          "name": "MatrixQR",
+          "description": "Free & Secure Client-Side QR Code Generator",
+          "publisher": {
+            "@id": "https://www.matrixqr.cc/#organization"
+          },
+          "inLanguage": ["en", "de", "it", "tr", "ko", "zh"]
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://www.matrixqr.cc/#organization",
+          "name": "MatrixQR Studio",
+          "url": "https://www.matrixqr.cc/",
+          "logo": "https://www.matrixqr.cc/favicon.ico",
+          "sameAs": [
+            "https://www.producthunt.com/products/matrixqr",
+            "https://saasfame.com/item/matrixqr"
+          ]
+        },
+        {
+          "@type": "WebApplication",
+          "@id": "https://www.matrixqr.cc/#webapp",
+          "url": "https://www.matrixqr.cc/",
+          "name": "MatrixQR Code Studio",
+          "applicationCategory": "UtilityApplication",
+          "operatingSystem": "All",
+          "browserRequirements": "Requires JavaScript",
+          "description": "Client-side privacy-first QR code generator for WiFi networks, contact vCards, and phone numbers.",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    }
+    </script>
+
     <script src="libs/lucide.min.js" defer></script>
     <script src="libs/qrcode.min.js"></script>
 
@@ -37,6 +80,7 @@
 <body class="bg-slate-950 text-[#ffffff] min-h-screen flex flex-col justify-between antialiased">
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[400px] bg-radial from-cyan-500/10 via-transparent to-transparent pointer-events-none z-0"></div>
     <h1 class="sr-only">Free Online QR Code Generator - Create WiFi & vCard QR Codes</h1>
+    
     <!-- Header -->
     <header class="bg-slate-900/60 backdrop-blur-xl border-b border-slate-800/80 sticky top-0 z-50 py-3.5 px-4">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
@@ -47,10 +91,10 @@
                 <span class="text-lg font-black tracking-wider bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">MATRIX<span class="text-cyan-400 font-medium">QR</span></span>
             </div>
             <select 
-    id="lang-select" 
-    aria-label="Select Language" 
-    onchange="changeLanguage(this.value)" 
-    class="bg-slate-800 border border-slate-700 rounded-lg px-2.5 py-1 text-xs text-slate-300 focus:outline-none cursor-pointer">
+                id="lang-select" 
+                aria-label="Select Language" 
+                onchange="changeLanguage(this.value)" 
+                class="bg-slate-800 border border-slate-700 rounded-lg px-2.5 py-1 text-xs text-slate-300 focus:outline-none cursor-pointer">
                 <option value="en">🌐 English</option>
                 <option value="de">🌐 Deutsch</option>
                 <option value="it">🌐 Italiano</option>
@@ -64,26 +108,25 @@
     <!-- Navigation Tabs -->
     <section class="max-w-6xl mx-auto w-full px-4 mt-8 z-10">
         <div class="grid grid-cols-2 md:grid-cols-5 gap-3 bg-slate-900/40 p-1.5 rounded-xl border border-slate-800/60">
-    <button onclick="switchTab('wifi')" id="nav-wifi" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer bg-slate-800 text-cyan-400 border border-slate-700/50 shadow-inner">
-        <i data-lucide="wifi" class="w-4 h-4"></i> <span data-i18n="navWifi">WiFi QR</span>
-    </button>
-    <button onclick="switchTab('phone')" id="nav-phone" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer text-slate-400 hover:text-slate-200 border border-transparent">
-        <i data-lucide="phone" class="w-4 h-4"></i> <span data-i18n="navPhone">Phone QR</span>
-    </button>
-    <button onclick="switchTab('vcard')" id="nav-vcard" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer text-slate-400 hover:text-slate-200 border border-transparent">
-        <i data-lucide="contact-2" class="w-4 h-4"></i> <span data-i18n="navVcard">vCard QR</span>
-    </button>
+            <button onclick="switchTab('wifi')" id="nav-wifi" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer bg-slate-800 text-cyan-400 border border-slate-700/50 shadow-inner">
+                <i data-lucide="wifi" class="w-4 h-4"></i> <span data-i18n="navWifi">WiFi QR</span>
+            </button>
+            <button onclick="switchTab('phone')" id="nav-phone" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer text-slate-400 hover:text-slate-200 border border-transparent">
+                <i data-lucide="phone" class="w-4 h-4"></i> <span data-i18n="navPhone">Phone QR</span>
+            </button>
+            <button onclick="switchTab('vcard')" id="nav-vcard" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer text-slate-400 hover:text-slate-200 border border-transparent">
+                <i data-lucide="contact-2" class="w-4 h-4"></i> <span data-i18n="navVcard">vCard QR</span>
+            </button>
 
-    
-    <a href="https://menu.matrixqr.cc/" id="nav-menu" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer text-emerald-400 hover:bg-emerald-500/10 border border-emerald-500/20">
-    <i data-lucide="menu" class="w-4 h-4"></i>
-    <span data-i18n="navMenu">Menu QR</span>
-</a>
+            <a href="https://menu.matrixqr.cc/" id="nav-menu" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer text-emerald-400 hover:bg-emerald-500/10 border border-emerald-500/20">
+                <i data-lucide="menu" class="w-4 h-4"></i>
+                <span data-i18n="navMenu">Menu QR</span>
+            </a>
 
-    <button onclick="openProModal()" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-bold transition-all cursor-pointer bg-gradient-to-r from-amber-500/10 to-orange-500/10 text-amber-400 border border-amber-500/30">
-        <i data-lucide="layers" class="w-4 h-4"></i> <span data-i18n="navPro">Bulk QR</span> 
-    </button>
-</div>
+            <button onclick="openProModal()" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-bold transition-all cursor-pointer bg-gradient-to-r from-amber-500/10 to-orange-500/10 text-amber-400 border border-amber-500/30">
+                <i data-lucide="layers" class="w-4 h-4"></i> <span data-i18n="navPro">Bulk QR</span> 
+            </button>
+        </div>
     </section>
 
     <!-- Main Content -->
@@ -190,67 +233,67 @@
         let currentLang = 'en';
 
         const i18n = {
-    en: {
-        navWifi: "WiFi QR", navPhone: "Phone QR", navVcard: "vCard QR", navMenu: "Menu QR", navPro: "Bulk QR",
-        wifiSsid: "Network Name (SSID)", wifiPass: "Network Password",
-        phoneNum: "Phone Number", cardName: "Full Name", cardOrg: "Company",
-        cardCell: "Mobile Phone", cardMail: "Email Address", btnGenerate: "⚡ RUN MATRIX CORE",
-        previewTitle: "Terminal Preview", btnDownload: "Export PNG Vector",
-        tipText: "Awaiting terminal parameters from left module...",
-        proTitle: "Matrix Bulk Core", proDesc: "Batch compilation of QR matrices is restricted to premium accounts.",
-        proBtn: "UNLOCK CORE • $0.00/MO", errSsid: "Missing Network Parameter (SSID)", errPhone: "Missing Communications Number", errName: "Missing Personal Identity Marker"
-    },
-    de: {
-        navWifi: "WLAN QR", navPhone: "Telefon QR", navVcard: "vCard QR", navMenu: "Menü-QR", navPro: "Bulk QR",
-        wifiSsid: "Netzwerkname (SSID)", wifiPass: "Netzwerkpasswort",
-        phoneNum: "Telefonnummer", cardName: "Vollständiger Name", cardOrg: "Unternehmen",
-        cardCell: "Mobiltelefon", cardMail: "E-Mail-Adresse", btnGenerate: "⚡ MATRIX-KERN AUSFÜHREN",
-        previewTitle: "Terminal-Vorschau", btnDownload: "PNG-Vektor exportieren",
-        tipText: "Warten auf Terminalparameter vom linken Modul...",
-        proTitle: "Matrix-Massenkern", proDesc: "Die Batch-Kompilierung von QR-Matrizen ist Premium-Konten vorbehalten.",
-        proBtn: "KERN FREISCHALTEN • 0.00€/Monat", errSsid: "Fehlender Netzwerkparameter (SSID)", errPhone: "Fehlende Kommunikationsnummer", errName: "Fehlendes persönliches Identitätsmerkmal"
-    },
-    it: {
-        navWifi: "WiFi QR", navPhone: "Telefono QR", navVcard: "vCard QR", navMenu: "Menu QR", navPro: "Bulk QR",
-        wifiSsid: "Nome della rete (SSID)", wifiPass: "Password della rete",
-        phoneNum: "Numero di telefono", cardName: "Nome completo", cardOrg: "Azienda",
-        cardCell: "Cellulare", cardMail: "Indirizzo e-mail", btnGenerate: "⚡ ESEGUI CORE MATRIX",
-        previewTitle: "Anteprima del terminale", btnDownload: "Esporta vettore PNG",
-        tipText: "In attesa dei parametri del terminale dal modulo sinistro...",
-        proTitle: "Core Matrix di massa", proDesc: "La compilazione batch di matrici QR è limitata agli account premium.",
-        proBtn: "SBLOCCA CORE • €0.00/MESE", errSsid: "Parametro di rete mancante (SSID)", errPhone: "Numero di comunicazione mancante", errName: "Indicatore di identità personale mancante"
-    },
-    tr: {
-        navWifi: "WiFi QR", navPhone: "Telefon QR", navVcard: "vCard QR", navMenu: "Menü QR", navPro: "Toplu QR",
-        wifiSsid: "Ağ Adı (SSID)", wifiPass: "Ağ Şifresi",
-        phoneNum: "Telefon Numarası", cardName: "Ad Soyad", cardOrg: "Şirket",
-        cardCell: "Cep Telefonu", cardMail: "E-posta Adresi", btnGenerate: "⚡ MATRİS ÇEKİRDEĞİNİ ÇALIŞTIR",
-        previewTitle: "Terminal Önizleme", btnDownload: "PNG Vektörünü Dışa Aktar",
-        tipText: "Sol modülden terminal parametreleri bekleniyor...",
-        proTitle: "Toplu Matris Çekirdeği", proDesc: "QR matrislerinin toplu derlenmesi premium hesaplarla sınırlıdır.",
-        proBtn: "ÇEKİRDEK KİLİDİNİ AÇ • $0.00/AY", errSsid: "Eksik Ağ Parametresi (SSID)", errPhone: "Eksik İletişim Numarası", errName: "Eksik Kişisel Kimlik İşaretçisi"
-    },
-    ko: {
-        navWifi: "WiFi QR", navPhone: "전화번호 QR", navVcard: "전자 명함", navMenu: "메뉴 QR", navPro: "대량 생성",
-        wifiSsid: "네트워크 이름 (SSID)", wifiPass: "네트워크 비밀번호",
-        phoneNum: "전화번호", cardName: "전체 이름", cardOrg: "회사명",
-        cardCell: "휴대폰 번호", cardMail: "이메일 주소", btnGenerate: "⚡ 매트릭스 코어 실행",
-        previewTitle: "터미널 실시간 미리보기", btnDownload: "무워터마크 PNG 내보내기",
-        tipText: "왼쪽 모듈의 터미널 매개변수 입력을 기다리는 중...",
-        proTitle: "매트릭스 대량 컴파일", proDesc: "대규모 QR 매트릭스의 일괄 컴파일 기능은 프리미엄 계정 전용입니다.",
-        proBtn: "코어 해제 • 월 $0.00", errSsid: "네트워크 필수 매개변수(SSID) 누락", errPhone: "통신 단말기 번호 누락", errName: "개인 식별 마커 누락"
-    },
-    zh: {
-        navWifi: "WiFi 二维码", navPhone: "手机号二维码", navVcard: "电子名片", navMenu: "菜单二维码", navPro: "批量生成",
-        wifiSsid: "无线网络名称 (SSID)", wifiPass: "无线网络密码",
-        phoneNum: "手机号码", cardName: "真实姓名", cardOrg: "公司名称",
-        cardCell: "移动电话", cardMail: "电子邮箱", btnGenerate: "⚡ 执行矩阵生成",
-        previewTitle: "终端实时预览", btnDownload: "导出无水印 PNG",
-        tipText: "正在等待左侧模块输入终端参数...",
-        proTitle: "矩阵批量编译", proDesc: "批量生成大规模二维码阵列属于特权核心功能。",
-        proBtn: "解锁高级核心 • $0.00/月", errSsid: "缺少网络必要参数 (SSID)", errPhone: "通讯终端号码未填", errName: "身份标志名未输入"
-    }
-};
+            en: {
+                navWifi: "WiFi QR", navPhone: "Phone QR", navVcard: "vCard QR", navMenu: "Menu QR", navPro: "Bulk QR",
+                wifiSsid: "Network Name (SSID)", wifiPass: "Network Password",
+                phoneNum: "Phone Number", cardName: "Full Name", cardOrg: "Company",
+                cardCell: "Mobile Phone", cardMail: "Email Address", btnGenerate: "⚡ RUN MATRIX CORE",
+                previewTitle: "Terminal Preview", btnDownload: "Export PNG Vector",
+                tipText: "Awaiting terminal parameters from left module...",
+                proTitle: "Matrix Bulk Core", proDesc: "Batch compilation of QR matrices is restricted to premium accounts.",
+                proBtn: "UNLOCK CORE • $0.00/MO", errSsid: "Missing Network Parameter (SSID)", errPhone: "Missing Communications Number", errName: "Missing Personal Identity Marker"
+            },
+            de: {
+                navWifi: "WLAN QR", navPhone: "Telefon QR", navVcard: "vCard QR", navMenu: "Menü-QR", navPro: "Bulk QR",
+                wifiSsid: "Netzwerkname (SSID)", wifiPass: "Netzwerkpasswort",
+                phoneNum: "Telefonnummer", cardName: "Vollständiger Name", cardOrg: "Unternehmen",
+                cardCell: "Mobiltelefon", cardMail: "E-Mail-Adresse", btnGenerate: "⚡ MATRIX-KERN AUSFÜHREN",
+                previewTitle: "Terminal-Vorschau", btnDownload: "PNG-Vektor exportieren",
+                tipText: "Warten auf Terminalparameter vom linken Modul...",
+                proTitle: "Matrix-Massenkern", proDesc: "Die Batch-Kompilierung von QR-Matrizen ist Premium-Konten vorbehalten.",
+                proBtn: "KERN FREISCHALTEN • 0.00€/Monat", errSsid: "Fehlender Netzwerkparameter (SSID)", errPhone: "Fehlende Kommunikationsnummer", errName: "Fehlendes persönliches Identitätsmerkmal"
+            },
+            it: {
+                navWifi: "WiFi QR", navPhone: "Telefono QR", navVcard: "vCard QR", navMenu: "Menu QR", navPro: "Bulk QR",
+                wifiSsid: "Nome della rete (SSID)", wifiPass: "Password della rete",
+                phoneNum: "Numero di telefono", cardName: "Nome completo", cardOrg: "Azienda",
+                cardCell: "Cellulare", cardMail: "Indirizzo e-mail", btnGenerate: "⚡ ESEGUI CORE MATRIX",
+                previewTitle: "Anteprima del terminale", btnDownload: "Esporta vettore PNG",
+                tipText: "In attesa dei parametri del terminale dal modulo sinistro...",
+                proTitle: "Core Matrix di massa", proDesc: "La compilazione batch di matrici QR è limitata agli account premium.",
+                proBtn: "SBLOCCA CORE • €0.00/MESE", errSsid: "Parametro di rete mancante (SSID)", errPhone: "Numero di comunicazione mancante", errName: "Indicatore di identità personale mancante"
+            },
+            tr: {
+                navWifi: "WiFi QR", navPhone: "Telefon QR", navVcard: "vCard QR", navMenu: "Menü QR", navPro: "Toplu QR",
+                wifiSsid: "Ağ Adı (SSID)", wifiPass: "Ağ Şifresi",
+                phoneNum: "Telefon Numarası", cardName: "Ad Soyad", cardOrg: "Şirket",
+                cardCell: "Cep Telefonu", cardMail: "E-posta Adresi", btnGenerate: "⚡ MATRİS ÇEKİRDEĞİNİ ÇALIŞTIR",
+                previewTitle: "Terminal Önizleme", btnDownload: "PNG Vektörünü Dışa Aktar",
+                tipText: "Sol modülden terminal parametreleri bekleniyor...",
+                proTitle: "Toplu Matris Çekirdeği", proDesc: "QR matrislerinin toplu derlenmesi premium hesaplarla sınırlıdır.",
+                proBtn: "ÇEKİRDEK KİLİDİNİ AÇ • $0.00/AY", errSsid: "Eksik Ağ Parametresi (SSID)", errPhone: "Eksik İletişim Numarası", errName: "Eksik Kişisel Kimlik İşaretçisi"
+            },
+            ko: {
+                navWifi: "WiFi QR", navPhone: "전화번호 QR", navVcard: "전자 명함", navMenu: "메뉴 QR", navPro: "대량 생성",
+                wifiSsid: "네트워크 이름 (SSID)", wifiPass: "네트워크 비밀번호",
+                phoneNum: "전화번호", cardName: "전체 이름", cardOrg: "회사명",
+                cardCell: "휴대폰 번호", cardMail: "이메일 주소", btnGenerate: "⚡ 매트릭스 코어 실행",
+                previewTitle: "터미널 실시간 미리보기", btnDownload: "무워터마크 PNG 내보내기",
+                tipText: "왼쪽 모듈의 터미널 매개변수 입력을 기다리는 중...",
+                proTitle: "매트릭스 대량 컴파일", proDesc: "대규모 QR 매트릭스의 일괄 컴파일 기능은 프리미엄 계정 전용입니다.",
+                proBtn: "코어 해제 • 월 $0.00", errSsid: "네트워크 필수 매개변수(SSID) 누락", errPhone: "통신 단말기 번호 누락", errName: "개인 식별 마커 누락"
+            },
+            zh: {
+                navWifi: "WiFi 二维码", navPhone: "手机号二维码", navVcard: "电子名片", navMenu: "菜单二维码", navPro: "批量生成",
+                wifiSsid: "无线网络名称 (SSID)", wifiPass: "无线网络密码",
+                phoneNum: "手机号码", cardName: "真实姓名", cardOrg: "公司名称",
+                cardCell: "移动电话", cardMail: "电子邮箱", btnGenerate: "⚡ 执行矩阵生成",
+                previewTitle: "终端实时预览", btnDownload: "导出无水印 PNG",
+                tipText: "正在等待左侧模块输入终端参数...",
+                proTitle: "矩阵批量编译", proDesc: "批量生成大规模二维码阵列属于特权核心功能。",
+                proBtn: "解锁高级核心 • $0.00/月", errSsid: "缺少网络必要参数 (SSID)", errPhone: "通讯终端号码未填", errName: "身份标志名未输入"
+            }
+        };
 
         function changeLanguage(lang) {
             currentLang = lang;
@@ -387,51 +430,44 @@
             <span>© 2026 MatrixQR Studio. Client-side & Privacy First.</span>
             <span class="text-slate-700">•</span>
             <a href="https://blog.matrixqr.cc/" class="text-cyan-400 hover:underline flex items-center gap-1 py-2 px-3 rounded-md">
-  Blog
-</a>
-<span class="text-slate-700">•</span>
+                Blog
+            </a>
+            <span class="text-slate-700">•</span>
 
+            <a href="https://menu.matrixqr.cc/" class="text-cyan-400 hover:underline flex items-center gap-1 py-2 px-3 rounded-md" title="Free Digital Menu QR Code Generator">
+                Digital Menu QR
+            </a>
+            <span class="text-slate-700">•</span>
 
-<a href="https://menu.matrixqr.cc/" class="text-cyan-400 hover:underline flex items-center gap-1 py-2 px-3 rounded-md" title="Free Digital Menu QR Code Generator">
-  Digital Menu QR
-</a>
-<span class="text-slate-700">•</span>
-
-<a href="https://blog.matrixqr.cc/posts/privacy-policy" class="inline-flex items-center justify-center px-6 py-3 min-w-[48px] min-h-[48px] touch-manipulation" aria-label="Read our Privacy Policy">
-  Privacy Policy
-</a>
+            <a href="https://blog.matrixqr.cc/posts/privacy-policy" class="inline-flex items-center justify-center px-6 py-3 min-w-[48px] min-h-[48px] touch-manipulation" aria-label="Read our Privacy Policy">
+                Privacy Policy
+            </a>
         </p>
         
-        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;" class="mt-4">
+            <!-- 1. Product Hunt Badge -->
+            <a href="https://www.producthunt.com/products/matrixqr?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-matrixqr"
+               target="_blank"
+               rel="noopener noreferrer"
+               style="display: inline-flex; align-items: center; justify-content: center; min-height: 54px;">
+              <img alt="MatrixQR - The privacy-first QR generator on Product Hunt"
+                   width="250" height="54"
+                   src="product-hunt-badge.svg"
+                   fetchpriority="high"
+                   style="display: block; width: 250px; height: 54px;" />
+            </a>
 
-  <!-- 1. Product Hunt Badge -->
-  <a href="https://www.producthunt.com/products/matrixqr?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-matrixqr"
-     target="_blank"
-     rel="noopener noreferrer"
-     style="display: inline-flex; align-items: center; justify-content: center; min-height: 54px;">
-    <img alt="MatrixQR - The privacy-first QR generator on Product Hunt"
-         width="250" height="54"
-         src="product-hunt-badge.svg"
-         fetchpriority="high"
-         style="display: block; width: 250px; height: 54px;" />
-  </a>
-
-  <!-- 2. SaaSFame Badge -->
-  <a href="https://saasfame.com/item/matrixqr"
-     target="_blank"
-     rel="noopener noreferrer"
-     style="display: inline-flex; align-items: center; min-height: 54px;">
-    <img src="https://saasfame.com/badge-light.svg"
-         alt="Featured on saasfame.com"
-         height="54" width="160"
-         style="height: 54px; width: 160px; display: block;" />
-  </a>
-
-</div>
-
-
+            <!-- 2. SaaSFame Badge -->
+            <a href="https://saasfame.com/item/matrixqr"
+               target="_blank"
+               rel="noopener noreferrer"
+               style="display: inline-flex; align-items: center; min-height: 54px;">
+              <img src="https://saasfame.com/badge-light.svg"
+                   alt="Featured on saasfame.com"
+                   height="54" width="160"
+                   style="height: 54px; width: 160px; display: block;" />
+            </a>
+        </div>
     </footer>
-
-    
 </body>
 </html>
