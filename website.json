@@ -1,0 +1,12 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://www.matrixqr.cc/#website",
+  "url": "https://www.matrixqr.cc/",
+  "name": "MatrixQR",
+  "description": "Free & Secure Client-Side QR Code Generator",
+  "publisher": {
+    "@id": "https://www.matrixqr.cc/#organization"
+  },
+  "inLanguage": ["en", "de", "it", "tr", "ko", "zh"]
+}
