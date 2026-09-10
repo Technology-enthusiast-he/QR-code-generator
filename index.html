@@ -4,9 +4,10 @@
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>MatrixQR | Free & Secure QR Code Generator</title>
-    <meta name="description" content="MatrixQR is a free, client-side QR code generator. Create WiFi, Phone, and vCard QR codes instantly with a premium tech aesthetic. No data tracking, works offline.">
-    <meta name="keywords" content="QR code generator, WiFi QR, vCard QR, free QR code, MatrixQR, offline tool">
+    <!-- T-001: 统一一句话定义 -->
+    <title>MatrixQR | Free & Secure Client-Side QR Code Generator</title>
+    <meta name="description" content="MatrixQR is a free & secure client-side QR code generator. Create WiFi, Phone, and vCard QR codes instantly with zero server data tracking and offline capability.">
+    <meta name="keywords" content="QR code generator, WiFi QR, vCard QR, free QR code, MatrixQR, client-side QR generator, offline tool">
     <meta name="author" content="MatrixQR Team">
     <link rel="canonical" href="https://www.matrixqr.cc/" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="64x64">
@@ -16,14 +17,14 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.matrixqr.cc/" />
     <meta property="og:site_name" content="MatrixQR" />
-    <meta property="og:title" content="MatrixQR | Premium Tech QR Code Studio" />
-    <meta property="og:description" content="MatrixQR is a free, client-side QR code generator. Create WiFi, Phone, and vCard QR codes instantly with a premium tech aesthetic. No data tracking, works offline." />
+    <meta property="og:title" content="MatrixQR | Free & Secure Client-Side QR Code Generator" />
+    <meta property="og:description" content="MatrixQR is a free & secure client-side QR code generator. Create WiFi, Phone, and vCard QR codes instantly with zero server data tracking and offline capability." />
     <meta property="og:image" content="https://www.matrixqr.cc/og-cover.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="MatrixQR Code Studio Preview" />
     
-    <!-- Schema Structured Data (JSON-LD) -->
+    <!-- T-006: 严格标准的 Schema Structured Data (JSON-LD) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -58,7 +59,7 @@
           "applicationCategory": "UtilityApplication",
           "operatingSystem": "All",
           "browserRequirements": "Requires JavaScript",
-          "description": "Client-side privacy-first QR code generator for WiFi networks, contact vCards, and phone numbers.",
+          "description": "Free & Secure Client-Side QR Code Generator for WiFi networks, contact vCards, and phone numbers.",
           "offers": {
             "@type": "Offer",
             "price": "0",
@@ -109,7 +110,9 @@
 </head>
 <body class="bg-slate-950 text-[#ffffff] min-h-screen flex flex-col justify-between antialiased">
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[400px] bg-radial from-cyan-500/10 via-transparent to-transparent pointer-events-none z-0"></div>
-    <h1 class="sr-only">Free Online QR Code Generator - Create WiFi & vCard QR Codes</h1>
+    
+    <!-- T-005: 提高 SEO / 无障碍 H1 主标题 -->
+    <h1 class="sr-only">MatrixQR - Free & Secure Client-Side QR Code Generator for WiFi & vCard</h1>
     
     <!-- Header -->
     <header class="bg-slate-900/60 backdrop-blur-xl border-b border-slate-800/80 sticky top-0 z-50 py-3.5 px-4">
@@ -136,24 +139,24 @@
     </header>
 
     <!-- Navigation Tabs -->
-    <section class="max-w-6xl mx-auto w-full px-4 mt-8 z-10">
+    <section class="max-w-6xl mx-auto w-full px-4 mt-8 z-10" aria-label="QR Code Generator Navigation">
         <div class="grid grid-cols-2 md:grid-cols-5 gap-3 bg-slate-900/40 p-1.5 rounded-xl border border-slate-800/60">
-            <button onclick="switchTab('wifi')" id="nav-wifi" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer bg-slate-800 text-cyan-400 border border-slate-700/50 shadow-inner">
+            <button onclick="switchTab('wifi')" id="nav-wifi" aria-label="Generate WiFi QR Code" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer bg-slate-800 text-cyan-400 border border-slate-700/50 shadow-inner">
                 <i data-lucide="wifi" class="w-4 h-4"></i> <span data-i18n="navWifi">WiFi QR</span>
             </button>
-            <button onclick="switchTab('phone')" id="nav-phone" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer text-slate-400 hover:text-slate-200 border border-transparent">
+            <button onclick="switchTab('phone')" id="nav-phone" aria-label="Generate Phone QR Code" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer text-slate-400 hover:text-slate-200 border border-transparent">
                 <i data-lucide="phone" class="w-4 h-4"></i> <span data-i18n="navPhone">Phone QR</span>
             </button>
-            <button onclick="switchTab('vcard')" id="nav-vcard" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer text-slate-400 hover:text-slate-200 border border-transparent">
+            <button onclick="switchTab('vcard')" id="nav-vcard" aria-label="Generate vCard QR Code" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer text-slate-400 hover:text-slate-200 border border-transparent">
                 <i data-lucide="contact-2" class="w-4 h-4"></i> <span data-i18n="navVcard">vCard QR</span>
             </button>
 
-            <a href="https://menu.matrixqr.cc/" id="nav-menu" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer text-emerald-400 hover:bg-emerald-500/10 border border-emerald-500/20">
+            <a href="https://menu.matrixqr.cc/" id="nav-menu" aria-label="Create Digital Menu QR Code" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer text-emerald-400 hover:bg-emerald-500/10 border border-emerald-500/20">
                 <i data-lucide="menu" class="w-4 h-4"></i>
                 <span data-i18n="navMenu">Menu QR</span>
             </a>
 
-            <button onclick="openProModal()" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-bold transition-all cursor-pointer bg-gradient-to-r from-amber-500/10 to-orange-500/10 text-amber-400 border border-amber-500/30">
+            <button onclick="openProModal()" aria-label="Open Bulk QR Code Generator Options" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-bold transition-all cursor-pointer bg-gradient-to-r from-amber-500/10 to-orange-500/10 text-amber-400 border border-amber-500/30">
                 <i data-lucide="layers" class="w-4 h-4"></i> <span data-i18n="navPro">Bulk QR</span> 
             </button>
         </div>
@@ -165,18 +168,18 @@
         <div class="bg-slate-900/40 backdrop-blur-md rounded-2xl border border-slate-800/80 p-6 md:col-span-7 space-y-6 shadow-xl">
             <div id="form-wifi" class="space-y-4 tab-form">
                 <div>
-                    <label class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="wifiSsid">Network Name (SSID)</label>
+                    <label for="wifi-ssid" class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="wifiSsid">Network Name (SSID)</label>
                     <input type="text" id="wifi-ssid" placeholder="e.g., CyberNet_5G" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-500">
                 </div>
                 <div>
-                    <label class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="wifiPass">Network Password</label>
+                    <label for="wifi-pass" class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="wifiPass">Network Password</label>
                     <input type="password" id="wifi-pass" placeholder="••••••••" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-500">
                 </div>
             </div>
 
             <div id="form-phone" class="space-y-4 tab-form hidden">
                 <div>
-                    <label class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="phoneNum">Phone Number</label>
+                    <label for="phone-num" class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="phoneNum">Phone Number</label>
                     <input type="tel" id="phone-num" placeholder="e.g., +1 234 567 8900" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-500">
                 </div>
             </div>
@@ -184,25 +187,25 @@
             <div id="form-vcard" class="space-y-4 tab-form hidden">
                 <div class="grid grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="cardName">Full Name</label>
+                        <label for="card-name" class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="cardName">Full Name</label>
                         <input type="text" id="card-name" placeholder="John Doe" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-500">
                     </div>
                     <div>
-                        <label class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="cardOrg">Company</label>
+                        <label for="card-org" class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="cardOrg">Company</label>
                         <input type="text" id="card-org" placeholder="Matrix Labs Ltd." class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-500">
                     </div>
                 </div>
                 <div>
-                    <label class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="cardCell">Mobile Phone</label>
+                    <label for="card-cell" class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="cardCell">Mobile Phone</label>
                     <input type="tel" id="card-cell" placeholder="+1 234 567 8900" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-500">
                 </div>
                 <div>
-                    <label class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="cardMail">Email Address</label>
+                    <label for="card-mail" class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="cardMail">Email Address</label>
                     <input type="email" id="card-mail" placeholder="john.doe@matrix.com" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-500">
                 </div>
             </div>
 
-            <button onclick="generateTechQR()" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold py-3.5 px-4 rounded-xl shadow-lg transition-all transform active:scale-[0.99] cursor-pointer text-sm tracking-wide">
+            <button onclick="generateTechQR()" aria-label="Execute Matrix QR Generation" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold py-3.5 px-4 rounded-xl shadow-lg transition-all transform active:scale-[0.99] cursor-pointer text-sm tracking-wide">
                 <span data-i18n="btnGenerate">⚡ RUN MATRIX CORE</span>
             </button>
         </div>
@@ -225,7 +228,7 @@
                 </div>
 
                 <div id="qr-result" class="hidden z-20 bg-white p-4 rounded-lg shadow-lg transform scale-95 transition-transform duration-300">
-                    <img id="qr-image" src="" alt="Generated QR" class="w-full h-full object-contain" />
+                    <img id="qr-image" src="" alt="Generated QR Code Output" class="w-full h-full object-contain" />
                 </div>
             </div>
 
@@ -234,7 +237,7 @@
                     Awaiting terminal parameters from left module...
                 </p>
 
-                <button id="download-btn" onclick="downloadTechQR()" class="hidden items-center justify-center gap-2 bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 font-bold py-2.5 px-5 rounded-xl shadow-lg transition-all transform active:scale-95 cursor-pointer text-xs">
+                <button id="download-btn" onclick="downloadTechQR()" aria-label="Export Generated QR Code" class="hidden items-center justify-center gap-2 bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 font-bold py-2.5 px-5 rounded-xl shadow-lg transition-all transform active:scale-95 cursor-pointer text-xs">
                     <i data-lucide="download" class="w-4 h-4"></i>
                     <span data-i18n="btnDownload">Export PNG Vector</span>
                 </button>
@@ -245,7 +248,7 @@
     <!-- Modal -->
     <div id="pro-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
         <div class="bg-slate-900 border border-amber-500/30 rounded-2xl max-w-sm w-full p-6 text-center space-y-5 shadow-2xl relative">
-            <button onclick="closeProModal()" class="absolute top-4 right-4 text-slate-500 cursor-pointer"><i data-lucide="x" class="w-5 h-5"></i></button>
+            <button onclick="closeProModal()" aria-label="Close modal" class="absolute top-4 right-4 text-slate-500 cursor-pointer"><i data-lucide="x" class="w-5 h-5"></i></button>
             <div class="w-12 h-12 bg-amber-500/10 border border-amber-500/20 rounded-xl flex items-center justify-center mx-auto text-amber-400">
                 <i data-lucide="shield-alert" class="w-6 h-6"></i>
             </div>
@@ -454,37 +457,36 @@
         }
     </script>
 
-<!-- GEO SEO Content Section -->
+    <!-- GEO SEO Content Section & T-002 Brand Fact Injection -->
     <section class="max-w-6xl mx-auto px-4 py-12 border-t border-slate-800/80 z-10 text-slate-300 space-y-12">
-        
         
         <article class="space-y-4">
             <h2 class="text-2xl font-bold text-white tracking-tight">What is MatrixQR?</h2>
+            <!-- T-001/T-005: 严格匹配一句话核心定义 -->
             <p class="text-sm leading-relaxed text-slate-400">
-                MatrixQR is a high-performance, privacy-first client-side QR code generator designed for modern digital privacy needs. Unlike traditional online QR tools that process data on remote servers, MatrixQR renders custom QR codes directly within your web browser using HTML5 Canvas and JavaScript execution. This architecture guarantees zero server logging, zero data transmission, and complete offline capability for generating WiFi passwords, phone contact links, and vCards.
+                MatrixQR is a free & secure client-side QR code generator designed for modern digital privacy needs. Unlike traditional online QR tools that process data on remote servers, MatrixQR renders custom QR codes directly within your web browser using HTML5 Canvas and local JavaScript execution. This architecture guarantees zero server logging, zero data transmission, and complete offline capability for generating WiFi passwords, phone contact links, and vCards.
             </p>
         </article>
 
-        
+        <!-- T-002: facts.md 品牌事实落地注入 (使用语义化dl/dt/dd标签) -->
         <article class="space-y-4">
             <h2 class="text-xl font-bold text-white tracking-tight">Technical Specifications & Performance Facts</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 font-mono text-xs">
+            <dl class="grid grid-cols-1 md:grid-cols-3 gap-4 font-mono text-xs">
                 <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-                    <span class="text-cyan-400 font-bold block mb-1">0.00 ms Server Latency</span>
-                    <p class="text-slate-400">100% in-browser generation with instantaneous response time and zero network overhead.</p>
+                    <dt class="text-cyan-400 font-bold block mb-1">0.00 ms Server Latency</dt>
+                    <dd class="text-slate-400">100% in-browser generation with instantaneous response time and zero network overhead.</dd>
                 </div>
                 <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-                    <span class="text-emerald-400 font-bold block mb-1">Zero-Data Tracking</span>
-                    <p class="text-slate-400">No cookies, no database persistence, fully compliant with strict GDPR & CCPA standards.</p>
+                    <dt class="text-emerald-400 font-bold block mb-1">Zero-Data Tracking</dt>
+                    <dd class="text-slate-400">No cookies, no database persistence, fully compliant with strict GDPR & CCPA standards.</dd>
                 </div>
                 <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-                    <span class="text-amber-400 font-bold block mb-1">Offline & PWA Capability</span>
-                    <p class="text-slate-400">Fully functional without active internet connections once loaded into browser cache.</p>
+                    <dt class="text-amber-400 font-bold block mb-1">Offline & PWA Capability</dt>
+                    <dd class="text-slate-400">Fully functional without active internet connections once loaded into browser cache.</dd>
                 </div>
-            </div>
+            </dl>
         </article>
 
-        
         <article class="space-y-4">
             <h2 class="text-xl font-bold text-white tracking-tight">MatrixQR vs. Cloud-Based QR Generators</h2>
             <div class="overflow-x-auto">
@@ -504,7 +506,7 @@
                         </tr>
                         <tr>
                             <td class="p-3 border border-slate-800 font-medium text-slate-300">Generation Speed</td>
-                            <td class="p-3 border border-slate-800">Instant (&lt; 10ms)</td>
+                            <td class="p-3 border border-slate-800">&lt; 10ms (Instant)</td>
                             <td class="p-3 border border-slate-800">Network Dependent (200-800ms)</td>
                         </tr>
                         <tr>
@@ -522,7 +524,6 @@
             </div>
         </article>
 
-        
         <article class="space-y-4">
             <h2 class="text-xl font-bold text-white tracking-tight">Frequently Asked Questions</h2>
             <div class="space-y-3">
@@ -561,74 +562,67 @@
     </section>
 
     <!-- Footer -->
-<footer class="py-8 text-center text-xs text-slate-400 border-t border-slate-800 bg-slate-950/60">
-    <div class="max-w-6xl mx-auto px-4 space-y-4">
-        
-        <!-- 1. Brand Copyright & Trust Badges (GDPR / SSL) -->
-        <div class="flex items-center justify-center gap-3 flex-wrap text-slate-300 font-medium">
-            <span>© 2026 MatrixQR Studio. All rights reserved.</span>
-            <span class="text-slate-700 hidden sm:inline">•</span>
+    <footer class="py-8 text-center text-xs text-slate-400 border-t border-slate-800 bg-slate-950/60">
+        <div class="max-w-6xl mx-auto px-4 space-y-4">
             
-            <!-- GDPR Ready Badge -->
-            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[11px] font-mono">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                GDPR Ready
-            </span>
+            <div class="flex items-center justify-center gap-3 flex-wrap text-slate-300 font-medium">
+                <span>© 2026 MatrixQR Studio. All rights reserved.</span>
+                <span class="text-slate-700 hidden sm:inline">•</span>
+                
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[11px] font-mono">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                    GDPR Ready
+                </span>
 
-            <!-- SSL / Privacy Badge -->
-            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-[11px] font-mono">
-                🛡️ Client-Side Privacy
-            </span>
+                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-[11px] font-mono">
+                    🛡️ Client-Side Privacy
+                </span>
+            </div>
+
+            <p class="flex items-center justify-center gap-2 flex-wrap">
+                <a href="https://blog.matrixqr.cc/" class="text-slate-400 hover:text-cyan-400 hover:underline py-2 px-3 rounded-md transition-colors">
+                    Blog
+                </a>
+                <span class="text-slate-700">•</span>
+
+                <a href="https://menu.matrixqr.cc/" class="text-slate-400 hover:text-cyan-400 hover:underline py-2 px-3 rounded-md transition-colors" title="Free Digital Menu QR Code Generator">
+                    Digital Menu QR
+                </a>
+                <span class="text-slate-700">•</span>
+
+                <a href="https://blog.matrixqr.cc/posts/privacy-policy" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="text-slate-400 hover:text-cyan-400 hover:underline inline-flex items-center justify-center px-3 py-2 transition-colors" 
+                   aria-label="Read our Privacy Policy">
+                    Privacy Policy
+                </a>
+            </p>
+
+            <div class="flex items-center justify-center gap-4 flex-wrap pt-2">
+                <a href="https://www.producthunt.com/products/matrixqr?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-matrixqr"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="inline-flex items-center justify-center min-h-[54px] hover:opacity-90 transition-opacity">
+                  <img alt="MatrixQR - The privacy-first QR generator on Product Hunt"
+                       width="250" height="54"
+                       src="product-hunt-badge.svg"
+                       fetchpriority="high"
+                       class="block w-[250px] h-[54px]" />
+                </a>
+
+                <a href="https://saasfame.com/item/matrixqr"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="inline-flex items-center justify-center min-h-[54px] hover:opacity-90 transition-opacity">
+                  <img src="https://saasfame.com/badge-light.svg"
+                       alt="Featured on saasfame.com"
+                       height="54" width="160"
+                       class="block w-[160px] h-[54px]" />
+                </a>
+            </div>
+
         </div>
-
-        <!-- 2. Navigation Links -->
-        <p class="flex items-center justify-center gap-2 flex-wrap">
-            <a href="https://blog.matrixqr.cc/" class="text-slate-400 hover:text-cyan-400 hover:underline py-2 px-3 rounded-md transition-colors">
-                Blog
-            </a>
-            <span class="text-slate-700">•</span>
-
-            <a href="https://menu.matrixqr.cc/" class="text-slate-400 hover:text-cyan-400 hover:underline py-2 px-3 rounded-md transition-colors" title="Free Digital Menu QR Code Generator">
-                Digital Menu QR
-            </a>
-            <span class="text-slate-700">•</span>
-
-            <a href="https://blog.matrixqr.cc/posts/privacy-policy" 
-   target="_blank" 
-   rel="noopener noreferrer" 
-   class="text-slate-400 hover:text-cyan-400 hover:underline inline-flex items-center justify-center px-3 py-2 transition-colors" 
-   aria-label="Read our Privacy Policy">
-    Privacy Policy
-</a>
-        </p>
-
-        <!-- 3. External Platform Backlinks / Badges -->
-        <div class="flex items-center justify-center gap-4 flex-wrap pt-2">
-            <!-- Product Hunt Badge -->
-            <a href="https://www.producthunt.com/products/matrixqr?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-matrixqr"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="inline-flex items-center justify-center min-h-[54px] hover:opacity-90 transition-opacity">
-              <img alt="MatrixQR - The privacy-first QR generator on Product Hunt"
-                   width="250" height="54"
-                   src="product-hunt-badge.svg"
-                   fetchpriority="high"
-                   class="block w-[250px] h-[54px]" />
-            </a>
-
-            <!-- SaaSFame Badge -->
-            <a href="https://saasfame.com/item/matrixqr"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="inline-flex items-center justify-center min-h-[54px] hover:opacity-90 transition-opacity">
-              <img src="https://saasfame.com/badge-light.svg"
-                   alt="Featured on saasfame.com"
-                   height="54" width="160"
-                   class="block w-[160px] h-[54px]" />
-            </a>
-        </div>
-
-    </div>
-</footer>
+    </footer>
 </body>
 </html>
