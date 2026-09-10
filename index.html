@@ -4,7 +4,6 @@
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    
     <title>MatrixQR | Free & Secure Client-Side QR Code Generator</title>
     <meta name="description" content="MatrixQR is a free & secure client-side QR code generator. Create WiFi, Phone, and vCard QR codes instantly with zero server data tracking and offline capability.">
     <meta name="keywords" content="QR code generator, WiFi QR, vCard QR, free QR code, MatrixQR, client-side QR generator, offline tool">
@@ -23,7 +22,6 @@
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="MatrixQR Code Studio Preview" />
-    
     
     <script type="application/ld+json">
     {
@@ -111,7 +109,6 @@
 <body class="bg-slate-950 text-[#ffffff] min-h-screen flex flex-col justify-between antialiased">
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[400px] bg-radial from-cyan-500/10 via-transparent to-transparent pointer-events-none z-0"></div>
     
-    
     <h1 class="sr-only">MatrixQR - Free & Secure Client-Side QR Code Generator for WiFi & vCard</h1>
     
     <!-- Header -->
@@ -175,12 +172,29 @@
                     <label for="wifi-pass" class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="wifiPass">Network Password</label>
                     <input type="password" id="wifi-pass" placeholder="••••••••" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-500">
                 </div>
+                <!-- WiFi 快捷填入示例按钮 -->
+                <div class="pt-1 flex items-center gap-2 flex-wrap text-xs">
+                    <span class="text-slate-500" data-i18n="quickFill">Quick Fill:</span>
+                    <button type="button" onclick="fillData('wifi', {ssid: 'Home_WiFi_5G', pass: '12345678'})" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-cyan-400 rounded-lg border border-slate-700/50 transition-colors">
+                        🏠 Home WiFi
+                    </button>
+                    <button type="button" onclick="fillData('wifi', {ssid: 'Office_Guest', pass: 'Welcome2026'})" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-cyan-400 rounded-lg border border-slate-700/50 transition-colors">
+                        🏢 Office Guest
+                    </button>
+                </div>
             </div>
 
             <div id="form-phone" class="space-y-4 tab-form hidden">
                 <div>
                     <label for="phone-num" class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="phoneNum">Phone Number</label>
                     <input type="tel" id="phone-num" placeholder="e.g., +1 234 567 8900" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-500">
+                </div>
+                <!-- Phone 快捷填入示例按钮 -->
+                <div class="pt-1 flex items-center gap-2 flex-wrap text-xs">
+                    <span class="text-slate-500" data-i18n="quickFill">Quick Fill:</span>
+                    <button type="button" onclick="fillData('phone', {num: '+1 800 555 0199'})" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-cyan-400 rounded-lg border border-slate-700/50 transition-colors">
+                        📞 Demo Hotline
+                    </button>
                 </div>
             </div>
 
@@ -202,6 +216,13 @@
                 <div>
                     <label for="card-mail" class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="cardMail">Email Address</label>
                     <input type="email" id="card-mail" placeholder="john.doe@matrix.com" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-500">
+                </div>
+                <!-- vCard 快捷填入示例按钮 -->
+                <div class="pt-1 flex items-center gap-2 flex-wrap text-xs">
+                    <span class="text-slate-500" data-i18n="quickFill">Quick Fill:</span>
+                    <button type="button" onclick="fillData('vcard', {name: 'Alex Mercer', org: 'MatrixQR Studio', cell: '+1 234 567 8900', mail: 'alex@matrixqr.cc'})" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-cyan-400 rounded-lg border border-slate-700/50 transition-colors">
+                        👤 Sample Contact
+                    </button>
                 </div>
             </div>
 
@@ -274,7 +295,8 @@
                 previewTitle: "Terminal Preview", btnDownload: "Export PNG Vector",
                 tipText: "Awaiting terminal parameters from left module...",
                 proTitle: "Matrix Bulk Core", proDesc: "Batch compilation of QR matrices is restricted to premium accounts.",
-                proBtn: "UNLOCK CORE • $0.00/MO", errSsid: "Missing Network Parameter (SSID)", errPhone: "Missing Communications Number", errName: "Missing Personal Identity Marker"
+                proBtn: "UNLOCK CORE • $0.00/MO", errSsid: "Missing Network Parameter (SSID)", errPhone: "Missing Communications Number", errName: "Missing Personal Identity Marker",
+                quickFill: "Quick Fill:"
             },
             de: {
                 navWifi: "WLAN QR", navPhone: "Telefon QR", navVcard: "vCard QR", navMenu: "Menü-QR", navPro: "Bulk QR",
@@ -284,7 +306,8 @@
                 previewTitle: "Terminal-Vorschau", btnDownload: "PNG-Vektor exportieren",
                 tipText: "Warten auf Terminalparameter vom linken Modul...",
                 proTitle: "Matrix-Massenkern", proDesc: "Die Batch-Kompilierung von QR-Matrizen ist Premium-Konten vorbehalten.",
-                proBtn: "KERN FREISCHALTEN • 0.00€/Monat", errSsid: "Fehlender Netzwerkparameter (SSID)", errPhone: "Fehlende Kommunikationsnummer", errName: "Fehlendes persönliches Identitätsmerkmal"
+                proBtn: "KERN FREISCHALTEN • 0.00€/Monat", errSsid: "Fehlender Netzwerkparameter (SSID)", errPhone: "Fehlende Kommunikationsnummer", errName: "Fehlendes persönliches Identitätsmerkmal",
+                quickFill: "Schnellauswahl:"
             },
             it: {
                 navWifi: "WiFi QR", navPhone: "Telefono QR", navVcard: "vCard QR", navMenu: "Menu QR", navPro: "Bulk QR",
@@ -294,7 +317,8 @@
                 previewTitle: "Anteprima del terminale", btnDownload: "Esporta vettore PNG",
                 tipText: "In attesa dei parametri del terminale dal modulo sinistro...",
                 proTitle: "Core Matrix di massa", proDesc: "La compilazione batch di matrici QR è limitata agli account premium.",
-                proBtn: "SBLOCCA CORE • €0.00/MESE", errSsid: "Parametro di rete mancante (SSID)", errPhone: "Numero di comunicazione mancante", errName: "Indicatore di identità personale mancante"
+                proBtn: "SBLOCCA CORE • €0.00/MESE", errSsid: "Parametro di rete mancante (SSID)", errPhone: "Numero di comunicazione mancante", errName: "Indicatore di identità personale mancante",
+                quickFill: "Compilazione rapida:"
             },
             tr: {
                 navWifi: "WiFi QR", navPhone: "Telefon QR", navVcard: "vCard QR", navMenu: "Menü QR", navPro: "Toplu QR",
@@ -304,7 +328,8 @@
                 previewTitle: "Terminal Önizleme", btnDownload: "PNG Vektörünü Dışa Aktar",
                 tipText: "Sol modülden terminal parametreleri bekleniyor...",
                 proTitle: "Toplu Matris Çekirdeği", proDesc: "QR matrislerinin toplu derlenmesi premium hesaplarla sınırlıdır.",
-                proBtn: "ÇEKİRDEK KİLİDİNİ AÇ • $0.00/AY", errSsid: "Eksik Ağ Parametresi (SSID)", errPhone: "Eksik İletişim Numarası", errName: "Eksik Kişisel Kimlik İşaretçisi"
+                proBtn: "ÇEKİRDEK KİLİDİNİ AÇ • $0.00/AY", errSsid: "Eksik Ağ Parametresi (SSID)", errPhone: "Eksik İletişim Numarası", errName: "Eksik Kişisel Kimlik İşaretçisi",
+                quickFill: "Hızlı Doldur:"
             },
             ko: {
                 navWifi: "WiFi QR", navPhone: "전화번호 QR", navVcard: "전자 명함", navMenu: "메뉴 QR", navPro: "대량 생성",
@@ -314,7 +339,8 @@
                 previewTitle: "터미널 실시간 미리보기", btnDownload: "무워터마크 PNG 내보내기",
                 tipText: "왼쪽 모듈의 터미널 매개변수 입력을 기다리는 중...",
                 proTitle: "매트릭스 대량 컴파일", proDesc: "대규모 QR 매트릭스의 일괄 컴파일 기능은 프리미엄 계정 전용입니다.",
-                proBtn: "코어 해제 • 월 $0.00", errSsid: "네트워크 필수 매개변수(SSID) 누락", errPhone: "통신 단말기 번호 누락", errName: "개인 식별 마커 누락"
+                proBtn: "코어 해제 • 월 $0.00", errSsid: "네트워크 필수 매개변수(SSID) 누락", errPhone: "통신 단말기 번호 누락", errName: "개인 식별 마커 누락",
+                quickFill: "빠른 입력:"
             },
             zh: {
                 navWifi: "WiFi 二维码", navPhone: "手机号二维码", navVcard: "电子名片", navMenu: "菜单二维码", navPro: "批量生成",
@@ -324,7 +350,8 @@
                 previewTitle: "终端实时预览", btnDownload: "导出无水印 PNG",
                 tipText: "正在等待左侧模块输入终端参数...",
                 proTitle: "矩阵批量编译", proDesc: "批量生成大规模二维码阵列属于特权核心功能。",
-                proBtn: "解锁高级核心 • $0.00/月", errSsid: "缺少网络必要参数 (SSID)", errPhone: "通讯终端号码未填", errName: "身份标志名未输入"
+                proBtn: "解锁高级核心 • $0.00/月", errSsid: "缺少网络必要参数 (SSID)", errPhone: "通讯终端号码未填", errName: "身份标志名未输入",
+                quickFill: "快捷填充示例："
             }
         };
 
@@ -365,6 +392,26 @@
                     if(form) form.classList.add('hidden');
                 }
             });
+        }
+
+        /**
+         * 自动填入函数，填入对应 Input 并自动触发二维码生成
+         */
+        function fillData(tab, data) {
+            switchTab(tab);
+            if (tab === 'wifi') {
+                document.getElementById('wifi-ssid').value = data.ssid || '';
+                document.getElementById('wifi-pass').value = data.pass || '';
+            } else if (tab === 'phone') {
+                document.getElementById('phone-num').value = data.num || '';
+            } else if (tab === 'vcard') {
+                document.getElementById('card-name').value = data.name || '';
+                document.getElementById('card-org').value = data.org || '';
+                document.getElementById('card-cell').value = data.cell || '';
+                document.getElementById('card-mail').value = data.mail || '';
+            }
+            // 自动触发表单提交生成 QR 码
+            generateTechQR();
         }
 
         function openProModal() {
@@ -468,7 +515,6 @@
             </p>
         </article>
 
-        
         <article class="space-y-4">
             <h2 class="text-xl font-bold text-white tracking-tight">Technical Specifications & Performance Facts</h2>
             <dl class="grid grid-cols-1 md:grid-cols-3 gap-4 font-mono text-xs">
