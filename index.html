@@ -1,727 +1,756 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>MatrixQR | Free & Secure Client-Side QR Code Generator</title>
-    <meta name="description" content="MatrixQR is a free & secure client-side QR code generator. Create WiFi, Phone, and vCard QR codes instantly with zero server data tracking and offline capability.">
-    <meta name="keywords" content="QR code generator, WiFi QR, vCard QR, free QR code, MatrixQR, client-side QR generator, offline tool">
-    <meta name="author" content="MatrixQR Team">
-    <link rel="canonical" href="https://www.matrixqr.cc/" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="64x64">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MatrixQR | Free & Secure Client-Side QR Code Generator</title>
+<meta name="description" content="MatrixQR is a free & secure client-side QR code generator. Create WiFi, Phone, and vCard QR codes instantly with zero server data tracking and offline capability.">
+<meta name="keywords" content="QR code generator, WiFi QR, vCard QR, free QR code, MatrixQR, client-side QR generator, offline tool">
+<meta name="author" content="MatrixQR Team">
+<link rel="canonical" href="https://www.matrixqr.cc/" />
+<link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="64x64">
 
-    <link rel="stylesheet" href="/dist/output.css">
-    
-    <!-- Open Graph Tags -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.matrixqr.cc/" />
-    <meta property="og:site_name" content="MatrixQR" />
-    <meta property="og:title" content="MatrixQR | Free & Secure Client-Side QR Code Generator" />
-    <meta property="og:description" content="MatrixQR is a free & secure client-side QR code generator. Create WiFi, Phone, and vCard QR codes instantly with zero server data tracking and offline capability." />
-    <meta property="og:image" content="https://www.matrixqr.cc/og-cover.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="MatrixQR Code Studio Preview" />
-    
-    <!-- Unified JSON-LD Schema -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "WebSite",
-          "@id": "https://www.matrixqr.cc/#website",
-          "url": "https://www.matrixqr.cc/",
-          "name": "MatrixQR",
-          "description": "Free & Secure Client-Side QR Code Generator",
-          "publisher": {
-            "@id": "https://www.matrixqr.cc/#organization"
-          },
-          "inLanguage": ["en", "de", "it", "tr", "ko", "zh"]
-        },
-        {
-          "@type": "Organization",
-          "@id": "https://www.matrixqr.cc/#organization",
-          "name": "MatrixQR Studio",
-          "url": "https://www.matrixqr.cc/",
-          "logo": "https://www.matrixqr.cc/favicon.ico",
-          "sameAs": [
-            "https://www.producthunt.com/products/matrixqr",
-            "https://saasfame.com/item/matrixqr"
-          ]
-        },
-        {
-          "@type": "WebApplication",
-          "@id": "https://www.matrixqr.cc/#webapp",
-          "url": "https://www.matrixqr.cc/",
-          "name": "MatrixQR Code Studio",
-          "applicationCategory": "UtilityApplication",
-          "operatingSystem": "All",
-          "browserRequirements": "Requires JavaScript",
-          "description": "Free & Secure Client-Side QR Code Generator for WiFi networks, contact vCards, and phone numbers.",
-          "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-          },
-          "featureList": "Client-side processing, No server logs, PNG/SVG export, WiFi/vCard/URL support"
-        },
-        {
-          "@type": "FAQPage",
-          "@id": "https://www.matrixqr.cc/#faq",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "Is MatrixQR completely free to use?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes, MatrixQR is 100% free with no hidden fees, limits, or mandatory registration required to export high-resolution QR codes."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Does MatrixQR collect or store my WiFi password or personal contacts?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "No. All data processing occurs entirely within your browser using local JavaScript execution. Your WiFi credentials, phone numbers, and vCards never touch any external server."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How do I scan a WiFi QR code generated by MatrixQR?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Simply open your iOS or Android camera app, point it at the generated QR code, and tap the notification banner to join the wireless network automatically without typing the password."
-              }
-            }
-          ]
-        },
-        {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.matrixqr.cc/"
-            }
-          ]
-        }
-      ]
-    }
-    </script>
+<link rel="stylesheet" href="/dist/output.css">
 
-    <script src="libs/lucide.min.js" defer></script>
-    <script src="libs/qrcode.min.js"></script>
+<!-- Open Graph Tags -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.matrixqr.cc/" />
+<meta property="og:site_name" content="MatrixQR" />
+<meta property="og:title" content="MatrixQR | Free & Secure Client-Side QR Code Generator" />
+<meta property="og:description" content="MatrixQR is a free & secure client-side QR code generator. Create WiFi, Phone, and vCard QR codes instantly with zero server data tracking and offline capability." />
+<meta property="og:image" content="https://www.matrixqr.cc/og-cover.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="MatrixQR Code Studio Preview" />
 
-    <style>
-    /* 清除强制拉伸，保持 1:1 像素比例 */
-    #qrcode-container {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-    }
+<!-- Unified JSON-LD Schema -->
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@graph": [
+{
+"@type": "WebSite",
+"@id": "https://www.matrixqr.cc/#website",
+"url": "https://www.matrixqr.cc/",
+"name": "MatrixQR",
+"description": "Free & Secure Client-Side QR Code Generator",
+"publisher": {"@id": "https://www.matrixqr.cc/#organization"},
+"inLanguage": ["en", "de", "it", "tr", "ko", "zh"]
+},
+{
+"@type": "Organization",
+"@id": "https://www.matrixqr.cc/#organization",
+"name": "MatrixQR Studio",
+"url": "https://www.matrixqr.cc/",
+"logo": "https://www.matrixqr.cc/favicon.ico",
+"sameAs": ["https://www.producthunt.com/products/matrixqr","https://saasfame.com/item/matrixqr"]
+},
+{
+"@type": "WebApplication",
+"@id": "https://www.matrixqr.cc/#webapp",
+"url": "https://www.matrixqr.cc/",
+"name": "MatrixQR Code Studio",
+"applicationCategory": "UtilityApplication",
+"operatingSystem": "All",
+"browserRequirements": "Requires JavaScript",
+"description": "Free & Secure Client-Side QR Code Generator for WiFi networks, contact vCards, and phone numbers.",
+"offers": {"@type": "Offer","price": "0","priceCurrency": "USD"},
+"featureList": "Client-side processing, No server logs, PNG/SVG export, WiFi/vCard/URL support"
+},
+{
+"@type": "FAQPage",
+"@id": "https://www.matrixqr.cc/#faq",
+"mainEntity": [
+{"@type": "Question","name": "Is MatrixQR completely free to use?","acceptedAnswer":{"@type": "Answer","text": "Yes, MatrixQR is 100% free with no hidden fees, limits, or mandatory registration required to export high-resolution QR codes."}},
+{"@type": "Question","name": "Does MatrixQR collect or store my WiFi password or personal contacts?","acceptedAnswer":{"@type": "Answer","text": "No. All data processing occurs entirely within your browser using local JavaScript execution. Your WiFi credentials, phone numbers, and vCards never touch any external server."}},
+{"@type": "Question","name": "How do I scan a WiFi QR code generated by MatrixQR?","acceptedAnswer":{"@type": "Answer","text": "Simply open your iOS or Android camera app, point it at the generated QR code, and tap the notification banner to join the wireless network automatically without typing the password."}}
+]
+},
+{
+"@type": "BreadcrumbList",
+"itemListElement": [{"@type": "ListItem","position": 1,"name": "Home","item": "https://www.matrixqr.cc/"}]
+}
+]
+}
+</script>
 
-    #qrcode-container img, 
-    #qrcode-container canvas { 
-        display: block !important; 
-        margin: 0 auto !important;
-        max-width: none !important;
-        max-height: none !important;
-        width: auto !important; 
-        height: auto !important; 
-    }
-    </style>
+<script src="libs/lucide.min.js" defer></script>
+<script src="libs/qrcode.min.js"></script>
+
+<style>
+/* ===== 二维码容器样式优化 ===== */
+#qrcode-container {
+display: flex !important;
+align-items: center !important;
+justify-content: center !important;
+border-radius: 12px;
+overflow: hidden;
+}
+
+#qrcode-container img,
+#qrcode-container canvas {
+display: block !important;
+margin: 0 auto !important;
+max-width: none !important;
+max-height: none !important;
+width: auto !important;
+height: auto !important;
+border-radius: 8px;
+}
+
+/* 矩阵背景动画 */
+.matrix-bg {
+background: linear-gradient(0deg, transparent 24%, rgba(34, 211, 238, 0.07) 25%, rgba(34, 211, 238, 0.07) 26%, transparent 27%, transparent 74%, rgba(34, 211, 238, 0.07) 75%, rgba(34, 211, 238, 0.07) 76%, transparent 77%, transparent),
+linear-gradient(90deg, transparent 24%, rgba(34, 211, 238, 0.07) 25%, rgba(34, 211, 238, 0.07) 26%, transparent 27%, transparent 74%, rgba(34, 211, 238, 0.07) 75%, rgba(34, 211, 238, 0.07) 76%, transparent 77%, transparent);
+background-size: 30px 30px;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0f172a; }
+::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+/* 输入框聚焦动画 */
+input:focus {
+transition: all 0.2s ease;
+}
+
+/* 二维码生成动画 */
+@keyframes qrReveal {
+from { opacity: 0; transform: scale(0.85) rotate(-2deg); }
+to { opacity: 1; transform: scale(1) rotate(0); }
+}
+.qr-reveal {
+animation: qrReveal 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes shimmer {
+0%, 100% { opacity: 1; }
+50% { opacity: 0.6; }
+}
+.qr-pulse {
+animation: shimmer 2s ease-in-out infinite;
+}
+</style>
 </head>
-<body class="bg-slate-950 text-[#ffffff] min-h-screen flex flex-col justify-between antialiased">
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[400px] bg-radial from-cyan-500/10 via-transparent to-transparent pointer-events-none z-0"></div>
-    
-    <h1 class="sr-only">MatrixQR - Free & Secure Client-Side QR Code Generator for WiFi & vCard</h1>
-    
-    <!-- Header -->
-    <header class="bg-slate-900/60 backdrop-blur-xl border-b border-slate-800/80 sticky top-0 z-50 py-3.5 px-4">
-        <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-2 z-10">
-                <div class="w-7 h-7 bg-gradient-to-tr from-cyan-500 to-emerald-400 rounded-lg flex items-center justify-center">
-                    <i data-lucide="qr-code" class="w-4 h-4 text-slate-950 stroke-[2.5]"></i>
-                </div>
-                <span class="text-lg font-black tracking-wider bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">MATRIX<span class="text-cyan-400 font-medium">QR</span></span>
-            </div>
-            <select 
-                id="lang-select" 
-                aria-label="Select Language" 
-                onchange="changeLanguage(this.value)" 
-                class="bg-slate-800 border border-slate-700 rounded-lg px-2.5 py-1 text-xs text-slate-300 focus:outline-none cursor-pointer">
-                <option value="en">🌐 English</option>
-                <option value="de">🌐 Deutsch</option>
-                <option value="it">🌐 Italiano</option>
-                <option value="tr">🌐 Türkçe</option>
-                <option value="ko">🌐 한국어</option>
-                <option value="zh">🌐 简体中文</option>
-            </select>
-        </div>
-    </header>
+<body class="bg-slate-950 text-[#ffffff] min-h-screen flex flex-col justify-between antialiased overflow-x-hidden">
 
-    <!-- Navigation Tabs -->
-    <section class="max-w-6xl mx-auto w-full px-4 mt-8 z-10" aria-label="QR Code Generator Navigation">
-        <div class="grid grid-cols-2 md:grid-cols-5 gap-3 bg-slate-900/40 p-1.5 rounded-xl border border-slate-800/60">
-            <button onclick="switchTab('wifi')" id="nav-wifi" aria-label="Generate WiFi QR Code" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer bg-slate-800 text-cyan-400 border border-slate-700/50 shadow-inner">
-                <i data-lucide="wifi" class="w-4 h-4"></i> <span data-i18n="navWifi">WiFi QR</span>
-            </button>
-            <button onclick="switchTab('phone')" id="nav-phone" aria-label="Generate Phone QR Code" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer text-slate-400 hover:text-slate-200 border border-transparent">
-                <i data-lucide="phone" class="w-4 h-4"></i> <span data-i18n="navPhone">Phone QR</span>
-            </button>
-            <button onclick="switchTab('vcard')" id="nav-vcard" aria-label="Generate vCard QR Code" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer text-slate-400 hover:text-slate-200 border border-transparent">
-                <i data-lucide="contact-2" class="w-4 h-4"></i> <span data-i18n="navVcard">vCard QR</span>
-            </button>
+<!-- 背景光效 -->
+<div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[500px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-500/10 via-transparent to-transparent pointer-events-none z-0"></div>
+<div class="fixed bottom-0 right-0 w-[400px] h-[400px] bg-[radial-gradient(circle,_var(--tw-gradient-stops))] from-emerald-500/5 via-transparent to-transparent pointer-events-none z-0"></div>
 
-            <a href="https://menu.matrixqr.cc/" id="nav-menu" aria-label="Create Digital Menu QR Code" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer text-emerald-400 hover:bg-emerald-500/10 border border-emerald-500/20">
-                <i data-lucide="menu" class="w-4 h-4"></i>
-                <span data-i18n="navMenu">Menu QR</span>
-            </a>
+<h1 class="sr-only">MatrixQR - Free & Secure Client-Side QR Code Generator for WiFi & vCard</h1>
 
-            <button onclick="openProModal()" aria-label="Open Bulk QR Code Generator Options" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-bold transition-all cursor-pointer bg-gradient-to-r from-amber-500/10 to-orange-500/10 text-amber-400 border border-amber-500/30">
-                <i data-lucide="layers" class="w-4 h-4"></i> <span data-i18n="navPro">Bulk QR</span> 
-            </button>
-        </div>
-    </section>
+<!-- Header -->
+<header class="bg-slate-900/60 backdrop-blur-xl border-b border-slate-800/80 sticky top-0 z-50 py-3.5 px-4">
+<div class="max-w-6xl mx-auto flex justify-between items-center">
+<div class="flex items-center gap-3 z-10">
+<div class="w-8 h-8 bg-gradient-to-tr from-cyan-500 to-emerald-400 rounded-xl flex items-center justify-center shadow-lg shadow-cyan-500/20">
+<i data-lucide="qr-code-2" class="w-4 h-4 text-slate-950 stroke-[2.5]"></i>
+</div>
+<span class="text-xl font-black tracking-wider bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">MATRIX<span class="text-cyan-400 font-medium">QR</span></span>
+</div>
+<select
+id="lang-select"
+aria-label="Select Language"
+onchange="changeLanguage(this.value)"
+class="bg-slate-800 border border-slate-700 rounded-lg px-2.5 py-1 text-xs text-slate-300 focus:outline-none focus:ring-2 focus:ring-cyan-500/30 cursor-pointer">
+<option value="en">🌐 English</option>
+<option value="de">🌐 Deutsch</option>
+<option value="it">🌐 Italiano</option>
+<option value="tr">🌐 Türkçe</option>
+<option value="ko">🌐 한국어</option>
+<option value="zh">🌐 简体中文</option>
+</select>
+</div>
+</header>
 
-    <!-- Main Content -->
-    <main class="max-w-6xl mx-auto px-4 py-8 flex-1 w-full grid grid-cols-1 md:grid-cols-12 gap-8 items-start z-10">
-        <!-- Left Column: Inputs -->
-        <div class="bg-slate-900/40 backdrop-blur-md rounded-2xl border border-slate-800/80 p-6 md:col-span-7 space-y-6 shadow-xl">
-            <div id="form-wifi" class="space-y-4 tab-form">
-                <div>
-                    <label for="wifi-ssid" class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="wifiSsid">Network Name (SSID)</label>
-                    <input type="text" id="wifi-ssid" placeholder="e.g., CyberNet_5G" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-500">
-                </div>
-                <div>
-                    <label for="wifi-pass" class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="wifiPass">Network Password</label>
-                    <input type="password" id="wifi-pass" placeholder="••••••••" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-500">
-                </div>
-                <!-- WiFi Quick Fill -->
-                <div class="pt-1 flex items-center gap-2 flex-wrap text-xs">
-                    <span class="text-slate-500" data-i18n="quickFill">Quick Fill:</span>
-                    <button type="button" onclick="fillData('wifi', {ssid: 'Home_WiFi_5G', pass: '12345678'})" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-cyan-400 rounded-lg border border-slate-700/50 transition-colors">
-                        🏠 Home WiFi
-                    </button>
-                    <button type="button" onclick="fillData('wifi', {ssid: 'Office_Guest', pass: 'Welcome2026'})" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-cyan-400 rounded-lg border border-slate-700/50 transition-colors">
-                        🏢 Office Guest
-                    </button>
-                </div>
-            </div>
+<!-- Navigation Tabs -->
+<section class="max-w-6xl mx-auto w-full px-4 mt-8 z-10" aria-label="QR Code Generator Navigation">
+<div class="grid grid-cols-2 md:grid-cols-5 gap-2 bg-slate-900/40 p-1.5 rounded-xl border border-slate-800/60">
+<button onclick="switchTab('wifi')" id="nav-wifi" aria-label="Generate WiFi QR Code" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer bg-slate-800 text-cyan-400 border border-slate-700/50 shadow-inner">
+<i data-lucide="wifi" class="w-4 h-4"></i> <span data-i18n="navWifi">WiFi QR</span>
+</button>
+<button onclick="switchTab('phone')" id="nav-phone" aria-label="Generate Phone QR Code" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer text-slate-400 hover:text-slate-200 border border-transparent">
+<i data-lucide="phone" class="w-4 h-4"></i> <span data-i18n="navPhone">Phone QR</span>
+</button>
+<button onclick="switchTab('vcard')" id="nav-vcard" aria-label="Generate vCard QR Code" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer text-slate-400 hover:text-slate-200 border border-transparent">
+<i data-lucide="contact" class="w-4 h-4"></i> <span data-i18n="navVcard">vCard QR</span>
+</button>
+<a href="https://menu.matrixqr.cc/" id="nav-menu" aria-label="Create Digital Menu QR Code" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer text-emerald-400 hover:bg-emerald-500/10 border border-emerald-500/20">
+<i data-lucide="menu" class="w-4 h-4"></i>
+<span data-i18n="navMenu">Menu QR</span>
+</a>
+<button onclick="openProModal()" aria-label="Open Bulk QR Code Generator Options" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-bold transition-all cursor-pointer bg-gradient-to-r from-amber-500/10 to-orange-500/10 text-amber-400 border border-amber-500/30">
+<i data-lucide="layers" class="w-4 h-4"></i> <span data-i18n="navPro">Bulk QR</span>
+</button>
+</div>
+</section>
 
-            <div id="form-phone" class="space-y-4 tab-form hidden">
-                <div>
-                    <label for="phone-num" class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="phoneNum">Phone Number</label>
-                    <input type="tel" id="phone-num" placeholder="e.g., +1 234 567 8900" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-500">
-                </div>
-                <!-- Phone Quick Fill -->
-                <div class="pt-1 flex items-center gap-2 flex-wrap text-xs">
-                    <span class="text-slate-500" data-i18n="quickFill">Quick Fill:</span>
-                    <button type="button" onclick="fillData('phone', {num: '+1 800 555 0199'})" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-cyan-400 rounded-lg border border-slate-700/50 transition-colors">
-                        📞 Demo Hotline
-                    </button>
-                </div>
-            </div>
+<!-- Main Content -->
+<main class="max-w-6xl mx-auto px-4 py-8 flex-1 w-full grid grid-cols-1 md:grid-cols-12 gap-8 items-start z-10">
 
-            <div id="form-vcard" class="space-y-4 tab-form hidden">
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label for="card-name" class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="cardName">Full Name</label>
-                        <input type="text" id="card-name" placeholder="John Doe" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-500">
-                    </div>
-                    <div>
-                        <label for="card-org" class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="cardOrg">Company</label>
-                        <input type="text" id="card-org" placeholder="Matrix Labs Ltd." class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-500">
-                    </div>
-                </div>
-                <div>
-                    <label for="card-cell" class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="cardCell">Mobile Phone</label>
-                    <input type="tel" id="card-cell" placeholder="+1 234 567 8900" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-500">
-                </div>
-                <div>
-                    <label for="card-mail" class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="cardMail">Email Address</label>
-                    <input type="email" id="card-mail" placeholder="john.doe@matrix.com" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-500">
-                </div>
-                <!-- vCard Quick Fill -->
-                <div class="pt-1 flex items-center gap-2 flex-wrap text-xs">
-                    <span class="text-slate-500" data-i18n="quickFill">Quick Fill:</span>
-                    <button type="button" onclick="fillData('vcard', {name: 'Alex Mercer', org: 'MatrixQR Studio', cell: '+1 234 567 8900', mail: 'alex@matrixqr.cc'})" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-cyan-400 rounded-lg border border-slate-700/50 transition-colors">
-                        👤 Sample Contact
-                    </button>
-                </div>
-            </div>
+<!-- Left Column: Inputs -->
+<div class="bg-slate-900/40 backdrop-blur-md rounded-2xl border border-slate-800/80 p-6 md:col-span-7 space-y-6 shadow-xl">
+<div id="form-wifi" class="space-y-4 tab-form">
+<div>
+<label for="wifi-ssid" class="block text-xs font-bold uppercase text-slate-400 mb-1.5 tracking-wider" data-i18n="wifiSsid">Network Name (SSID)</label>
+<div class="relative">
+<input type="text" id="wifi-ssid" placeholder="e.g., CyberNet_5G" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/10 transition-all">
+<div class="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+<i data-lucide="wifi" class="w-4 h-4 text-slate-600"></i>
+</div>
+</div>
+</div>
+<div>
+<label for="wifi-pass" class="block text-xs font-bold uppercase text-slate-400 mb-1.5 tracking-wider" data-i18n="wifiPass">Network Password</label>
+<div class="relative">
+<input type="password" id="wifi-pass" placeholder="••••••••" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/10 transition-all">
+<div class="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+<i data-lucide="lock" class="w-4 h-4 text-slate-600"></i>
+</div>
+</div>
+</div>
+<div class="pt-2 flex items-center gap-2 flex-wrap text-xs">
+<span class="text-slate-500" data-i18n="quickFill">Quick Fill:</span>
+<button type="button" onclick="fillData('wifi', {ssid: 'Home_WiFi_5G', pass: '12345678'})" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-cyan-400 rounded-lg border border-slate-700/50 transition-colors hover:border-cyan-500/30">
+🏠 Home WiFi
+</button>
+<button type="button" onclick="fillData('wifi', {ssid: 'Office_Guest', pass: 'Welcome2026'})" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-cyan-400 rounded-lg border border-slate-700/50 transition-colors hover:border-cyan-500/30">
+🏢 Office Guest
+</button>
+</div>
+</div>
 
-            <button onclick="generateTechQR()" aria-label="Execute Matrix QR Generation" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold py-3.5 px-4 rounded-xl shadow-lg transition-all transform active:scale-[0.99] cursor-pointer text-sm tracking-wide">
-                <span data-i18n="btnGenerate">⚡ RUN MATRIX CORE</span>
-            </button>
-        </div>
+<div id="form-phone" class="space-y-4 tab-form hidden">
+<div>
+<label for="phone-num" class="block text-xs font-bold uppercase text-slate-400 mb-1.5 tracking-wider" data-i18n="phoneNum">Phone Number</label>
+<div class="relative">
+<input type="tel" id="phone-num" placeholder="e.g., +1 234 567 8900" class="w-full bg-slate-950 border border-slate-800 rounded-xl pl-11 pr-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/10 transition-all" style="padding-left:2.75rem;">
+<div class="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+<i data-lucide="phone" class="w-4 h-4 text-slate-600"></i>
+</div>
+</div>
+</div>
+<div class="pt-2 flex items-center gap-2 flex-wrap text-xs">
+<span class="text-slate-500" data-i18n="quickFill">Quick Fill:</span>
+<button type="button" onclick="fillData('phone', {num: '+1 800 555 0199'})" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-cyan-400 rounded-lg border border-slate-700/50 transition-colors hover:border-cyan-500/30">
+📞 Demo Hotline
+</button>
+</div>
+</div>
 
-        <!-- Right Column: Integrated Terminal Preview Card -->
-        <div class="md:col-span-5 flex flex-col items-center justify-center w-full">
-            <div id="preview-card" class="flex flex-col items-center bg-[#0d1527] border border-slate-800 rounded-2xl p-6 w-full max-w-[380px] mx-auto shadow-2xl">
-                
-                <!-- Terminal Header -->
-                <div class="w-full flex items-center justify-between mb-4">
-                    <span class="text-xs font-mono text-emerald-400 flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                        <span data-i18n="previewTitle">TERMINAL PREVIEW</span>
-                    </span>
-                </div>
+<div id="form-vcard" class="space-y-4 tab-form hidden">
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label for="card-name" class="block text-xs font-bold uppercase text-slate-400 mb-1.5 tracking-wider" data-i18n="cardName">Full Name</label>
+<input type="text" id="card-name" placeholder="John Doe" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/10 transition-all">
+</div>
+<div>
+<label for="card-org" class="block text-xs font-bold uppercase text-slate-400 mb-1.5 tracking-wider" data-i18n="cardOrg">Company</label>
+<input type="text" id="card-org" placeholder="Matrix Labs Ltd." class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/10 transition-all">
+</div>
+</div>
+<div>
+<label for="card-cell" class="block text-xs font-bold uppercase text-slate-400 mb-1.5 tracking-wider" data-i18n="cardCell">Mobile Phone</label>
+<input type="tel" id="card-cell" placeholder="+1 234 567 8900" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/10 transition-all">
+</div>
+<div>
+<label for="card-mail" class="block text-xs font-bold uppercase text-slate-400 mb-1.5 tracking-wider" data-i18n="cardMail">Email Address</label>
+<input type="email" id="card-mail" placeholder="john.doe@matrix.com" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/10 transition-all">
+</div>
+<div class="pt-2 flex items-center gap-2 flex-wrap text-xs">
+<span class="text-slate-500" data-i18n="quickFill">Quick Fill:</span>
+<button type="button" onclick="fillData('vcard', {name: 'Alex Mercer', org: 'MatrixQR Studio', cell: '+1 234 567 8900', mail: 'alex@matrixqr.cc'})" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-cyan-400 rounded-lg border border-slate-700/50 transition-colors hover:border-cyan-500/30">
+👤 Sample Contact
+</button>
+</div>
+</div>
 
-                <!-- Display Box -->
-                <div class="relative w-full aspect-square bg-[#070c18] rounded-xl border border-slate-800/80 flex flex-col items-center justify-center p-4 overflow-hidden shadow-inner group">
-                    <div id="idle-state" class="absolute inset-0 flex flex-col items-center justify-center z-10 transition-opacity duration-500">
-                        <div class="matrix-bg opacity-20 absolute inset-0"></div>
-                        <div class="z-20 text-center p-4">
-                            <div class="text-4xl mb-2 animate-bounce">⚡</div>
-                            <p class="text-xs text-cyan-400 font-mono">AWAITING INPUT...</p>
-                            <p class="text-[10px] text-slate-400 mt-2 font-mono" data-i18n="tipText">System Ready</p>
-                        </div>
-                    </div>
+<!-- 美化后的生成按钮 -->
+<button onclick="generateTechQR()" aria-label="Execute Matrix QR Generation" class="group relative w-full bg-gradient-to-r from-cyan-500 via-blue-500 to-emerald-500 hover:from-cyan-400 hover:via-blue-400 hover:to-emerald-400 text-slate-950 font-bold py-4 px-4 rounded-xl shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 transition-all transform active:scale-[0.99] cursor-pointer text-sm tracking-wider overflow-hidden">
+<div class="absolute inset-0 bg-[linear-gradient(110deg,transparent_30%,rgba(255,255,255,0.2)_50%,transparent_70%)] bg-[length:200%_100%] animate-[shimmer_3s_infinite]"></div>
+<span class="relative flex items-center justify-center gap-2">
+⚡ <span data-i18n="btnGenerate">RUN MATRIX CORE</span>
+</span>
+</button>
+</div>
 
-                    <!-- 右侧预览白框部分：使用 p-4 弹性内边距保护留白 -->
-                    <div id="qr-result" class="hidden z-20 bg-white p-4 rounded-xl shadow-lg transform scale-95 transition-transform duration-300 flex items-center justify-center min-w-[180px] min-h-[180px]">
-                        <div id="qrcode-container" class="flex items-center justify-center"></div>
-                    </div>
-                </div>
+<!-- Right Column: Preview Card (美化后) -->
+<div class="md:col-span-5 flex flex-col items-center justify-center w-full">
+<div id="preview-card" class="flex flex-col items-center bg-[#0d1527]/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 w-full max-w-[400px] mx-auto shadow-2xl shadow-cyan-500/5 relative overflow-hidden">
 
-                <!-- Integrated Export Controls -->
-                <div id="download-container" class="w-full flex items-center gap-2 mt-4 pt-4 border-t border-slate-800/80">
-                    <select id="export-format" class="bg-[#070c18] border border-slate-700 text-slate-300 text-xs rounded-lg px-3 py-2.5 outline-none focus:border-cyan-500 cursor-pointer font-mono">
-                        <option value="png">PNG (Raster)</option>
-                        <option value="svg">SVG (Vector)</option>
-                    </select>
-                    <button id="download-btn" onclick="downloadTechQR()" aria-label="Export Generated QR Code" class="flex-1 flex items-center justify-center gap-2 bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-bold text-xs rounded-lg py-2.5 px-4 transition-all shadow-lg shadow-emerald-500/10 cursor-pointer">
-                        <i data-lucide="download" class="w-4 h-4"></i>
-                        <span data-i18n="btnDownload">Export</span>
-                    </button>
-                </div>
+<!-- 卡片顶部光效 -->
+<div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent"></div>
 
-            </div>
-        </div>
-    </main>
+<!-- Terminal Header -->
+<div class="w-full flex items-center justify-between mb-5">
+<span class="text-xs font-mono text-emerald-400 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.8)]"></span>
+<span data-i18n="previewTitle">TERMINAL PREVIEW</span>
+</span>
+<span class="text-[10px] font-mono text-slate-600">v2.0 STABLE</span>
+</div>
 
-    <!-- Modal -->
-    <div id="pro-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
-        <div class="bg-slate-900 border border-amber-500/30 rounded-2xl max-w-sm w-full p-6 text-center space-y-5 shadow-2xl relative">
-            <button onclick="closeProModal()" aria-label="Close modal" class="absolute top-4 right-4 text-slate-500 cursor-pointer"><i data-lucide="x" class="w-5 h-5"></i></button>
-            <div class="w-12 h-12 bg-amber-500/10 border border-amber-500/20 rounded-xl flex items-center justify-center mx-auto text-amber-400">
-                <i data-lucide="shield-alert" class="w-6 h-6"></i>
-            </div>
-            <h3 class="text-base font-bold text-slate-100" data-i18n="proTitle">Matrix Bulk Core</h3>
-            <p class="text-xs text-slate-400 leading-relaxed" data-i18n="proDesc">Batch compilation of QR matrices is restricted to premium accounts.</p>
-            <button onclick="alert('Redirecting...')" class="w-full bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 font-extrabold py-3 px-4 rounded-xl text-xs tracking-wider cursor-pointer">
-                🚀 <span data-i18n="proBtn">UNLOCK CORE • $0.00/MO</span>
-            </button>
-        </div>
-    </div>
+<!-- 显示区域 -->
+<div class="relative w-full aspect-square bg-[#070c18] rounded-xl border border-slate-800/80 flex flex-col items-center justify-center p-5 overflow-hidden shadow-inner group">
+<!-- 矩阵背景 -->
+<div class="matrix-bg absolute inset-0 opacity-30"></div>
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(6,182,212,0.06),transparent_70%)]"></div>
 
-    <!-- JavaScript Execution -->
-    <script>
-        let currentMode = 'wifi';
-        let currentLang = 'en';
+<!-- 空闲状态 -->
+<div id="idle-state" class="absolute inset-0 flex flex-col items-center justify-center z-10 transition-opacity duration-500">
+<div class="z-20 text-center p-4">
+<div class="text-5xl mb-3 animate-bounce qr-pulse">⚡</div>
+<p class="text-sm text-cyan-400 font-mono tracking-wider">AWAITING INPUT...</p>
+<p class="text-[11px] text-slate-500 mt-2 font-mono" data-i18n="tipText">System Ready • Client-Side Processing</p>
+</div>
+</div>
 
-        const i18n = {
-            en: {
-                navWifi: "WiFi QR", navPhone: "Phone QR", navVcard: "vCard QR", navMenu: "Menu QR", navPro: "Bulk QR",
-                wifiSsid: "Network Name (SSID)", wifiPass: "Network Password",
-                phoneNum: "Phone Number", cardName: "Full Name", cardOrg: "Company",
-                cardCell: "Mobile Phone", cardMail: "Email Address", btnGenerate: "⚡ RUN MATRIX CORE",
-                previewTitle: "TERMINAL PREVIEW", btnDownload: "Export",
-                tipText: "System Ready",
-                proTitle: "Matrix Bulk Core", proDesc: "Batch compilation of QR matrices is restricted to premium accounts.",
-                proBtn: "UNLOCK CORE • $0.00/MO", errSsid: "Missing Network Parameter (SSID)", errPhone: "Missing Communications Number", errName: "Missing Personal Identity Marker",
-                quickFill: "Quick Fill:"
-            },
-            de: {
-                navWifi: "WLAN QR", navPhone: "Telefon QR", navVcard: "vCard QR", navMenu: "Menü-QR", navPro: "Bulk QR",
-                wifiSsid: "Netzwerkname (SSID)", wifiPass: "Netzwerkpasswort",
-                phoneNum: "Telefonnummer", cardName: "Vollständiger Name", cardOrg: "Unternehmen",
-                cardCell: "Mobiltelefon", cardMail: "E-Mail-Adresse", btnGenerate: "⚡ MATRIX-KERN AUSFÜHREN",
-                previewTitle: "TERMINAL-VORSCHAU", btnDownload: "Exportieren",
-                tipText: "System bereit",
-                proTitle: "Matrix-Massenkern", proDesc: "Die Batch-Kompilierung von QR-Matrizen ist Premium-Konten vorbehalten.",
-                proBtn: "KERN FREISCHALTEN • 0.00€/Monat", errSsid: "Fehlender Netzwerkparameter (SSID)", errPhone: "Fehlende Kommunikationsnummer", errName: "Fehlendes persönliches Identitätsmerkmal",
-                quickFill: "Schnellauswahl:"
-            },
-            it: {
-                navWifi: "WiFi QR", navPhone: "Telefono QR", navVcard: "vCard QR", navMenu: "Menu QR", navPro: "Bulk QR",
-                wifiSsid: "Nome della rete (SSID)", wifiPass: "Password della rete",
-                phoneNum: "Numero di telefono", cardName: "Nome completo", cardOrg: "Azienda",
-                cardCell: "Cellulare", cardMail: "Indirizzo e-mail", btnGenerate: "⚡ ESEGUI CORE MATRIX",
-                previewTitle: "ANTEPRIMA TERMINALE", btnDownload: "Esporta",
-                tipText: "Sistema pronto",
-                proTitle: "Core Matrix di massa", proDesc: "La compilazione batch di matrici QR è limitata agli account premium.",
-                proBtn: "SBLOCCA CORE • €0.00/MESE", errSsid: "Parametro di rete mancante (SSID)", errPhone: "Numero di comunicazione mancante", errName: "Indicatore di identità personale mancante",
-                quickFill: "Compilazione rapida:"
-            },
-            tr: {
-                navWifi: "WiFi QR", navPhone: "Telefon QR", navVcard: "vCard QR", navMenu: "Menü QR", navPro: "Toplu QR",
-                wifiSsid: "Ağ Adı (SSID)", wifiPass: "Ağ Şifresi",
-                phoneNum: "Telefon Numarası", cardName: "Ad Soyad", cardOrg: "Şirket",
-                cardCell: "Cep Telefonu", cardMail: "E-posta Adresi", btnGenerate: "⚡ MATRİS ÇEKİRDEĞİNİ ÇALIŞTIR",
-                previewTitle: "TERMİNAL ÖNİZLEME", btnDownload: "Dışa Aktar",
-                tipText: "Sistem Hazır",
-                proTitle: "Toplu Matris Çekirdeği", proDesc: "QR matrislerinin toplu derlenmesi premium hesaplarla sınırlıdır.",
-                proBtn: "ÇEKİRDEK KİLİDİNİ AÇ • $0.00/AY", errSsid: "Eksik Ağ Parametresi (SSID)", errPhone: "Eksik İletişim Numarası", errName: "Eksik Kişisel Kimlik İşaretçisi",
-                quickFill: "Hızlı Doldur:"
-            },
-            ko: {
-                navWifi: "WiFi QR", navPhone: "전화번호 QR", navVcard: "전자 명함", navMenu: "메뉴 QR", navPro: "대량 생성",
-                wifiSsid: "네트워크 이름 (SSID)", wifiPass: "네트워크 비밀번호",
-                phoneNum: "전화번호", cardName: "전체 이름", cardOrg: "회사명",
-                cardCell: "휴대폰 번호", cardMail: "이메일 주소", btnGenerate: "⚡ 매트릭스 코어 실행",
-                previewTitle: "터미널 미리보기", btnDownload: "내보내기",
-                tipText: "시스템 준비 완료",
-                proTitle: "매트릭스 대량 컴파일", proDesc: "대규모 QR 매트릭스의 일괄 컴파일 기능은 프리미엄 계정 전용입니다.",
-                proBtn: "코어 해제 • 월 $0.00", errSsid: "네트워크 필수 매개변수(SSID) 누락", errPhone: "통신 단말기 번호 누락", errName: "개인 식별 마커 누락",
-                quickFill: "빠른 입력:"
-            },
-            zh: {
-                navWifi: "WiFi 二维码", navPhone: "手机号二维码", navVcard: "电子名片", navMenu: "菜单二维码", navPro: "批量生成",
-                wifiSsid: "无线网络名称 (SSID)", wifiPass: "无线网络密码",
-                phoneNum: "手机号码", cardName: "真实姓名", cardOrg: "公司名称",
-                cardCell: "移动电话", cardMail: "电子邮箱", btnGenerate: "⚡ 执行矩阵生成",
-                previewTitle: "终端实时预览", btnDownload: "导出文件",
-                tipText: "系统就绪",
-                proTitle: "矩阵批量编译", proDesc: "批量生成大规模二维码阵列属于特权核心功能。",
-                proBtn: "解锁高级核心 • $0.00/月", errSsid: "缺少网络必要参数 (SSID)", errPhone: "通讯终端号码未填", errName: "身份标志名未输入",
-                quickFill: "快捷填充示例："
-            }
-        };
+<!-- 二维码结果区（优化：品牌白底 + 圆角 + 静默区） -->
+<div id="qr-result" class="hidden z-20 bg-white p-4 rounded-xl shadow-2xl border border-slate-200 flex items-center justify-center min-w-[200px] min-h-[200px]">
+<div id="qrcode-container" class="flex items-center justify-center rounded-lg p-1"></div>
+</div>
 
-        function changeLanguage(lang) {
-            currentLang = lang;
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (i18n[lang] && i18n[lang][key]) el.innerText = i18n[lang][key];
-            });
-            updatePlaceholders(lang);
-        }
+<!-- 二维码描述标签 -->
+<div id="qr-label" class="hidden z-20 w-full mt-3 px-1">
+<div class="flex items-center justify-between text-[11px] font-mono">
+<span class="text-slate-500" id="qr-type-label" data-i18n="qrTypeWifi">WiFi Network</span>
+<span class="text-cyan-500">● SCAN TO CONNECT</span>
+</div>
+</div>
+</div>
 
-        function updatePlaceholders(lang) {
-            const placeholders = {
-                en: { ssid: "e.g., CyberNet_5G", phone: "e.g., +1 234 567 8900", name: "John Doe", org: "Matrix Labs Ltd." },
-                de: { ssid: "z.B. CyberNet_5G", phone: "z.B. +49 170 1234567", name: "Max Mustermann", org: "Matrix GmbH" },
-                it: { ssid: "es. CyberNet_5G", phone: "es. +39 333 1234567", name: "Mario Rossi", org: "Matrix S.r.l." },
-                tr: { ssid: "örn. CyberNet_5G", phone: "örn. +90 532 123 4567", name: "Ahmet Yılmaz", org: "Matrix Şti." },
-                ko: { ssid: "예: CyberNet_5G", phone: "예: +82 10 1234 5678", name: "홍길동", org: "매트릭스 주식회사" },
-                zh: { ssid: "例如：CyberNet_5G", phone: "例如：+86 13800138000", name: "张三", org: "科技矩阵有限公司" }
-            };
-            document.getElementById('wifi-ssid').placeholder = placeholders[lang].ssid;
-            document.getElementById('phone-num').placeholder = placeholders[lang].phone;
-            document.getElementById('card-name').placeholder = placeholders[lang].name;
-            document.getElementById('card-org').placeholder = placeholders[lang].org;
-        }
+<!-- 导出控制区 -->
+<div id="download-container" class="w-full flex items-center gap-2 mt-4 pt-4 border-t border-slate-800/80">
+<select id="export-format" class="bg-[#070c18] border border-slate-700 text-slate-300 text-xs rounded-lg px-3 py-2.5 outline-none focus:border-cyan-500 cursor-pointer font-mono">
+<option value="png">PNG · 512px</option>
+<option value="svg">SVG · Vector</option>
+<option value="png1024">PNG · 1024px (HD)</option>
+</select>
+<button id="download-btn" onclick="downloadTechQR()" aria-label="Export Generated QR Code" class="flex-1 flex items-center justify-center gap-2 bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-bold text-xs rounded-lg py-2.5 px-4 transition-all shadow-lg shadow-emerald-500/10 cursor-pointer">
+<i data-lucide="download" class="w-4 h-4"></i>
+<span data-i18n="btnDownload">Export</span>
+</button>
+</div>
 
-        function switchTab(mode) {
-            currentMode = mode;
-            ['wifi', 'phone', 'vcard'].forEach(m => {
-                const btn = document.getElementById(`nav-${m}`);
-                const form = document.getElementById(`form-${m}`);
-                if (m === mode) {
-                    btn.className = "flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer bg-slate-800 text-cyan-400 border border-slate-700/50 shadow-inner";
-                    if(form) form.classList.remove('hidden');
-                } else {
-                    btn.className = "flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer text-slate-400 hover:text-slate-200 border border-transparent";
-                    if(form) form.classList.add('hidden');
-                }
-            });
-        }
+</div>
+</div>
+</main>
 
-        function fillData(tab, data) {
-            switchTab(tab);
-            if (tab === 'wifi') {
-                document.getElementById('wifi-ssid').value = data.ssid || '';
-                document.getElementById('wifi-pass').value = data.pass || '';
-            } else if (tab === 'phone') {
-                document.getElementById('phone-num').value = data.num || '';
-            } else if (tab === 'vcard') {
-                document.getElementById('card-name').value = data.name || '';
-                document.getElementById('card-org').value = data.org || '';
-                document.getElementById('card-cell').value = data.cell || '';
-                document.getElementById('card-mail').value = data.mail || '';
-            }
-            generateTechQR();
-        }
+<!-- Modal -->
+<div id="pro-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
+<div class="bg-slate-900 border border-amber-500/30 rounded-2xl max-w-sm w-full p-6 text-center space-y-5 shadow-2xl relative">
+<button onclick="closeProModal()" aria-label="Close modal" class="absolute top-4 right-4 text-slate-500 cursor-pointer hover:text-slate-300 transition-colors"><i data-lucide="x" class="w-5 h-5"></i></button>
+<div class="w-12 h-12 bg-amber-500/10 border border-amber-500/20 rounded-xl flex items-center justify-center mx-auto text-amber-400">
+<i data-lucide="shield-alert" class="w-6 h-6"></i>
+</div>
+<h3 class="text-base font-bold text-slate-100" data-i18n="proTitle">Matrix Bulk Core</h3>
+<p class="text-xs text-slate-400 leading-relaxed" data-i18n="proDesc">Batch compilation of QR matrices is restricted to premium accounts.</p>
+<button onclick="alert('Redirecting...')" class="w-full bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 font-extrabold py-3 px-4 rounded-xl text-xs tracking-wider cursor-pointer hover:shadow-lg hover:shadow-amber-500/20 transition-all">
+🚀 <span data-i18n="proBtn">UNLOCK CORE • $0.00/MO</span>
+</button>
+</div>
+</div>
 
-        function openProModal() {
-            const modal = document.getElementById('pro-modal');
-            modal.classList.remove('hidden');
-            setTimeout(() => modal.classList.remove('opacity-0'), 10);
-        }
+<!-- JavaScript -->
+<script>
+let currentMode = 'wifi';
+let currentLang = 'en';
+let currentQRSize = 512;
 
-        function closeProModal() {
-            const modal = document.getElementById('pro-modal');
-            modal.classList.add('opacity-0');
-            setTimeout(() => modal.classList.add('hidden'), 300);
-        }
+const i18n = {
+en: {
+navWifi: "WiFi QR", navPhone: "Phone QR", navVcard: "vCard QR", navMenu: "Menu QR", navPro: "Bulk QR",
+wifiSsid: "Network Name (SSID)", wifiPass: "Network Password",
+phoneNum: "Phone Number", cardName: "Full Name", cardOrg: "Company",
+cardCell: "Mobile Phone", cardMail: "Email Address", btnGenerate: "⚡ RUN MATRIX CORE",
+previewTitle: "TERMINAL PREVIEW", btnDownload: "Export",
+tipText: "System Ready • Client-Side Processing",
+qrTypeWifi: "WiFi Network Credential", qrTypePhone: "Phone Contact Link", qrTypeVcard: "Digital Business Card",
+proTitle: "Matrix Bulk Core", proDesc: "Batch compilation of QR matrices is restricted to premium accounts.",
+proBtn: "UNLOCK CORE • $0.00/MO", errSsid: "Missing Network Parameter (SSID)", errPhone: "Missing Communications Number", errName: "Missing Personal Identity Marker",
+quickFill: "Quick Fill:"
+},
+de: {
+navWifi: "WLAN QR", navPhone: "Telefon QR", navVcard: "vCard QR", navMenu: "Menü-QR", navPro: "Bulk QR",
+wifiSsid: "Netzwerkname (SSID)", wifiPass: "Netzwerkpasswort",
+phoneNum: "Telefonnummer", cardName: "Vollständiger Name", cardOrg: "Unternehmen",
+cardCell: "Mobiltelefon", cardMail: "E-Mail-Adresse", btnGenerate: "⚡ MATRIX-KERN AUSFÜHREN",
+previewTitle: "TERMINAL-VORSCHAU", btnDownload: "Exportieren",
+tipText: "System bereit • Lokale Verarbeitung",
+qrTypeWifi: "WLAN-Zugangsdaten", qrTypePhone: "Telefonkontakt", qrTypeVcard: "Digitale Visite",
+proTitle: "Matrix-Massenkern", proDesc: "Die Batch-Kompilierung von QR-Matrizen ist Premium-Konten vorbehalten.",
+proBtn: "KERN FREISCHALTEN • 0.00€/Monat", errSsid: "Fehlender Netzwerkparameter (SSID)", errPhone: "Fehlende Kommunikationsnummer", errName: "Fehlendes persönliches Identitätsmerkmal",
+quickFill: "Schnellauswahl:"
+},
+it: {
+navWifi: "WiFi QR", navPhone: "Telefono QR", navVcard: "vCard QR", navMenu: "Menu QR", navPro: "Bulk QR",
+wifiSsid: "Nome della rete (SSID)", wifiPass: "Password della rete",
+phoneNum: "Numero di telefono", cardName: "Nome completo", cardOrg: "Azienda",
+cardCell: "Cellulare", cardMail: "Indirizzo e-mail", btnGenerate: "⚡ ESEGUI CORE MATRIX",
+previewTitle: "ANTEPRIMA TERMINALE", btnDownload: "Esporta",
+tipText: "Sistema pronto • Elaborazione locale",
+qrTypeWifi: "Credenziali WiFi", qrTypePhone: "Contatto telefonico", qrTypeVcard: "Carta da visita digitale",
+proTitle: "Core Matrix di massa", proDesc: "La compilazione batch di matrici QR è limitata agli account premium.",
+proBtn: "SBLOCCA CORE • €0.00/MESE", errSsid: "Parametro di rete mancante (SSID)", errPhone: "Numero di comunicazione mancante", errName: "Indicatore di identità personale mancante",
+quickFill: "Compilazione rapida:"
+},
+tr: {
+navWifi: "WiFi QR", navPhone: "Telefon QR", navVcard: "vCard QR", navMenu: "Menü QR", navPro: "Toplu QR",
+wifiSsid: "Ağ Adı (SSID)", wifiPass: "Ağ Şifresi",
+phoneNum: "Telefon Numarası", cardName: "Ad Soyad", cardOrg: "Şirket",
+cardCell: "Cep Telefonu", cardMail: "E-posta Adresi", btnGenerate: "⚡ MATRİS ÇEKİRDEĞİNİ ÇALIŞTIR",
+previewTitle: "TERMİNAL ÖNİZLEME", btnDownload: "Dışa Aktar",
+tipText: "Sistem Hazır • Tarafınızda İşleme",
+qrTypeWifi: "WiFi Ağ Bilgileri", qrTypePhone: "Telefon Numarası", qrTypeVcard: "Dijital Kartvizit",
+proTitle: "Toplu Matris Çekirdeği", proDesc: "QR matrislerinin toplu derlenmesi premium hesaplarla sınırlıdır.",
+proBtn: "ÇEKİRDEK KİLİDİNİ AÇ • $0.00/AY", errSsid: "Eksik Ağ Parametresi (SSID)", errPhone: "Eksik İletişim Numarası", errName: "Eksik Kişisel Kimlik İşareti",
+quickFill: "Hızlı Doldur:"
+},
+ko: {
+navWifi: "WiFi QR", navPhone: "전화번호 QR", navVcard: "전자 명함", navMenu: "메뉴 QR", navPro: "대량 생성",
+wifiSsid: "네트워크 이름 (SSID)", wifiPass: "네트워크 비밀번호",
+phoneNum: "전화번호", cardName: "전체 이름", cardOrg: "회사명",
+cardCell: "휴대폰 번호", cardMail: "이메일 주소", btnGenerate: "⚡ 매트릭스 코어 실행",
+previewTitle: "터미널 미리보기", btnDownload: "내보내기",
+tipText: "시스템 준비 완료 • 브라우저 내 처리",
+qrTypeWifi: "WiFi 네트워크 정보", qrTypePhone: "전화 연락처", qrTypeVcard: "디지털 명함",
+proTitle: "매트릭스 대량 컴파일", proDesc: "대규모 QR 매트릭스의 일괄 컴파일 기능은 프리미엄 계정 전용입니다.",
+proBtn: "코어 해제 • 월 $0.00", errSsid: "네트워크 필수 매개변수(SSID) 누락", errPhone: "통신 단말기 번호 누락", errName: "개인 식별 마커 누락",
+quickFill: "빠른 입력:"
+},
+zh: {
+navWifi: "WiFi 二维码", navPhone: "手机号二维码", navVcard: "电子名片", navMenu: "菜单二维码", navPro: "批量生成",
+wifiSsid: "无线网络名称 (SSID)", wifiPass: "无线网络密码",
+phoneNum: "手机号码", cardName: "真实姓名", cardOrg: "公司名称",
+cardCell: "移动电话", cardMail: "电子邮箱", btnGenerate: "⚡ 执行矩阵生成",
+previewTitle: "终端实时预览", btnDownload: "导出文件",
+tipText: "系统就绪 • 浏览器本地处理",
+qrTypeWifi: "WiFi 网络凭证", qrTypePhone: "电话联系信息", qrTypeVcard: "电子名片",
+proTitle: "矩阵批量编译", proDesc: "批量生成大规模二维码阵列属于特权核心功能。",
+proBtn: "解锁高级核心 • $0.00/月", errSsid: "缺少网络必要参数 (SSID)", errPhone: "通讯终端号码未填", errName: "身份标志名未输入",
+quickFill: "快捷填充示例："
+}
+};
 
-        function generateTechQR() {
-            let qrText = "";
-            if (currentMode === 'wifi') {
-                const ssid = document.getElementById('wifi-ssid').value.trim();
-                const pass = document.getElementById('wifi-pass').value.trim();
-                if(!ssid) return alert(i18n[currentLang].errSsid);
-                qrText = `WIFI:T:WPA;S:${ssid};P:${pass};;`;
-            } else if (currentMode === 'phone') {
-                const phone = document.getElementById('phone-num').value.trim();
-                if(!phone) return alert(i18n[currentLang].errPhone);
-                qrText = `tel:${phone}`;
-            } else if (currentMode === 'vcard') {
-                const name = document.getElementById('card-name').value.trim();
-                const org = document.getElementById('card-org').value.trim();
-                const cell = document.getElementById('card-cell').value.trim();
-                const mail = document.getElementById('card-mail').value.trim();
-                if(!name) return alert(i18n[currentLang].errName);
-                qrText = `BEGIN:VCARD\nVERSION:3.0\nN:${name}\nORG:${org}\nTEL:${cell}\nEMAIL:${mail}\nEND:VCARD`;
-            }
+function changeLanguage(lang) {
+currentLang = lang;
+document.querySelectorAll('[data-i18n]').forEach(el => {
+const key = el.getAttribute('data-i18n');
+if (i18n[lang] && i18n[lang][key]) el.innerText = i18n[lang][key];
+});
+updatePlaceholders(lang);
+// 更新二维码类型标签
+updateQRTypeLabel();
+}
 
-            const qrContainer = document.getElementById('qrcode-container');
-            qrContainer.innerHTML = ''; 
+function updatePlaceholders(lang) {
+const placeholders = {
+en: { ssid: "e.g., CyberNet_5G", phone: "e.g., +1 234 567 8900", name: "John Doe", org: "Matrix Labs Ltd." },
+de: { ssid: "z.B. CyberNet_5G", phone: "z.B. +49 170 1234567", name: "Max Mustermann", org: "Matrix GmbH" },
+it: { ssid: "es. CyberNet_5G", phone: "es. +39 333 1234567", name: "Mario Rossi", org: "Matrix S.r.l." },
+tr: { ssid: "örn. CyberNet_5G", phone: "örn. +90 532 123 4567", name: "Ahmet Yılmaz", org: "Matrix Şti." },
+ko: { ssid: "예: CyberNet_5G", phone: "예: +82 10 1234 5678", name: "홍길동", org: "매트릭스 주식회사" },
+zh: { ssid: "例如：CyberNet_5G", phone: "例如：+86 13800138000", name: "张三", org: "科技矩阵有限公司" }
+};
+document.getElementById('wifi-ssid').placeholder = placeholders[lang].ssid;
+document.getElementById('phone-num').placeholder = placeholders[lang].phone;
+document.getElementById('card-name').placeholder = placeholders[lang].name;
+document.getElementById('card-org').placeholder = placeholders[lang].org;
+}
 
-            // 指定原生生成尺寸 160px，正方形不变形
-            new QRCode(qrContainer, {
-                text: qrText,
-                width: 160,
-                height: 160,
-                colorDark : "#020617",
-                colorLight : "#ffffff",
-                correctLevel : QRCode.CorrectLevel.H
-            });
+function updateQRTypeLabel() {
+const labelEl = document.getElementById('qr-type-label');
+if (!labelEl) return;
+const labels = {
+wifi: i18n[currentLang].qrTypeWifi,
+phone: i18n[currentLang].qrTypePhone,
+vcard: i18n[currentLang].qrTypeVcard
+};
+labelEl.innerText = labels[currentMode] || i18n[currentLang].qrTypeWifi;
+}
 
-            const idleState = document.getElementById('idle-state');
-            const qrResult = document.getElementById('qr-result');
-            
-            idleState.style.opacity = '0';
-            setTimeout(() => {
-                idleState.style.display = 'none';
-                qrResult.classList.remove('hidden'); 
-                setTimeout(() => qrResult.classList.add('scale-100'), 10);
-            }, 300);
-        }
+function switchTab(mode) {
+currentMode = mode;
+['wifi', 'phone', 'vcard'].forEach(m => {
+const btn = document.getElementById(`nav-${m}`);
+const form = document.getElementById(`form-${m}`);
+if (m === mode) {
+btn.className = "flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer bg-slate-800 text-cyan-400 border border-slate-700/50 shadow-inner";
+if(form) form.classList.remove('hidden');
+} else {
+btn.className = "flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer text-slate-400 hover:text-slate-200 border border-transparent";
+if(form) form.classList.add('hidden');
+}
+});
+updateQRTypeLabel();
+}
 
-        function downloadTechQR() {
-            const formatSelect = document.getElementById('export-format');
-            const selectedFormat = formatSelect ? formatSelect.value.toLowerCase() : 'png';
+function fillData(tab, data) {
+switchTab(tab);
+if (tab === 'wifi') {
+document.getElementById('wifi-ssid').value = data.ssid || '';
+document.getElementById('wifi-pass').value = data.pass || '';
+} else if (tab === 'phone') {
+document.getElementById('phone-num').value = data.num || '';
+} else if (tab === 'vcard') {
+document.getElementById('card-name').value = data.name || '';
+document.getElementById('card-org').value = data.org || '';
+document.getElementById('card-cell').value = data.cell || '';
+document.getElementById('card-mail').value = data.mail || '';
+}
+generateTechQR();
+}
 
-            const canvas = document.querySelector('#qrcode-container canvas');
-            const svgElement = document.querySelector('#qrcode-container svg');
-            const imgElement = document.querySelector('#qrcode-container img');
+function openProModal() {
+const modal = document.getElementById('pro-modal');
+modal.classList.remove('hidden');
+setTimeout(() => modal.classList.remove('opacity-0'), 10);
+}
 
-            if (selectedFormat === 'svg') {
-                let svgData;
-                if (svgElement) {
-                    svgData = new XMLSerializer().serializeToString(svgElement);
-                } else if (canvas) {
-                    const imgData = canvas.toDataURL("image/png");
-                    svgData = `<svg xmlns="http://www.w3.org/2000/svg" width="${canvas.width}" height="${canvas.height}"><image href="${imgData}" width="100%" height="100%"/></svg>`;
-                } else if (imgElement && imgElement.src) {
-                    svgData = `<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160"><image href="${imgElement.src}" width="100%" height="100%"/></svg>`;
-                }
+function closeProModal() {
+const modal = document.getElementById('pro-modal');
+modal.classList.add('opacity-0');
+setTimeout(() => modal.classList.add('hidden'), 300);
+}
 
-                if (svgData) {
-                    const blob = new Blob([svgData], { type: "image/svg+xml;charset=utf-8" });
-                    const url = URL.createObjectURL(blob);
-                    triggerDownload(url, `matrix-qr-${currentMode}.svg`);
-                }
-            } else {
-                if (canvas) {
-                    const url = canvas.toDataURL("image/png");
-                    triggerDownload(url, `matrix-qr-${currentMode}.png`);
-                } else if (imgElement && imgElement.src) {
-                    triggerDownload(imgElement.src, `matrix-qr-${currentMode}.png`);
-                }
-            }
-        }
+function generateTechQR() {
+let qrText = "";
+if (currentMode === 'wifi') {
+const ssid = document.getElementById('wifi-ssid').value.trim();
+const pass = document.getElementById('wifi-pass').value.trim();
+if(!ssid) return alert(i18n[currentLang].errSsid);
+qrText = `WIFI:T:WPA;S:${ssid};P:${pass};;`;
+} else if (currentMode === 'phone') {
+const phone = document.getElementById('phone-num').value.trim();
+if(!phone) return alert(i18n[currentLang].errPhone);
+qrText = `tel:${phone}`;
+} else if (currentMode === 'vcard') {
+const name = document.getElementById('card-name').value.trim();
+const org = document.getElementById('card-org').value.trim();
+const cell = document.getElementById('card-cell').value.trim();
+const mail = document.getElementById('card-mail').value.trim();
+if(!name) return alert(i18n[currentLang].errName);
+qrText = `BEGIN:VCARD\nVERSION:3.0\nN:${name}\nORG:${org}\nTEL:${cell}\nEMAIL:${mail}\nEND:VCARD`;
+}
 
-        function triggerDownload(url, filename) {
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = filename;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        }
+// 根据导出选项决定尺寸
+currentQRSize = document.getElementById('export-format').value.includes('1024') ? 1024 : 512;
 
-        window.onload = function() {
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            }
-            changeLanguage('en');
-        }
-    </script>
+const qrContainer = document.getElementById('qrcode-container');
+qrContainer.innerHTML = '';
 
-    <!-- GEO SEO Content Section & HTML Snippets -->
-    <section class="max-w-6xl mx-auto px-4 py-12 border-t border-slate-800/80 z-10 text-slate-300 space-y-12">
-        
-        <!-- Snippet: definition.en.html -->
-        <article class="space-y-4">
-            <h2 class="text-2xl font-bold text-white tracking-tight">What is MatrixQR?</h2>
-            <p class="text-sm leading-relaxed text-slate-400">
-                MatrixQR is a free & secure client-side QR code generator designed for modern digital privacy needs. Unlike traditional online QR tools that process data on remote servers, MatrixQR renders custom QR codes directly within your web browser using HTML5 Canvas and local JavaScript execution. This architecture guarantees zero server logging, zero data transmission, and complete offline capability for generating WiFi passwords, phone contact links, and vCards.
-            </p>
-        </article>
+// 使用高清尺寸生成，保持品牌色深蓝 + 白色背景
+new QRCode(qrContainer, {
+text: qrText,
+width: currentQRSize,
+height: currentQRSize,
+colorDark : "#0f172a",  // 更美观的深蓝灰色
+colorLight : "#ffffff",
+correctLevel : QRCode.CorrectLevel.H  // 最高容错，更易扫描
+});
 
-        <!-- Technical Specs -->
-        <article class="space-y-4">
-            <h2 class="text-xl font-bold text-white tracking-tight">Technical Specifications & Performance Facts</h2>
-            <dl class="grid grid-cols-1 md:grid-cols-3 gap-4 font-mono text-xs">
-                <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-                    <dt class="text-cyan-400 font-bold block mb-1">0.00 ms Server Latency</dt>
-                    <dd class="text-slate-400">100% in-browser generation with instantaneous response time and zero network overhead.</dd>
-                </div>
-                <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-                    <dt class="text-emerald-400 font-bold block mb-1">Zero-Data Tracking</dt>
-                    <dd class="text-slate-400">No cookies, no database persistence, fully compliant with strict GDPR & CCPA standards.</dd>
-                </div>
-                <div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-                    <dt class="text-amber-400 font-bold block mb-1">Offline & PWA Capability</dt>
-                    <dd class="text-slate-400">Fully functional without active internet connections once loaded into browser cache.</dd>
-                </div>
-            </dl>
-        </article>
+// 触发重绘确保 SVG 正确渲染
+const canvas = qrContainer.querySelector('canvas');
+const img = qrContainer.querySelector('img');
 
-        <!-- Feature Comparison Table -->
-        <article class="space-y-4">
-            <h2 class="text-xl font-bold text-white tracking-tight">MatrixQR vs. Cloud-Based QR Generators</h2>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left text-xs border-collapse border border-slate-800">
-                    <thead>
-                        <tr class="bg-slate-900 text-slate-200">
-                            <th class="p-3 border border-slate-800">Feature</th>
-                            <th class="p-3 border border-slate-800 text-cyan-400">MatrixQR (Client-Side)</th>
-                            <th class="p-3 border border-slate-800 text-slate-400">Traditional Generators</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-800/60 text-slate-400">
-                        <tr>
-                            <td class="p-3 border border-slate-800 font-medium text-slate-300">Data Privacy</td>
-                            <td class="p-3 border border-slate-800 text-emerald-400">100% Local / Zero Server Logs</td>
-                            <td class="p-3 border border-slate-800 text-rose-400">Stored on External Servers</td>
-                        </tr>
-                        <tr>
-                            <td class="p-3 border border-slate-800 font-medium text-slate-300">Generation Speed</td>
-                            <td class="p-3 border border-slate-800">&lt; 10ms (Instant)</td>
-                            <td class="p-3 border border-slate-800">Network Dependent (200-800ms)</td>
-                        </tr>
-                        <tr>
-                            <td class="p-3 border border-slate-800 font-medium text-slate-300">Offline Usage</td>
-                            <td class="p-3 border border-slate-800 text-emerald-400">Supported</td>
-                            <td class="p-3 border border-slate-800 text-rose-400">Not Supported</td>
-                        </tr>
-                        <tr>
-                            <td class="p-3 border border-slate-800 font-medium text-slate-300">Tracking & Ads</td>
-                            <td class="p-3 border border-slate-800">No Ads / No Tracking Pixels</td>
-                            <td class="p-3 border border-slate-800">Often contains tracking / redirects</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </article>
+const idleState = document.getElementById('idle-state');
+const qrResult = document.getElementById('qr-result');
+const qrLabel = document.getElementById('qr-label');
 
-        <section class="geo-faq space-y-4">
-            <h2 class="text-xl font-bold text-white tracking-tight">Frequently Asked Questions</h2>
-            <div class="space-y-3">
-                <details open class="group bg-slate-900/40 p-4 rounded-xl border border-slate-800/80 cursor-pointer">
-                    <summary class="font-semibold text-slate-200 text-sm flex justify-between items-center list-none">
-                        <h3>Is MatrixQR completely free to use?</h3>
-                        <span class="text-cyan-400 transition-transform group-open:rotate-180">↓</span>
-                    </summary>
-                    <p class="mt-2 text-xs text-slate-400 leading-relaxed">
-                        Yes, MatrixQR is 100% free with no hidden fees, limits, or mandatory registration required to export high-resolution QR codes.
-                    </p>
-                </details>
+idleState.style.opacity = '0';
+setTimeout(() => {
+idleState.style.display = 'none';
+qrResult.classList.remove('hidden');
+qrLabel.classList.remove('hidden');
+setTimeout(() => {
+qrResult.classList.add('scale-100', 'qr-reveal');
+qrLabel.classList.add('opacity-100');
+}, 50);
+}, 300);
+}
 
-                <details open class="group bg-slate-900/40 p-4 rounded-xl border border-slate-800/80 cursor-pointer">
-                    <summary class="font-semibold text-slate-200 text-sm flex justify-between items-center list-none">
-                        <h3>Does MatrixQR collect or store my WiFi password or personal contacts?</h3>
-                        <span class="text-cyan-400 transition-transform group-open:rotate-180">↓</span>
-                    </summary>
-                    <p class="mt-2 text-xs text-slate-400 leading-relaxed">
-                        No. All data processing occurs entirely within your browser using local JavaScript execution. Your WiFi credentials, phone numbers, and vCards never touch any external server.
-                    </p>
-                </details>
+function downloadTechQR() {
+const formatSelect = document.getElementById('export-format');
+const selectedFormat = formatSelect ? formatSelect.value : 'png';
 
-                <details open class="group bg-slate-900/40 p-4 rounded-xl border border-slate-800/80 cursor-pointer">
-                    <summary class="font-semibold text-slate-200 text-sm flex justify-between items-center list-none">
-                        <h3>How do I scan a WiFi QR code generated by MatrixQR?</h3>
-                        <span class="text-cyan-400 transition-transform group-open:rotate-180">↓</span>
-                    </summary>
-                    <p class="mt-2 text-xs text-slate-400 leading-relaxed">
-                        Simply open your iOS or Android camera app, point it at the generated QR code, and tap the notification banner to join the wireless network automatically without typing the password.
-                    </p>
-                </details>
-            </div>
-        </section>
+const canvas = document.querySelector('#qrcode-container canvas');
+const svgElement = document.querySelector('#qrcode-container svg');
+const imgElement = document.querySelector('#qrcode-container img');
 
-    </section>
+if (selectedFormat === 'svg') {
+let svgData;
+if (svgElement) {
+svgData = new XMLSerializer().serializeToString(svgElement);
+} else if (canvas) {
+const imgData = canvas.toDataURL("image/png");
+svgData = `<svg xmlns="http://www.w3.org/2000/svg" width="${currentQRSize}" height="${currentQRSize}"><image href="${imgData}" width="100%" height="100%"/></svg>`;
+} else if (imgElement && imgElement.src) {
+svgData = `<svg xmlns="http://www.w3.org/2000/svg" width="${currentQRSize}" height="${currentQRSize}"><image href="${imgElement.src}" width="100%" height="100%"/></svg>`;
+}
 
-    <!-- Footer -->
-    <footer class="py-8 text-center text-xs text-slate-400 border-t border-slate-800 bg-slate-950/60">
-        <div class="max-w-6xl mx-auto px-4 space-y-4">
-            
-            <div class="flex items-center justify-center gap-3 flex-wrap text-slate-300 font-medium">
-                <span>© 2026 MatrixQR Studio. All rights reserved.</span>
-                <span class="text-slate-700 hidden sm:inline">•</span>
-                
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[11px] font-mono">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                    GDPR Ready
-                </span>
+if (svgData) {
+const blob = new Blob([svgData], { type: "image/svg+xml;charset=utf-8" });
+const url = URL.createObjectURL(blob);
+triggerDownload(url, `matrix-qr-${currentMode}-${currentQRSize}.svg`);
+}
+} else {
+// PNG 导出 - 确保高清
+let exportSize = 512;
+if (selectedFormat === 'png1024') exportSize = 1024;
 
-                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-[11px] font-mono">
-                    🛡️ Client-Side Privacy
-                </span>
-            </div>
+// 创建离屏 canvas 以重新绘制高清版本
+const sourceCanvas = canvas;
+if (sourceCanvas) {
+const tempCanvas = document.createElement('canvas');
+tempCanvas.width = exportSize;
+tempCanvas.height = exportSize;
+const ctx = tempCanvas.getContext('2d');
 
-            <p class="flex items-center justify-center gap-2 flex-wrap">
-                <a href="https://blog.matrixqr.cc/" class="text-slate-400 hover:text-cyan-400 hover:underline py-2 px-3 rounded-md transition-colors">
-                    Blog
-                </a>
-                <span class="text-slate-700">•</span>
+// 白色背景
+ctx.fillStyle = '#ffffff';
+ctx.fillRect(0, 0, exportSize, exportSize);
 
-                <a href="https://menu.matrixqr.cc/" class="text-slate-400 hover:text-cyan-400 hover:underline py-2 px-3 rounded-md transition-colors" title="Free Digital Menu QR Code Generator">
-                    Digital Menu QR
-                </a>
-                <span class="text-slate-700">•</span>
+// 绘制二维码
+ctx.drawImage(sourceCanvas, 0, 0, exportSize, exportSize);
 
-                <a href="https://blog.matrixqr.cc/posts/privacy-policy" 
-                   target="_blank" 
-                   rel="noopener noreferrer" 
-                   class="text-slate-400 hover:text-cyan-400 hover:underline inline-flex items-center justify-center px-3 py-2 transition-colors" 
-                   aria-label="Read our Privacy Policy">
-                    Privacy Policy
-                </a>
-            </p>
+const url = tempCanvas.toDataURL("image/png");
+triggerDownload(url, `matrix-qr-${currentMode}-${exportSize}.png`);
+} else if (imgElement && imgElement.src) {
+// 如果只有 img，直接用高 DPI
+const url = imgElement.src;
+triggerDownload(url, `matrix-qr-${currentMode}-${exportSize}.png`);
+}
+}
+}
 
-            <div class="flex items-center justify-center gap-4 flex-wrap pt-2">
-                <a href="https://www.producthunt.com/products/matrixqr?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-matrixqr"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="inline-flex items-center justify-center min-h-[54px] hover:opacity-90 transition-opacity">
-                  <img alt="MatrixQR - The privacy-first QR generator on Product Hunt"
-                       width="250" height="54"
-                       src="product-hunt-badge.svg"
-                       fetchpriority="high"
-                       class="block w-[250px] h-[54px]" />
-                </a>
+function triggerDownload(url, filename) {
+const a = document.createElement('a');
+a.href = url;
+a.download = filename;
+document.body.appendChild(a);
+a.click();
+document.body.removeChild(a);
+}
 
-                <a href="https://saasfame.com/item/matrixqr"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="inline-flex items-center justify-center min-h-[54px] hover:opacity-90 transition-opacity">
-                  <img src="https://saasfame.com/badge-light.svg"
-                       alt="Featured on saasfame.com"
-                       height="54" width="160"
-                       class="block w-[160px] h-[54px]" />
-                </a>
-            </div>
+window.onload = function() {
+if (typeof lucide !== 'undefined') {
+lucide.createIcons();
+}
+changeLanguage('en');
+};
+</script>
 
-        </div>
-    </footer>
+<!-- GEO SEO Content Section -->
+<section class="max-w-6xl mx-auto px-4 py-12 border-t border-slate-800/80 z-10 text-slate-300 space-y-12">
+<article class="space-y-4">
+<h2 class="text-2xl font-bold text-white tracking-tight">What is MatrixQR?</h2>
+<p class="text-sm leading-relaxed text-slate-400">
+MatrixQR is a free & secure client-side QR code generator designed for modern digital privacy needs. Unlike traditional online QR tools that process data on remote servers, MatrixQR renders custom QR codes directly within your web browser using HTML5 Canvas and local JavaScript execution. This architecture guarantees zero server logging, zero data transmission, and complete offline capability for generating WiFi passwords, phone contact links, and vCards.
+</p>
+</article>
+
+<article class="space-y-4">
+<h2 class="text-xl font-bold text-white tracking-tight">Technical Specifications</h2>
+<dl class="grid grid-cols-1 md:grid-cols-3 gap-4 font-mono text-xs">
+<div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
+<dt class="text-cyan-400 font-bold block mb-1">0.00 ms Server Latency</dt>
+<dd class="text-slate-400">100% in-browser generation with instantaneous response time and zero network overhead.</dd>
+</div>
+<div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
+<dt class="text-emerald-400 font-bold block mb-1">Zero-Data Tracking</dt>
+<dd class="text-slate-400">No cookies, no database persistence, fully compliant with strict GDPR & CCPA standards.</dd>
+</div>
+<div class="bg-slate-900/60 p-4 rounded-xl border border-slate-800">
+<dt class="text-amber-400 font-bold block mb-1">Offline & PWA Capability</dt>
+<dd class="text-slate-400">Fully functional without active internet connections once loaded into browser cache.</dd>
+</div>
+</dl>
+</article>
+
+<article class="space-y-4">
+<h2 class="text-xl font-bold text-white tracking-tight">Why Choose MatrixQR?</h2>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-xs border-collapse border border-slate-800">
+<thead>
+<tr class="bg-slate-900 text-slate-200">
+<th class="p-3 border border-slate-800">Feature</th>
+<th class="p-3 border border-slate-800 text-cyan-400">MatrixQR (Client-Side)</th>
+<th class="p-3 border border-slate-800 text-slate-400">Traditional Generators</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-800/60 text-slate-400">
+<tr>
+<td class="p-3 border border-slate-800 font-medium text-slate-300">Data Privacy</td>
+<td class="p-3 border border-slate-800 text-emerald-400">100% Local / Zero Server Logs</td>
+<td class="p-3 border border-slate-800 text-rose-400">Stored on External Servers</td>
+</tr>
+<tr>
+<td class="p-3 border border-slate-800 font-medium text-slate-300">Generation Speed</td>
+<td class="p-3 border border-slate-800">&lt; 10ms (Instant)</td>
+<td class="p-3 border border-slate-800">Network Dependent (200-800ms)</td>
+</tr>
+<tr>
+<td class="p-3 border border-slate-800 font-medium text-slate-300">Offline Usage</td>
+<td class="p-3 border border-slate-800 text-emerald-400">Supported</td>
+<td class="p-3 border border-slate-800 text-rose-400">Not Supported</td>
+</tr>
+</tbody>
+</table>
+</div>
+</article>
+
+<section class="geo-faq space-y-4">
+<h2 class="text-xl font-bold text-white tracking-tight">Frequently Asked Questions</h2>
+<div class="space-y-3">
+<details open class="group bg-slate-900/40 p-4 rounded-xl border border-slate-800/80 cursor-pointer">
+<summary class="font-semibold text-slate-200 text-sm flex justify-between items-center list-none">
+<h3>Is MatrixQR completely free to use?</h3>
+<span class="text-cyan-400 transition-transform group-open:rotate-180">↓</span>
+</summary>
+<p class="mt-2 text-xs text-slate-400 leading-relaxed">
+Yes, MatrixQR is 100% free with no hidden fees, limits, or mandatory registration required to export high-resolution QR codes.
+</p>
+</details>
+<details open class="group bg-slate-900/40 p-4 rounded-xl border border-slate-800/80 cursor-pointer">
+<summary class="font-semibold text-slate-200 text-sm flex justify-between items-center list-none">
+<h3>Does MatrixQR collect or store my WiFi password or personal contacts?</h3>
+<span class="text-cyan-400 transition-transform group-open:rotate-180">↓</span>
+</summary>
+<p class="mt-2 text-xs text-slate-400 leading-relaxed">
+No. All data processing occurs entirely within your browser using local JavaScript execution. Your WiFi credentials, phone numbers, and vCards never touch an external server.
+</p>
+</details>
+</details>
+</div>
+</section>
+</section>
+
+<!-- Footer -->
+<footer class="py-8 text-center text-xs text-slate-400 border-t border-slate-800 bg-slate-950/60">
+<div class="max-w-6xl mx-auto px-4 space-y-4">
+<div class="flex items-center justify-center gap-3 flex-wrap text-slate-300 font-medium">
+<span>© 2026 MatrixQR Studio. All rights reserved.</span>
+<span class="text-slate-700 hidden sm:inline">•</span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[11px] font-mono">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+GDPR Ready
+</span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-[11px] font-mono">
+🛡️ Client-Side Privacy
+</span>
+</div>
+<p class="flex items-center justify-center gap-2 flex-wrap">
+<a href="https://blog.matrixqr.cc/" class="text-slate-400 hover:text-cyan-400 hover:underline px-3 py-2 rounded-md transition-colors">Blog</a>
+<span class="text-slate-700">•</span>
+<a href="https://menu.matrixqr.cc/" class="text-slate-400 hover:text-cyan-400 hover:underline px-3 py-2 rounded-md transition-colors">Digital Menu QR</a>
+<span class="text-slate-700">•</span>
+<a href="https://blog.matrixqr.cc/privacy-policy" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-cyan-400 hover:underline px-3 py-2 rounded-md transition-colors">Privacy Policy</a>
+</p>
+</div>
+</footer>
 </body>
 </html>
