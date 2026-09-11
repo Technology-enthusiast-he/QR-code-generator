@@ -116,23 +116,26 @@
     <script src="libs/qrcode.min.js"></script>
 
     <style>
-    /* 清除强制拉伸，保持 1:1 像素比例 */
-    #qrcode-container {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-    }
+/* 强制修复 qrcode.js 生成的 canvas 和 img 被拉伸变形的问题 */
+#qrcode-container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 100% !important;
+}
 
-    #qrcode-container img, 
-    #qrcode-container canvas { 
-        display: block !important; 
-        margin: 0 auto !important;
-        max-width: none !important;
-        max-height: none !important;
-        width: auto !important; 
-        height: auto !important; 
-    }
-    </style>
+#qrcode-container canvas, 
+#qrcode-container img { 
+    display: block !important; 
+    margin: 0 auto !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    width: 160px !important; 
+    height: 160px !important; 
+    object-fit: contain !important;
+}
+</style>
 </head>
 <body class="bg-slate-950 text-[#ffffff] min-h-screen flex flex-col justify-between antialiased">
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[400px] bg-radial from-cyan-500/10 via-transparent to-transparent pointer-events-none z-0"></div>
@@ -461,48 +464,57 @@
         }
 
         function generateTechQR() {
-            let qrText = "";
-            if (currentMode === 'wifi') {
-                const ssid = document.getElementById('wifi-ssid').value.trim();
-                const pass = document.getElementById('wifi-pass').value.trim();
-                if(!ssid) return alert(i18n[currentLang].errSsid);
-                qrText = `WIFI:T:WPA;S:${ssid};P:${pass};;`;
-            } else if (currentMode === 'phone') {
-                const phone = document.getElementById('phone-num').value.trim();
-                if(!phone) return alert(i18n[currentLang].errPhone);
-                qrText = `tel:${phone}`;
-            } else if (currentMode === 'vcard') {
-                const name = document.getElementById('card-name').value.trim();
-                const org = document.getElementById('card-org').value.trim();
-                const cell = document.getElementById('card-cell').value.trim();
-                const mail = document.getElementById('card-mail').value.trim();
-                if(!name) return alert(i18n[currentLang].errName);
-                qrText = `BEGIN:VCARD\nVERSION:3.0\nN:${name}\nORG:${org}\nTEL:${cell}\nEMAIL:${mail}\nEND:VCARD`;
-            }
+    let qrText = "";
+    if (currentMode === 'wifi') {
+        const ssid = document.getElementById('wifi-ssid').value.trim();
+        const pass = document.getElementById('wifi-pass').value.trim();
+        if(!ssid) return alert(i18n[currentLang].errSsid);
+        qrText = `WIFI:T:WPA;S:${ssid};P:${pass};;`;
+    } else if (currentMode === 'phone') {
+        const phone = document.getElementById('phone-num').value.trim();
+        if(!phone) return alert(i18n[currentLang].errPhone);
+        qrText = `tel:${phone}`;
+    } else if (currentMode === 'vcard') {
+        const name = document.getElementById('card-name').value.trim();
+        const org = document.getElementById('card-org').value.trim();
+        const cell = document.getElementById('card-cell').value.trim();
+        const mail = document.getElementById('card-mail').value.trim();
+        if(!name) return alert(i18n[currentLang].errName);
+        qrText = `BEGIN:VCARD\nVERSION:3.0\nN:${name}\nORG:${org}\nTEL:${cell}\nEMAIL:${mail}\nEND:VCARD`;
+    }
 
-            const qrContainer = document.getElementById('qrcode-container');
-            qrContainer.innerHTML = ''; 
+    const qrContainer = document.getElementById('qrcode-container');
+    qrContainer.innerHTML = ''; 
 
-            // 指定原生生成尺寸 160px，正方形不变形
-            new QRCode(qrContainer, {
-                text: qrText,
-                width: 160,
-                height: 160,
-                colorDark : "#020617",
-                colorLight : "#ffffff",
-                correctLevel : QRCode.CorrectLevel.H
-            });
+    // 创建二维码
+    new QRCode(qrContainer, {
+        text: qrText,
+        width: 160,
+        height: 160,
+        colorDark : "#020617",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+    });
 
-            const idleState = document.getElementById('idle-state');
-            const qrResult = document.getElementById('qr-result');
-            
-            idleState.style.opacity = '0';
-            setTimeout(() => {
-                idleState.style.display = 'none';
-                qrResult.classList.remove('hidden'); 
-                setTimeout(() => qrResult.classList.add('scale-100'), 10);
-            }, 300);
+    // 强行清理 qrcode.js 自动生成的 img 标签内联 width/height 属性
+    setTimeout(() => {
+        const img = qrContainer.querySelector('img');
+        if (img) {
+            img.style.width = '160px';
+            img.style.height = '160px';
         }
+    }, 50);
+
+    const idleState = document.getElementById('idle-state');
+    const qrResult = document.getElementById('qr-result');
+    
+    idleState.style.opacity = '0';
+    setTimeout(() => {
+        idleState.style.display = 'none';
+        qrResult.classList.remove('hidden'); 
+        setTimeout(() => qrResult.classList.add('scale-100'), 10);
+    }, 300);
+}
 
         function downloadTechQR() {
             const formatSelect = document.getElementById('export-format');
