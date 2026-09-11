@@ -64,8 +64,8 @@
             "@type": "Offer",
             "price": "0",
             "priceCurrency": "USD"
-          }
-        "featureList": "Client-side processing, No server logs, PNG/SVG export, WiFi/vCard/URL support",
+          },
+          "featureList": "Client-side processing, No server logs, PNG/SVG export, WiFi/vCard/URL support"
         },
         {
           "@type": "FAQPage",
@@ -116,8 +116,7 @@
     <script src="libs/qrcode.min.js"></script>
 
     <style>
-        #qrcode { display: flex; justify-content: center; align-items: center; width: 180px; height: 180px; margin: 0 auto; }
-        #qrcode img, #qrcode canvas { display: block !important; width: 100% !important; height: 100% !important; object-fit: contain; }
+        #qrcode-container img, #qrcode-container canvas, #qrcode-container svg { display: block !important; width: 100% !important; height: 100% !important; object-fit: contain; }
     </style>
 </head>
 <body class="bg-slate-950 text-[#ffffff] min-h-screen flex flex-col justify-between antialiased">
@@ -245,48 +244,46 @@
             </button>
         </div>
 
-        <!-- Right Column: Preview & Download -->
+        <!-- Right Column: Integrated Terminal Preview Card -->
         <div class="md:col-span-5 flex flex-col items-center justify-center w-full">
-            <div class="flex items-center justify-center mb-6 space-x-2">
-                <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                <span class="text-xs font-bold tracking-widest text-slate-300 uppercase" data-i18n="previewTitle">Terminal Preview</span>
-            </div>
+            <div id="preview-card" class="flex flex-col items-center bg-[#0d1527] border border-slate-800 rounded-2xl p-6 w-full max-w-[380px] mx-auto shadow-2xl">
+                
+                <!-- Terminal Header -->
+                <div class="w-full flex items-center justify-between mb-4">
+                    <span class="text-xs font-mono text-emerald-400 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span data-i18n="previewTitle">TERMINAL PREVIEW</span>
+                    </span>
+                </div>
 
-            <div class="relative w-64 h-64 bg-slate-900 rounded-xl border border-slate-700 flex items-center justify-center overflow-hidden shadow-[0_0_30px_rgba(0,0,0,0.5)] group">
-                <div id="idle-state" class="absolute inset-0 flex flex-col items-center justify-center z-10 transition-opacity duration-500">
-                    <div class="matrix-bg opacity-20 absolute inset-0"></div>
-                    <div class="z-20 text-center p-4">
-                        <div class="text-4xl mb-2 animate-bounce">⚡</div>
-                        <p class="text-xs text-cyan-400 font-mono typing-effect">AWAITING INPUT...</p>
-                        <p class="text-[10px] text-slate-200 mt-2 font-mono">System Ready</p>
+                <!-- Display Box -->
+                <div class="relative w-full aspect-square bg-[#070c18] rounded-xl border border-slate-800/80 flex flex-col items-center justify-center p-4 overflow-hidden shadow-inner group">
+                    <div id="idle-state" class="absolute inset-0 flex flex-col items-center justify-center z-10 transition-opacity duration-500">
+                        <div class="matrix-bg opacity-20 absolute inset-0"></div>
+                        <div class="z-20 text-center p-4">
+                            <div class="text-4xl mb-2 animate-bounce">⚡</div>
+                            <p class="text-xs text-cyan-400 font-mono">AWAITING INPUT...</p>
+                            <p class="text-[10px] text-slate-400 mt-2 font-mono" data-i18n="tipText">System Ready</p>
+                        </div>
+                    </div>
+
+                    <div id="qr-result" class="hidden z-20 bg-white p-4 rounded-lg shadow-lg transform scale-95 transition-transform duration-300 w-48 h-48 flex items-center justify-center">
+                        <div id="qrcode-container" class="w-full h-full"></div>
                     </div>
                 </div>
 
-                <div id="qr-result" class="hidden z-20 bg-white p-4 rounded-lg shadow-lg transform scale-95 transition-transform duration-300">
-                    <img id="qr-image" src="" alt="Generated QR Code Output" class="w-full h-full object-contain" />
+                <!-- Integrated Export Controls -->
+                <div id="download-container" class="w-full flex items-center gap-2 mt-4 pt-4 border-t border-slate-800/80">
+                    <select id="export-format" class="bg-[#070c18] border border-slate-700 text-slate-300 text-xs rounded-lg px-3 py-2.5 outline-none focus:border-cyan-500 cursor-pointer font-mono">
+                        <option value="png">PNG (Raster)</option>
+                        <option value="svg">SVG (Vector)</option>
+                    </select>
+                    <button id="download-btn" onclick="downloadTechQR()" aria-label="Export Generated QR Code" class="flex-1 flex items-center justify-center gap-2 bg-emerald-400 hover:bg-emerald-300 text-slate-950 font-bold text-xs rounded-lg py-2.5 px-4 transition-all shadow-lg shadow-emerald-500/10 cursor-pointer">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        <span data-i18n="btnDownload">Export</span>
+                    </button>
                 </div>
-            </div>
 
-            <div class="mt-4 text-center">
-                <p id="tip-text" class="text-xs text-slate-300 font-mono" data-i18n="tipText">
-                    Awaiting terminal parameters from left module...
-                </p>
-
-                <div id="download-container" class="w-full max-w-[360px] mx-auto flex items-center justify-center gap-3 mt-4">
-  
-</div>
-    
-    <select id="export-format" class="bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none cursor-pointer font-mono">
-        <option value="png">PNG</option>
-        <option value="svg">SVG (Vector)</option>
-    </select>
-
-    
-    <button id="download-btn" onclick="downloadTechQR()" aria-label="Export Generated QR Code" class="flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 font-bold py-2 px-4 rounded-xl shadow-lg transition-all transform active:scale-95 cursor-pointer text-xs">
-        <i data-lucide="download" class="w-4 h-4"></i>
-        <span>Export</span>
-    </button>
-</div>
             </div>
         </div>
     </main>
@@ -317,8 +314,8 @@
                 wifiSsid: "Network Name (SSID)", wifiPass: "Network Password",
                 phoneNum: "Phone Number", cardName: "Full Name", cardOrg: "Company",
                 cardCell: "Mobile Phone", cardMail: "Email Address", btnGenerate: "⚡ RUN MATRIX CORE",
-                previewTitle: "Terminal Preview", btnDownload: "Export PNG Vector",
-                tipText: "Awaiting terminal parameters from left module...",
+                previewTitle: "TERMINAL PREVIEW", btnDownload: "Export",
+                tipText: "System Ready",
                 proTitle: "Matrix Bulk Core", proDesc: "Batch compilation of QR matrices is restricted to premium accounts.",
                 proBtn: "UNLOCK CORE • $0.00/MO", errSsid: "Missing Network Parameter (SSID)", errPhone: "Missing Communications Number", errName: "Missing Personal Identity Marker",
                 quickFill: "Quick Fill:"
@@ -328,8 +325,8 @@
                 wifiSsid: "Netzwerkname (SSID)", wifiPass: "Netzwerkpasswort",
                 phoneNum: "Telefonnummer", cardName: "Vollständiger Name", cardOrg: "Unternehmen",
                 cardCell: "Mobiltelefon", cardMail: "E-Mail-Adresse", btnGenerate: "⚡ MATRIX-KERN AUSFÜHREN",
-                previewTitle: "Terminal-Vorschau", btnDownload: "PNG-Vektor exportieren",
-                tipText: "Warten auf Terminalparameter vom linken Modul...",
+                previewTitle: "TERMINAL-VORSCHAU", btnDownload: "Exportieren",
+                tipText: "System bereit",
                 proTitle: "Matrix-Massenkern", proDesc: "Die Batch-Kompilierung von QR-Matrizen ist Premium-Konten vorbehalten.",
                 proBtn: "KERN FREISCHALTEN • 0.00€/Monat", errSsid: "Fehlender Netzwerkparameter (SSID)", errPhone: "Fehlende Kommunikationsnummer", errName: "Fehlendes persönliches Identitätsmerkmal",
                 quickFill: "Schnellauswahl:"
@@ -339,8 +336,8 @@
                 wifiSsid: "Nome della rete (SSID)", wifiPass: "Password della rete",
                 phoneNum: "Numero di telefono", cardName: "Nome completo", cardOrg: "Azienda",
                 cardCell: "Cellulare", cardMail: "Indirizzo e-mail", btnGenerate: "⚡ ESEGUI CORE MATRIX",
-                previewTitle: "Anteprima del terminale", btnDownload: "Esporta vettore PNG",
-                tipText: "In attesa dei parametri del terminale dal modulo sinistro...",
+                previewTitle: "ANTEPRIMA TERMINALE", btnDownload: "Esporta",
+                tipText: "Sistema pronto",
                 proTitle: "Core Matrix di massa", proDesc: "La compilazione batch di matrici QR è limitata agli account premium.",
                 proBtn: "SBLOCCA CORE • €0.00/MESE", errSsid: "Parametro di rete mancante (SSID)", errPhone: "Numero di comunicazione mancante", errName: "Indicatore di identità personale mancante",
                 quickFill: "Compilazione rapida:"
@@ -350,8 +347,8 @@
                 wifiSsid: "Ağ Adı (SSID)", wifiPass: "Ağ Şifresi",
                 phoneNum: "Telefon Numarası", cardName: "Ad Soyad", cardOrg: "Şirket",
                 cardCell: "Cep Telefonu", cardMail: "E-posta Adresi", btnGenerate: "⚡ MATRİS ÇEKİRDEĞİNİ ÇALIŞTIR",
-                previewTitle: "Terminal Önizleme", btnDownload: "PNG Vektörünü Dışa Aktar",
-                tipText: "Sol modülden terminal parametreleri bekleniyor...",
+                previewTitle: "TERMİNAL ÖNİZLEME", btnDownload: "Dışa Aktar",
+                tipText: "Sistem Hazır",
                 proTitle: "Toplu Matris Çekirdeği", proDesc: "QR matrislerinin toplu derlenmesi premium hesaplarla sınırlıdır.",
                 proBtn: "ÇEKİRDEK KİLİDİNİ AÇ • $0.00/AY", errSsid: "Eksik Ağ Parametresi (SSID)", errPhone: "Eksik İletişim Numarası", errName: "Eksik Kişisel Kimlik İşaretçisi",
                 quickFill: "Hızlı Doldur:"
@@ -361,8 +358,8 @@
                 wifiSsid: "네트워크 이름 (SSID)", wifiPass: "네트워크 비밀번호",
                 phoneNum: "전화번호", cardName: "전체 이름", cardOrg: "회사명",
                 cardCell: "휴대폰 번호", cardMail: "이메일 주소", btnGenerate: "⚡ 매트릭스 코어 실행",
-                previewTitle: "터미널 실시간 미리보기", btnDownload: "무워터마크 PNG 내보내기",
-                tipText: "왼쪽 모듈의 터미널 매개변수 입력을 기다리는 중...",
+                previewTitle: "터미널 미리보기", btnDownload: "내보내기",
+                tipText: "시스템 준비 완료",
                 proTitle: "매트릭스 대량 컴파일", proDesc: "대규모 QR 매트릭스의 일괄 컴파일 기능은 프리미엄 계정 전용입니다.",
                 proBtn: "코어 해제 • 월 $0.00", errSsid: "네트워크 필수 매개변수(SSID) 누락", errPhone: "통신 단말기 번호 누락", errName: "개인 식별 마커 누락",
                 quickFill: "빠른 입력:"
@@ -372,8 +369,8 @@
                 wifiSsid: "无线网络名称 (SSID)", wifiPass: "无线网络密码",
                 phoneNum: "手机号码", cardName: "真实姓名", cardOrg: "公司名称",
                 cardCell: "移动电话", cardMail: "电子邮箱", btnGenerate: "⚡ 执行矩阵生成",
-                previewTitle: "终端实时预览", btnDownload: "导出无水印 PNG",
-                tipText: "正在等待左侧模块输入终端参数...",
+                previewTitle: "终端实时预览", btnDownload: "导出文件",
+                tipText: "系统就绪",
                 proTitle: "矩阵批量编译", proDesc: "批量生成大规模二维码阵列属于特权核心功能。",
                 proBtn: "解锁高级核心 • $0.00/月", errSsid: "缺少网络必要参数 (SSID)", errPhone: "通讯终端号码未填", errName: "身份标志名未输入",
                 quickFill: "快捷填充示例："
@@ -384,7 +381,7 @@
             currentLang = lang;
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
-                if (i18n[lang][key]) el.innerText = i18n[lang][key];
+                if (i18n[lang] && i18n[lang][key]) el.innerText = i18n[lang][key];
             });
             updatePlaceholders(lang);
         }
@@ -467,8 +464,10 @@
                 qrText = `BEGIN:VCARD\nVERSION:3.0\nN:${name}\nORG:${org}\nTEL:${cell}\nEMAIL:${mail}\nEND:VCARD`;
             }
 
-            const tempDiv = document.createElement('div');
-            new QRCode(tempDiv, {
+            const qrContainer = document.getElementById('qrcode-container');
+            qrContainer.innerHTML = ''; // 清空上一二维码内容
+
+            new QRCode(qrContainer, {
                 text: qrText,
                 width: 180,
                 height: 180,
@@ -477,44 +476,58 @@
                 correctLevel : QRCode.CorrectLevel.H
             });
 
+            const idleState = document.getElementById('idle-state');
+            const qrResult = document.getElementById('qr-result');
+            
+            idleState.style.opacity = '0';
             setTimeout(() => {
-                const qrImgSrc = tempDiv.querySelector('img').src;
-                const qrImage = document.getElementById('qr-image');
-                qrImage.src = qrImgSrc;
-
-                const idleState = document.getElementById('idle-state');
-                const qrResult = document.getElementById('qr-result');
-                
-                idleState.style.opacity = '0';
-                setTimeout(() => {
-                    idleState.style.display = 'none';
-                    qrResult.classList.remove('hidden'); 
-                    setTimeout(() => qrResult.classList.add('scale-100'), 10);
-                }, 300);
-
-                const downloadBtn = document.getElementById('download-btn');
-                if (downloadBtn) {
-                    downloadBtn.classList.remove('hidden');
-                    downloadBtn.classList.add('flex');
-                }
-                
-                const tipText = document.getElementById('tip-text');
-                if (tipText) {
-                    tipText.classList.add('hidden');
-                }
-            }, 100); 
+                idleState.style.display = 'none';
+                qrResult.classList.remove('hidden'); 
+                setTimeout(() => qrResult.classList.add('scale-100'), 10);
+            }, 300);
         }
 
         function downloadTechQR() {
-            const qrImg = document.getElementById('qr-image');
-            if (qrImg && qrImg.src) {
-                const link = document.createElement('a');
-                link.download = `matrix-qr-${currentMode}.png`;
-                link.href = qrImg.src;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
+            const formatSelect = document.getElementById('export-format');
+            const selectedFormat = formatSelect ? formatSelect.value.toLowerCase() : 'png';
+
+            const canvas = document.querySelector('#qrcode-container canvas');
+            const svgElement = document.querySelector('#qrcode-container svg');
+            const imgElement = document.querySelector('#qrcode-container img');
+
+            if (selectedFormat === 'svg') {
+                let svgData;
+                if (svgElement) {
+                    svgData = new XMLSerializer().serializeToString(svgElement);
+                } else if (canvas) {
+                    const imgData = canvas.toDataURL("image/png");
+                    svgData = `<svg xmlns="http://www.w3.org/2000/svg" width="${canvas.width}" height="${canvas.height}"><image href="${imgData}" width="100%" height="100%"/></svg>`;
+                } else if (imgElement && imgElement.src) {
+                    svgData = `<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180"><image href="${imgElement.src}" width="100%" height="100%"/></svg>`;
+                }
+
+                if (svgData) {
+                    const blob = new Blob([svgData], { type: "image/svg+xml;charset=utf-8" });
+                    const url = URL.createObjectURL(blob);
+                    triggerDownload(url, `matrix-qr-${currentMode}.svg`);
+                }
+            } else {
+                if (canvas) {
+                    const url = canvas.toDataURL("image/png");
+                    triggerDownload(url, `matrix-qr-${currentMode}.png`);
+                } else if (imgElement && imgElement.src) {
+                    triggerDownload(imgElement.src, `matrix-qr-${currentMode}.png`);
+                }
             }
+        }
+
+        function triggerDownload(url, filename) {
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
         }
 
         window.onload = function() {
@@ -593,7 +606,6 @@
             </div>
         </article>
 
-        
         <section class="geo-faq space-y-4">
             <h2 class="text-xl font-bold text-white tracking-tight">Frequently Asked Questions</h2>
             <div class="space-y-3">
