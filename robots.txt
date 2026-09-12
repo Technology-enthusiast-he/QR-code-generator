@@ -7,6 +7,8 @@ User-agent: GPTBot
 User-agent: OAI-SearchBot
 User-agent: ChatGPT-User
 User-agent: ClaudeBot
+User-agent: PerplexityBot
+User-agent: Google-Extended
 Allow: /
 Disallow: /api/
 
