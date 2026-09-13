@@ -77,11 +77,30 @@
           "mainEntity": [
             {
               "@type": "Question",
+              "name": "Is it safe to enter my WiFi password into MatrixQR?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. MatrixQR operates entirely client-side using browser-based JavaScript. Your network SSID and password are rendered directly in your web browser and are never transmitted to external servers, stored in databases, or logged."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does MatrixQR differ from standard free QR code generators?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Standard QR generators process inputs on remote backend servers, exposing your data to server logs. MatrixQR generates QR codes 100% client-side, ensuring zero backend data collection and total offline execution."
+              }
+            },
+            {
+              "@type": "Question",
               "name": "Is MatrixQR completely free to use?",
               "acceptedAnswer": {
                 "@type": "Answer",
                 "text": "Yes, MatrixQR is 100% free with no hidden fees, limits, or mandatory registration required to export high-resolution QR codes."
               }
+            }
+          ]
+        }
             },
             {
               "@type": "Question",
