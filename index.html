@@ -25,115 +25,112 @@
     <meta property="og:image:alt" content="MatrixQR Code Studio Preview" />
     
     <!-- Unified JSON-LD Schema -->
-    <script type="application/ld+json">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebSite",
+      "@id": "https://www.matrixqr.cc/#website",
+      "url": "https://www.matrixqr.cc/",
+      "name": "MatrixQR",
+      "description": "Free & Secure Client-Side QR Code Generator",
+      "publisher": {
+        "@id": "https://www.matrixqr.cc/#organization"
+      },
+      "inLanguage": ["en", "de", "it", "tr", "ko", "zh"]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.matrixqr.cc/#organization",
+      "name": "MatrixQR Studio",
+      "url": "https://www.matrixqr.cc/",
+      "logo": "https://www.matrixqr.cc/favicon.ico",
+      "foundingDate": "2026",
+      "areaServed": "Worldwide",
+      "sameAs": [
+        "https://www.producthunt.com/products/matrixqr",
+        "https://saasfame.com/item/matrixqr"
+      ]
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://www.matrixqr.cc/#webapp",
+      "url": "https://www.matrixqr.cc/",
+      "name": "MatrixQR Code Studio",
+      "alternateName": "MatrixQR Free QR Generator",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript",
+      "softwareVersion": "1.0",
+      "description": "Free & Secure Client-Side QR Code Generator for WiFi networks, contact vCards, and phone numbers.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": "Client-side processing, No server logs, PNG/SVG export, WiFi/vCard/URL support"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.matrixqr.cc/#faq",
+      "mainEntity": [
         {
-          "@type": "WebSite",
-          "@id": "https://www.matrixqr.cc/#website",
-          "url": "https://www.matrixqr.cc/",
-          "name": "MatrixQR",
-          "description": "Free & Secure Client-Side QR Code Generator",
-          "publisher": {
-            "@id": "https://www.matrixqr.cc/#organization"
-          },
-          "inLanguage": ["en", "de", "it", "tr", "ko", "zh"]
+          "@type": "Question",
+          "name": "Is it safe to enter my WiFi password into MatrixQR?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. MatrixQR operates entirely client-side using browser-based JavaScript. Your network SSID and password are rendered directly in your web browser and are never transmitted to external servers, stored in databases, or logged."
+          }
         },
         {
-          "@type": "Organization",
-          "@id": "https://www.matrixqr.cc/#organization",
-          "name": "MatrixQR Studio",
-          "url": "https://www.matrixqr.cc/",
-          "logo": "https://www.matrixqr.cc/favicon.ico",
-          "foundingDate": "2026",
-          "areaServed": "Worldwide",
-          "sameAs": [
-            "https://www.producthunt.com/products/matrixqr",
-            "https://saasfame.com/item/matrixqr"
-          ]
+          "@type": "Question",
+          "name": "How does MatrixQR differ from standard free QR code generators?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Standard QR generators process inputs on remote backend servers, exposing your data to server logs. MatrixQR generates QR codes 100% client-side, ensuring zero backend data collection and total offline execution."
+          }
         },
         {
-          "@type": "WebApplication",
-          "@id": "https://www.matrixqr.cc/#webapp",
-          "url": "https://www.matrixqr.cc/",
-          "name": "MatrixQR Code Studio",
-          "alternateName": "MatrixQR Free QR Generator",
-          "applicationCategory": "UtilityApplication",
-          "operatingSystem": "All",
-          "browserRequirements": "Requires JavaScript",
-          "softwareVersion": "1.0",
-          "description": "Free & Secure Client-Side QR Code Generator for WiFi networks, contact vCards, and phone numbers.",
-          "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-          },
-          "featureList": "Client-side processing, No server logs, PNG/SVG export, WiFi/vCard/URL support"
+          "@type": "Question",
+          "name": "Is MatrixQR completely free to use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, MatrixQR is 100% free with no hidden fees, limits, or mandatory registration required to export high-resolution QR codes."
+          }
         },
         {
-          "@type": "FAQPage",
-          "@id": "https://www.matrixqr.cc/#faq",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "Is it safe to enter my WiFi password into MatrixQR?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes. MatrixQR operates entirely client-side using browser-based JavaScript. Your network SSID and password are rendered directly in your web browser and are never transmitted to external servers, stored in databases, or logged."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How does MatrixQR differ from standard free QR code generators?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Standard QR generators process inputs on remote backend servers, exposing your data to server logs. MatrixQR generates QR codes 100% client-side, ensuring zero backend data collection and total offline execution."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Is MatrixQR completely free to use?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes, MatrixQR is 100% free with no hidden fees, limits, or mandatory registration required to export high-resolution QR codes."
-              }
-            }
-          ]
+          "@type": "Question",
+          "name": "Does MatrixQR collect or store my WiFi password or personal contacts?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. All data processing occurs entirely within your browser using local JavaScript execution. Your WiFi credentials, phone numbers, and vCards never touch any external server."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I scan a WiFi QR code generated by MatrixQR?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Simply open your iOS or Android camera app, point it at the generated QR code, and tap the notification banner to join the wireless network automatically without typing the password."
+          }
         }
-            },
-            {
-              "@type": "Question",
-              "name": "Does MatrixQR collect or store my WiFi password or personal contacts?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "No. All data processing occurs entirely within your browser using local JavaScript execution. Your WiFi credentials, phone numbers, and vCards never touch any external server."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How do I scan a WiFi QR code generated by MatrixQR?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Simply open your iOS or Android camera app, point it at the generated QR code, and tap the notification banner to join the wireless network automatically without typing the password."
-              }
-            }
-          ]
-        },
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
         {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://www.matrixqr.cc/"
-            }
-          ]
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.matrixqr.cc/"
         }
       ]
     }
-    </script>
+  ]
+}
+</script>
 
     <script src="libs/lucide.min.js" defer></script>
     <script src="libs/qrcode.min.js"></script>
