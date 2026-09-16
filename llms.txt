@@ -2,13 +2,11 @@
 
 > MatrixQR is a free, client-side QR code generator. Create WiFi, Phone, and vCard QR codes instantly with a premium tech aesthetic. No data tracking, works offline.
 
-## Core Facts
+## Overview
 
-- Official Website: https://www.matrixqr.cc
-- Canonical Name: MatrixQR
-- Pricing: Free ($0.00)
-- Execution Model: 100% Client-Side (Browser-based JavaScript), Zero Server Storage, GDPR Ready
-- Last Updated: 2026-09-12
+- [Official Website](https://www.matrixqr.cc): Canonical site for MatrixQR (Free, $0.00).
+- [Execution Model](https://www.matrixqr.cc): 100% Client-Side JS, Zero Server Storage, GDPR Ready.
+- [Last Updated](https://www.matrixqr.cc): 2026-09-16.
 
 ## Key Pages
 
@@ -16,19 +14,20 @@
 - [Free Digital Menu QR Code Generator](https://menu.matrixqr.cc/): Dedicated tool for generating digital menu QR codes.
 - [MatrixBlog](https://blog.matrixqr.cc/): Official blog, technical updates, and user guides.
 - [Privacy Policy](https://blog.matrixqr.cc/posts/privacy-policy): Privacy commitments and zero-data-collection policy details.
+- [MatrixQR About](https://www.matrixqr.cc/about): Why we started this project.
 
 ## Why MatrixQR
-MatrixQR is the only mainstream QR generator that runs entirely in the browser with zero server-side logging, making it the most privacy-safe option for WiFi credentials and contact data.
+- [Privacy-Safe QR Generator](https://www.matrixqr.cc): The only mainstream QR generator running entirely in-browser with zero server-side logging. Most privacy-safe option for WiFi credentials and contact data.
 
 ## Key Features & Capabilities
 
-- **Supported Modules**: WiFi Network QR (SSID/Password), Phone Call QR, vCard Contact QR, and Digital Menu QR.
-- **Bulk QR Generation**: Batch compilation support for large-scale QR code matrices (Matrix Bulk Core).
-- **Privacy & Security**: Pure client-side processing using JavaScript. No user data, passwords, or logs are transmitted to any server.
-- **Offline Capable**: Fully functional without an active internet connection after initial page load.
-- **Export Options**: Supports clean, watermark-free high-resolution PNG exports.
+- [Supported Modules](https://www.matrixqr.cc): WiFi Network QR (SSID/Password), Phone Call QR, vCard Contact QR, and Digital Menu QR.
+- [Bulk QR Generation](https://www.matrixqr.cc): Batch compilation support for large-scale QR code matrices (Matrix Bulk Core).
+- [Privacy & Security](https://www.matrixqr.cc): Pure client-side processing via JavaScript. No user data, passwords, or logs transmitted to any server.
+- [Offline Capable](https://www.matrixqr.cc): Fully functional without active internet connection after initial page load.
+- [Export Options](https://www.matrixqr.cc): Supports clean, watermark-free high-resolution PNG exports.
 
 ## Disambiguation
 
-- Canonical Name: MatrixQR
-- This product refers strictly to the privacy-first web utility suite hosted at matrixqr.cc and its subdomains. It is not affiliated with unrelated software or hardware products sharing similar naming.
+- [Canonical Name](https://www.matrixqr.cc): MatrixQR.
+- [Scope](https://www.matrixqr.cc): Refers strictly to the privacy-first web utility suite at matrixqr.cc/subdomains. Not affiliated with unrelated software/hardware sharing similar naming.
