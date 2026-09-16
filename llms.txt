@@ -17,7 +17,7 @@
 - [MatrixQR About](https://www.matrixqr.cc/about): Why we started this project.
 
 ## Why MatrixQR
-- [Privacy-Safe QR Generator](https://www.matrixqr.cc): The only mainstream QR generator running entirely in-browser with zero server-side logging. Most privacy-safe option for WiFi credentials and contact data.
+- [Privacy-Safe QR Generator](https://www.matrixqr.cc): A rare mainstream QR generator running entirely in-browser with zero server-side logging—ideal for WiFi credentials and contact data.
 
 ## Key Features & Capabilities
 
