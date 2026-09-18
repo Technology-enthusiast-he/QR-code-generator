@@ -287,7 +287,7 @@
                 </div>
             </div>
 
-            <!-- 📍 新增：自定义中心 Logo / 头像上传模块 📍 -->
+            
             <div class="pt-2 border-t border-slate-800/80">
                 <label class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="logoLabel">Center Logo (Optional)</label>
                 <div class="flex items-center gap-3">
@@ -376,7 +376,7 @@
     <script>
         let currentMode = 'wifi';
         let currentLang = 'en';
-        let customLogoBase64 = null; // 存储自定义 Logo Base64 数据
+        let customLogoBase64 = null; 
 
         const i18n = {
             en: {
@@ -508,7 +508,7 @@
             generateTechQR();
         }
 
-        // 📍 自定义 Logo 处理逻辑 📍
+        
         function handleLogoUpload(e) {
             const file = e.target.files[0];
             if (!file) return;
@@ -517,7 +517,7 @@
             reader.onload = function(event) {
                 customLogoBase64 = event.target.result;
                 
-                // 更新 UI 预览
+                
                 const previewImg = document.getElementById('logo-preview-img');
                 const placeholderIcon = document.getElementById('logo-placeholder-icon');
                 const removeBtn = document.getElementById('logo-remove-btn');
@@ -529,7 +529,7 @@
                 removeBtn.classList.remove('hidden');
                 btnText.innerText = i18n[currentLang].changeLogo || "Change Logo";
 
-                generateTechQR(); // 上传后自动触发重新生成
+                generateTechQR(); 
             };
             reader.readAsDataURL(file);
         }
@@ -549,7 +549,7 @@
             removeBtn.classList.add('hidden');
             btnText.innerText = i18n[currentLang].uploadLogo || "Upload Logo";
 
-            generateTechQR(); // 移除后触发重新生成
+            generateTechQR(); 
         }
 
         function openProModal() {
@@ -587,10 +587,10 @@
             const qrContainer = document.getElementById('qrcode-container');
             qrContainer.innerHTML = ''; 
 
-            // 生成最高容错率 (Level H) 的二维码画布
+            
             new QRCode(qrContainer, {
                 text: qrText,
-                width: 320,  // 使用高清分辨率绘制
+                width: 320,  
                 height: 320,
                 colorDark : "#020617",
                 colorLight : "#ffffff",
@@ -600,23 +600,23 @@
             setTimeout(() => {
                 const canvas = qrContainer.querySelector('canvas');
                 if (canvas) {
-                    // 如果上传了 Logo，利用 Canvas 原生 2D 上下文在中心绘制图像
+                    
                     if (customLogoBase64) {
                         const ctx = canvas.getContext('2d');
                         const logo = new Image();
                         logo.src = customLogoBase64;
                         logo.onload = function() {
-                            const logoSize = canvas.width * 0.22; // 将 Logo 控制在安全的 22% 面积以内
+                            const logoSize = canvas.width * 0.22; 
                             const x = (canvas.width - logoSize) / 2;
                             const y = (canvas.height - logoSize) / 2;
 
-                            // 1. 绘制白底圆角衬底（防止干扰二维码识别点）
+                            
                             ctx.fillStyle = '#ffffff';
                             ctx.beginPath();
                             ctx.roundRect(x - 4, y - 4, logoSize + 8, logoSize + 8, 8);
                             ctx.fill();
 
-                            // 2. 绘制圆角 Logo
+                            
                             ctx.save();
                             ctx.beginPath();
                             ctx.roundRect(x, y, logoSize, logoSize, 6);
@@ -624,7 +624,7 @@
                             ctx.drawImage(logo, x, y, logoSize, logoSize);
                             ctx.restore();
 
-                            // 替换原 img 标签以便显示
+                            
                             const img = qrContainer.querySelector('img');
                             if (img) img.src = canvas.toDataURL('image/png');
                         };
@@ -634,7 +634,7 @@
                     }
                 }
 
-                // 呈现 UI 视角
+                
                 const idleState = document.getElementById('idle-state');
                 const qrResult = document.getElementById('qr-result');
                 
