@@ -288,7 +288,7 @@
                 </div>
             </div>
 
-            <!-- 🎨 动态彩色二维码配置模块 -->
+            
             <div class="pt-4 border-t border-slate-800/80 space-y-4">
                 <div class="flex items-center justify-between">
                     <label class="text-xs font-bold uppercase text-cyan-400 flex items-center gap-1.5" data-i18n="colorCustomLabel">
@@ -332,7 +332,7 @@
                         </div>
                     </div>
 
-                    <!-- 预设色板 -->
+                    
                     <div class="space-y-1.5">
                         <label class="block text-[11px] font-medium text-slate-400" data-i18n="presetPresets">Color Presets:</label>
                         <div class="flex flex-wrap gap-2 text-[11px]">
@@ -579,7 +579,7 @@
             generateTechQR();
         }
 
-        // --- 色彩开关与逻辑处理 ---
+        
         function toggleColorControls() {
             const enabled = document.getElementById('enable-custom-color').checked;
             const controls = document.getElementById('color-controls');
@@ -712,33 +712,33 @@
                 if (canvas) {
                     const ctx = canvas.getContext('2d');
 
-                    // 如果开启自定义且配置了定位角颜色，在 Canvas 上覆盖定位角
+                    
                     if (isCustomColor && cornerOuter) {
-                        const cornerSize = canvas.width * 0.22; // 定位角大小比例
+                        const cornerSize = canvas.width * 0.22; 
                         const positions = [
-                            [0, 0],                                  // 左上
-                            [canvas.width - cornerSize, 0],          // 右上
-                            [0, canvas.height - cornerSize]          // 左下
+                            [0, 0],                                  
+                            [canvas.width - cornerSize, 0],          
+                            [0, canvas.height - cornerSize]          
                         ];
 
                         positions.forEach(([x, y]) => {
-                            // 1. 背景擦除
+                            
                             ctx.fillStyle = lightColor;
                             ctx.fillRect(x, y, cornerSize, cornerSize);
 
-                            // 2. 绘制定位角外框
+                            
                             ctx.fillStyle = cornerOuter;
                             ctx.beginPath();
                             ctx.roundRect(x, y, cornerSize, cornerSize, 12);
                             ctx.fill();
 
-                            // 3. 绘制中间空隙
+                            
                             ctx.fillStyle = lightColor;
                             ctx.beginPath();
                             ctx.roundRect(x + 6, y + 6, cornerSize - 12, cornerSize - 12, 8);
                             ctx.fill();
 
-                            // 4. 绘制中心小块
+                            
                             ctx.fillStyle = cornerInner || darkColor;
                             ctx.beginPath();
                             ctx.roundRect(x + 12, y + 12, cornerSize - 24, cornerSize - 24, 6);
@@ -746,7 +746,7 @@
                         });
                     }
 
-                    // 绘制 Center Logo
+                    
                     if (customLogoBase64) {
                         const logo = new Image();
                         logo.src = customLogoBase64;
