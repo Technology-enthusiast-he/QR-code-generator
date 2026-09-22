@@ -223,7 +223,7 @@
 
     <!-- Main Content -->
     <main class="max-w-6xl mx-auto px-4 py-8 flex-1 w-full grid grid-cols-1 md:grid-cols-12 gap-8 items-start z-10">
-        <!-- Left Column: Inputs -->
+        <!-- Left Column: Inputs & Dynamic Color Generator -->
         <div class="bg-slate-900/40 backdrop-blur-md rounded-2xl border border-slate-800/80 p-6 md:col-span-7 space-y-6 shadow-xl">
             <div id="form-wifi" class="space-y-4 tab-form">
                 <div>
@@ -288,7 +288,65 @@
                 </div>
             </div>
 
-            
+            <!-- 🎨 动态彩色二维码配置模块 -->
+            <div class="pt-4 border-t border-slate-800/80 space-y-4">
+                <div class="flex items-center justify-between">
+                    <label class="text-xs font-bold uppercase text-cyan-400 flex items-center gap-1.5" data-i18n="colorCustomLabel">
+                        🎨 Color Customization
+                    </label>
+                    <label class="flex items-center gap-2 text-xs text-slate-400 cursor-pointer">
+                        <input type="checkbox" id="enable-custom-color" onchange="toggleColorControls()" class="rounded bg-slate-950 border-slate-700 text-cyan-500 focus:ring-0 cursor-pointer">
+                        <span data-i18n="enableColors">Enable Custom Colors</span>
+                    </label>
+                </div>
+
+                <div id="color-controls" class="space-y-4 hidden opacity-50 transition-all duration-300">
+                    <div class="grid grid-cols-2 gap-3 text-xs">
+                        <div>
+                            <label class="block text-slate-400 mb-1" data-i18n="darkColor">QR Code Color</label>
+                            <div class="flex items-center gap-2 bg-slate-950 p-1.5 rounded-lg border border-slate-800">
+                                <input type="color" id="qr-dark-color" value="#0c2340" onchange="onColorChange()" class="w-7 h-7 rounded cursor-pointer border-0 bg-transparent">
+                                <span id="text-dark-color" class="font-mono text-slate-300 text-[11px]">#0c2340</span>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-slate-400 mb-1" data-i18n="lightColor">Background Color</label>
+                            <div class="flex items-center gap-2 bg-slate-950 p-1.5 rounded-lg border border-slate-800">
+                                <input type="color" id="qr-light-color" value="#f7f5ec" onchange="onColorChange()" class="w-7 h-7 rounded cursor-pointer border-0 bg-transparent">
+                                <span id="text-light-color" class="font-mono text-slate-300 text-[11px]">#f7f5ec</span>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-slate-400 mb-1" data-i18n="cornerOuterColor">Corner Outer Frame</label>
+                            <div class="flex items-center gap-2 bg-slate-950 p-1.5 rounded-lg border border-slate-800">
+                                <input type="color" id="corner-outer-color" value="#c5a059" onchange="onColorChange()" class="w-7 h-7 rounded cursor-pointer border-0 bg-transparent">
+                                <span id="text-corner-outer" class="font-mono text-slate-300 text-[11px]">#c5a059</span>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-slate-400 mb-1" data-i18n="cornerInnerColor">Corner Inner Dot</label>
+                            <div class="flex items-center gap-2 bg-slate-950 p-1.5 rounded-lg border border-slate-800">
+                                <input type="color" id="corner-inner-color" value="#0c2340" onchange="onColorChange()" class="w-7 h-7 rounded cursor-pointer border-0 bg-transparent">
+                                <span id="text-corner-inner" class="font-mono text-slate-300 text-[11px]">#0c2340</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 预设色板 -->
+                    <div class="space-y-1.5">
+                        <label class="block text-[11px] font-medium text-slate-400" data-i18n="presetPresets">Color Presets:</label>
+                        <div class="flex flex-wrap gap-2 text-[11px]">
+                            <button type="button" onclick="applyColorPreset('#0c2340', '#f7f5ec', '#c5a059', '#0c2340')" class="px-2 py-1 rounded bg-slate-800 border border-slate-700 hover:border-amber-400/50 text-slate-300">黑金 Vintage Gold</button>
+                            <button type="button" onclick="applyColorPreset('#1e3a8a', '#eff6ff', '#3b82f6', '#1d4ed8')" class="px-2 py-1 rounded bg-slate-800 border border-slate-700 hover:border-blue-400/50 text-slate-300">科技蓝 Cyber Blue</button>
+                            <button type="button" onclick="applyColorPreset('#064e3b', '#ecfdf5', '#10b981', '#047857')" class="px-2 py-1 rounded bg-slate-800 border border-slate-700 hover:border-emerald-400/50 text-slate-300">森林绿 Emerald Green</button>
+                            <button type="button" onclick="applyColorPreset('#831843', '#fdf2f8', '#ec4899', '#be185d')" class="px-2 py-1 rounded bg-slate-800 border border-slate-700 hover:border-pink-400/50 text-slate-300">玫瑰粉 Rose Pink</button>
+                            <button type="button" onclick="applyColorPreset('#431407', '#fff7ed', '#f97316', '#c2410c')" class="px-2 py-1 rounded bg-slate-800 border border-slate-700 hover:border-orange-400/50 text-slate-300">暖阳橙 Sunset Orange</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center Logo Options -->
             <div class="pt-2 border-t border-slate-800/80">
                 <label class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="logoLabel">Center Logo (Optional)</label>
                 <div class="flex items-center gap-3">
@@ -390,7 +448,9 @@
                 proTitle: "Matrix Bulk Core", proDesc: "Batch compilation of QR matrices is restricted to premium accounts.",
                 proBtn: "UNLOCK CORE • $0.00/MO", errSsid: "Missing Network Parameter (SSID)", errPhone: "Missing Communications Number", errName: "Missing Personal Identity Marker",
                 quickFill: "Quick Fill:",
-                logoLabel: "Center Logo (Optional)", uploadLogo: "Upload Logo", changeLogo: "Change Logo"
+                logoLabel: "Center Logo (Optional)", uploadLogo: "Upload Logo", changeLogo: "Change Logo",
+                colorCustomLabel: "🎨 Color Customization", enableColors: "Enable Custom Colors",
+                darkColor: "QR Code Color", lightColor: "Background Color", cornerOuterColor: "Corner Outer Frame", cornerInnerColor: "Corner Inner Dot", presetPresets: "Color Presets:"
             },
             de: {
                 navWifi: "WLAN QR", navPhone: "Telefon QR", navVcard: "vCard QR", navMenu: "Menü-QR", navPro: "Bulk QR",
@@ -402,7 +462,9 @@
                 proTitle: "Matrix-Massenkern", proDesc: "Die Batch-Kompilierung von QR-Matrizen ist Premium-Konten vorbehalten.",
                 proBtn: "KERN FREISCHALTEN • 0.00€/Monat", errSsid: "Fehlender Netzwerkparameter (SSID)", errPhone: "Fehlende Kommunikationsnummer", errName: "Fehlendes persönliches Identitätsmerkmal",
                 quickFill: "Schnellauswahl:",
-                logoLabel: "Zentrales Logo (Optional)", uploadLogo: "Logo hochladen", changeLogo: "Logo ändern"
+                logoLabel: "Zentrales Logo (Optional)", uploadLogo: "Logo hochladen", changeLogo: "Logo ändern",
+                colorCustomLabel: "🎨 Farbanpassung", enableColors: "Benutzerdefinierte Farben aktivieren",
+                darkColor: "QR-Code-Farbe", lightColor: "Hintergrundfarbe", cornerOuterColor: "Ecken-Außenrahmen", cornerInnerColor: "Ecken-Innenpunkt", presetPresets: "Farb-Voreinstellungen:"
             },
             it: {
                 navWifi: "WiFi QR", navPhone: "Telefono QR", navVcard: "vCard QR", navMenu: "Menu QR", navPro: "Bulk QR",
@@ -414,7 +476,9 @@
                 proTitle: "Core Matrix di massa", proDesc: "La compilazione batch di matrici QR è limitata agli account premium.",
                 proBtn: "SBLOCCA CORE • €0.00/MESE", errSsid: "Parametro di rete mancante (SSID)", errPhone: "Numero di comunicazione mancante", errName: "Indicatore di identità personale mancante",
                 quickFill: "Compilazione rapida:",
-                logoLabel: "Logo centrale (Opzionale)", uploadLogo: "Carica Logo", changeLogo: "Cambia Logo"
+                logoLabel: "Logo centrale (Opzionale)", uploadLogo: "Carica Logo", changeLogo: "Cambia Logo",
+                colorCustomLabel: "🎨 Personalizzazione Colore", enableColors: "Abilita Colori Personalizzati",
+                darkColor: "Colore Codice QR", lightColor: "Colore di Sfondo", cornerOuterColor: "Cornice Esterna Angolo", cornerInnerColor: "Punto Interno Angolo", presetPresets: "Preset Colore:"
             },
             tr: {
                 navWifi: "WiFi QR", navPhone: "Telefon QR", navVcard: "vCard QR", navMenu: "Menü QR", navPro: "Toplu QR",
@@ -426,7 +490,9 @@
                 proTitle: "Toplu Matris Çekirdeği", proDesc: "QR matrislerinin toplu derlenmesi premium hesaplarla sınırlıdır.",
                 proBtn: "ÇEKİRDEK KİLİDİNİ AÇ • $0.00/AY", errSsid: "Eksik Ağ Parametresi (SSID)", errPhone: "Eksik İletişim Numarası", errName: "Eksik Kişisel Kimlik İşaretçisi",
                 quickFill: "Hızlı Doldur:",
-                logoLabel: "Merkez Logo (İsteğe Bağlı)", uploadLogo: "Logo Yükle", changeLogo: "Logoyu Değiştir"
+                logoLabel: "Merkez Logo (İsteğe Bağlı)", uploadLogo: "Logo Yükle", changeLogo: "Logoyu Değiştir",
+                colorCustomLabel: "🎨 Renk Özelleştirme", enableColors: "Özel Renkleri Etkinleştir",
+                darkColor: "QR Kod Rengi", lightColor: "Arka Plan Rengi", cornerOuterColor: "Köşe Dış Çerçeve", cornerInnerColor: "Köşe İç Nokta", presetPresets: "Renk Önayarları:"
             },
             ko: {
                 navWifi: "WiFi QR", navPhone: "전화번호 QR", navVcard: "전자 명함", navMenu: "메뉴 QR", navPro: "대량 생성",
@@ -438,7 +504,9 @@
                 proTitle: "매트릭스 대량 컴파일", proDesc: "대규모 QR 매트릭스의 일괄 컴파일 기능은 프리미엄 계정 전용입니다.",
                 proBtn: "코어 해제 • 월 $0.00", errSsid: "네트워크 필수 매개변수(SSID) 누락", errPhone: "통신 단말기 번호 누락", errName: "개인 식별 마커 누락",
                 quickFill: "빠른 입력:",
-                logoLabel: "중앙 로고 (선택 사항)", uploadLogo: "로고 업로드", changeLogo: "로고 변경"
+                logoLabel: "중앙 로고 (선택 사항)", uploadLogo: "로고 업로드", changeLogo: "로고 변경",
+                colorCustomLabel: "🎨 색상 사용자 지정", enableColors: "사용자 지정 색상 활성화",
+                darkColor: "QR 코드 색상", lightColor: "배경 색상", cornerOuterColor: "모서리 외부 프레임", cornerInnerColor: "모서리 내부 점", presetPresets: "색상 사전 설정:"
             },
             zh: {
                 navWifi: "WiFi 二维码", navPhone: "手机号二维码", navVcard: "电子名片", navMenu: "菜单二维码", navPro: "批量生成",
@@ -450,7 +518,9 @@
                 proTitle: "矩阵批量编译", proDesc: "批量生成大规模二维码阵列属于特权核心功能。",
                 proBtn: "解锁高级核心 • $0.00/月", errSsid: "缺少网络必要参数 (SSID)", errPhone: "通讯终端号码未填", errName: "身份标志名未输入",
                 quickFill: "快捷填充示例：",
-                logoLabel: "中心 Logo / 头像 (可选)", uploadLogo: "上传 Logo", changeLogo: "更换 Logo"
+                logoLabel: "中心 Logo / 头像 (可选)", uploadLogo: "上传 Logo", changeLogo: "更换 Logo",
+                colorCustomLabel: "🎨 彩色二维码自定义", enableColors: "开启自定义颜色",
+                darkColor: "码体主颜色", lightColor: "背景颜色", cornerOuterColor: "定位角外框", cornerInnerColor: "定位角内点", presetPresets: "快速预设配色："
             }
         };
 
@@ -509,7 +579,42 @@
             generateTechQR();
         }
 
-        
+        // --- 色彩开关与逻辑处理 ---
+        function toggleColorControls() {
+            const enabled = document.getElementById('enable-custom-color').checked;
+            const controls = document.getElementById('color-controls');
+            if (enabled) {
+                controls.classList.remove('hidden');
+                setTimeout(() => controls.classList.remove('opacity-50'), 10);
+            } else {
+                controls.classList.add('opacity-50');
+                setTimeout(() => controls.classList.add('hidden'), 300);
+            }
+            generateTechQR();
+        }
+
+        function onColorChange() {
+            document.getElementById('text-dark-color').innerText = document.getElementById('qr-dark-color').value;
+            document.getElementById('text-light-color').innerText = document.getElementById('qr-light-color').value;
+            document.getElementById('text-corner-outer').innerText = document.getElementById('corner-outer-color').value;
+            document.getElementById('text-corner-inner').innerText = document.getElementById('corner-inner-color').value;
+            generateTechQR();
+        }
+
+        function applyColorPreset(dark, light, cornerOuter, cornerInner) {
+            document.getElementById('qr-dark-color').value = dark;
+            document.getElementById('qr-light-color').value = light;
+            document.getElementById('corner-outer-color').value = cornerOuter;
+            document.getElementById('corner-inner-color').value = cornerInner;
+            
+            if(!document.getElementById('enable-custom-color').checked) {
+                document.getElementById('enable-custom-color').checked = true;
+                toggleColorControls();
+            } else {
+                onColorChange();
+            }
+        }
+
         function handleLogoUpload(e) {
             const file = e.target.files[0];
             if (!file) return;
@@ -517,7 +622,6 @@
             const reader = new FileReader();
             reader.onload = function(event) {
                 customLogoBase64 = event.target.result;
-                
                 
                 const previewImg = document.getElementById('logo-preview-img');
                 const placeholderIcon = document.getElementById('logo-placeholder-icon');
@@ -585,25 +689,65 @@
                 qrText = `BEGIN:VCARD\nVERSION:3.0\nN:${name}\nORG:${org}\nTEL:${cell}\nEMAIL:${mail}\nEND:VCARD`;
             }
 
+            const isCustomColor = document.getElementById('enable-custom-color').checked;
+            const darkColor = isCustomColor ? document.getElementById('qr-dark-color').value : "#020617";
+            const lightColor = isCustomColor ? document.getElementById('qr-light-color').value : "#ffffff";
+            const cornerOuter = isCustomColor ? document.getElementById('corner-outer-color').value : null;
+            const cornerInner = isCustomColor ? document.getElementById('corner-inner-color').value : null;
+
             const qrContainer = document.getElementById('qrcode-container');
             qrContainer.innerHTML = ''; 
 
-            
             new QRCode(qrContainer, {
                 text: qrText,
                 width: 320,  
                 height: 320,
-                colorDark : "#020617",
-                colorLight : "#ffffff",
+                colorDark : darkColor,
+                colorLight : lightColor,
                 correctLevel : QRCode.CorrectLevel.H
             });
 
             setTimeout(() => {
                 const canvas = qrContainer.querySelector('canvas');
                 if (canvas) {
-                    
+                    const ctx = canvas.getContext('2d');
+
+                    // 如果开启自定义且配置了定位角颜色，在 Canvas 上覆盖定位角
+                    if (isCustomColor && cornerOuter) {
+                        const cornerSize = canvas.width * 0.22; // 定位角大小比例
+                        const positions = [
+                            [0, 0],                                  // 左上
+                            [canvas.width - cornerSize, 0],          // 右上
+                            [0, canvas.height - cornerSize]          // 左下
+                        ];
+
+                        positions.forEach(([x, y]) => {
+                            // 1. 背景擦除
+                            ctx.fillStyle = lightColor;
+                            ctx.fillRect(x, y, cornerSize, cornerSize);
+
+                            // 2. 绘制定位角外框
+                            ctx.fillStyle = cornerOuter;
+                            ctx.beginPath();
+                            ctx.roundRect(x, y, cornerSize, cornerSize, 12);
+                            ctx.fill();
+
+                            // 3. 绘制中间空隙
+                            ctx.fillStyle = lightColor;
+                            ctx.beginPath();
+                            ctx.roundRect(x + 6, y + 6, cornerSize - 12, cornerSize - 12, 8);
+                            ctx.fill();
+
+                            // 4. 绘制中心小块
+                            ctx.fillStyle = cornerInner || darkColor;
+                            ctx.beginPath();
+                            ctx.roundRect(x + 12, y + 12, cornerSize - 24, cornerSize - 24, 6);
+                            ctx.fill();
+                        });
+                    }
+
+                    // 绘制 Center Logo
                     if (customLogoBase64) {
-                        const ctx = canvas.getContext('2d');
                         const logo = new Image();
                         logo.src = customLogoBase64;
                         logo.onload = function() {
@@ -611,13 +755,11 @@
                             const x = (canvas.width - logoSize) / 2;
                             const y = (canvas.height - logoSize) / 2;
 
-                            
-                            ctx.fillStyle = '#ffffff';
+                            ctx.fillStyle = lightColor;
                             ctx.beginPath();
                             ctx.roundRect(x - 4, y - 4, logoSize + 8, logoSize + 8, 8);
                             ctx.fill();
 
-                            
                             ctx.save();
                             ctx.beginPath();
                             ctx.roundRect(x, y, logoSize, logoSize, 6);
@@ -625,7 +767,6 @@
                             ctx.drawImage(logo, x, y, logoSize, logoSize);
                             ctx.restore();
 
-                            
                             const img = qrContainer.querySelector('img');
                             if (img) img.src = canvas.toDataURL('image/png');
                         };
@@ -635,7 +776,6 @@
                     }
                 }
 
-                
                 const idleState = document.getElementById('idle-state');
                 const qrResult = document.getElementById('qr-result');
                 
