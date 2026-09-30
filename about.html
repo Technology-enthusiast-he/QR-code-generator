@@ -16,17 +16,32 @@
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "MatrixQR Studio",
-  "url": "https://www.matrixqr.cc/",
-  "logo": {
-    "@type": "ImageObject",
-    "url": "https://www.matrixqr.cc/favicon-64x64.png"
-  },
-  "description": "MatrixQR Studio builds privacy-first, client-side QR tools. All vCard, WiFi, and menu data is processed in-browser—never stored on centralized servers.",
-  "sameAs": [
-    "https://blog.matrixqr.cc/",
-    "https://menu.matrixqr.cc/"
+  "@graph": [
+    {
+      "@type": "AboutPage",
+      "@id": "https://www.matrixqr.cc/about/#webpage",
+      "url": "https://www.matrixqr.cc/about",
+      "name": "About MatrixQR Suite",
+      "description": "About MatrixQR: MatrixQR is a studio, tech blog, and digital menu platform designed for absolute privacy and client-side reliability.",
+      "mainEntity": {
+        "@id": "https://www.matrixqr.cc/#organization"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.matrixqr.cc/#organization",
+      "name": "MatrixQR Studio",
+      "url": "https://www.matrixqr.cc/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.matrixqr.cc/favicon-64x64.png"
+      },
+      "description": "MatrixQR Studio builds privacy-first, client-side QR tools. All vCard, WiFi, and menu data is processed in-browser—never stored on centralized servers.",
+      "sameAs": [
+        "https://blog.matrixqr.cc/",
+        "https://menu.matrixqr.cc/"
+      ]
+    }
   ]
 }
 </script>
