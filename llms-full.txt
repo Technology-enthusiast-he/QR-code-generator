@@ -64,7 +64,7 @@ MatrixQR adheres to strict privacy-by-design principles:
 
 ## Usage Guide
 
-1. **Navigate to the Studio**: Open [https://www.matrixqr.cc/](https://www.matrixqr.cc/).
+1. **Navigate to the Studio**: Open https://www.matrixqr.cc/.
 2. **Select Type**: Choose between URL, WiFi, vCard, or Plain Text tabs.
 3. **Enter Data**: Fill in the required fields.
 4. **Customize Visuals**:
