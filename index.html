@@ -4,9 +4,9 @@
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Offline QR Code Generator | Free Client-Side WiFi & vCard QR Generator - MatrixQR</title>
-    <meta name="description" content="100% offline QR code generator working entirely in your browser. Create private WiFi, vCard, and text QR codes with zero server logs and no data uploads.">
-    <meta name="keywords" content="QR code generator, WiFi QR, vCard QR, free QR code, MatrixQR, client-side QR generator, offline tool">
+    <title>Offline QR Code Generator | Free Client-Side WiFi, URL & vCard QR Generator - MatrixQR</title>
+    <meta name="description" content="100% offline QR code generator working entirely in your browser. Create private WiFi, URL, vCard, and text QR codes with zero server logs and no data uploads.">
+    <meta name="keywords" content="QR code generator, WiFi QR, URL QR, vCard QR, free QR code, MatrixQR, client-side QR generator, offline tool">
     <meta name="author" content="MatrixQR Team">
     <link rel="canonical" href="https://www.matrixqr.cc/" />
     <link rel="icon" type="image/png" href="/favicon-64x64.png" sizes="64x64">
@@ -15,7 +15,7 @@
     
     <!-- Open Graph -->
 <meta property="og:title" content="MatrixQR | Free & Secure Client-Side QR Code Generator" />
-<meta property="og:description" content="MatrixQR is a free & secure client-side QR code generator. Create WiFi, Phone, and vCard QR codes instantly with zero server data tracking and offline capability." />
+<meta property="og:description" content="MatrixQR is a free & secure client-side QR code generator. Create WiFi, URL, Phone, and vCard QR codes instantly with zero server data tracking and offline capability." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.matrixqr.cc/" />
 <meta property="og:image" content="https://www.matrixqr.cc/og-cover.png" />
@@ -26,8 +26,8 @@
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="MatrixQR | Free & Secure Client-Side QR Code Generator" />
-<meta name="twitter:description" content="MatrixQR is a free & secure client-side QR code generator. Create WiFi, Phone, and vCard QR codes instantly with zero server data tracking and offline capability." />
-<meta name="twitter:image" content=""https://www.matrixqr.cc/og-cover.png" />
+<meta name="twitter:description" content="MatrixQR is a free & secure client-side QR code generator. Create WiFi, URL, Phone, and vCard QR codes instantly with zero server data tracking and offline capability." />
+<meta name="twitter:image" content="https://www.matrixqr.cc/og-cover.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="MatrixQR privacy-first offline QR code generator preview" />
@@ -71,7 +71,7 @@
       "operatingSystem": "All",
       "browserRequirements": "Requires JavaScript",
       "softwareVersion": "1.0",
-      "description": "Free & Secure Client-Side QR Code Generator for WiFi networks, contact vCards, and phone numbers.",
+      "description": "Free & Secure Client-Side QR Code Generator for WiFi networks, URL links, contact vCards, and phone numbers.",
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -207,9 +207,12 @@
 
     <!-- Navigation Tabs -->
     <section class="max-w-6xl mx-auto w-full px-4 mt-8 z-10" aria-label="QR Code Generator Navigation">
-        <div class="grid grid-cols-2 md:grid-cols-5 gap-3 bg-slate-900/40 p-1.5 rounded-xl border border-slate-800/60">
+        <div class="grid grid-cols-2 md:grid-cols-6 gap-3 bg-slate-900/40 p-1.5 rounded-xl border border-slate-800/60">
             <button onclick="switchTab('wifi')" id="nav-wifi" aria-label="Generate WiFi QR Code" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer bg-slate-800 text-cyan-400 border border-slate-700/50 shadow-inner">
                 <i data-lucide="wifi" class="w-4 h-4"></i> <span data-i18n="navWifi">WiFi QR</span>
+            </button>
+            <button onclick="switchTab('url')" id="nav-url" aria-label="Generate Website URL QR Code" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer text-slate-400 hover:text-slate-200 border border-transparent">
+                <i data-lucide="link" class="w-4 h-4"></i> <span data-i18n="navUrl">URL QR</span>
             </button>
             <button onclick="switchTab('phone')" id="nav-phone" aria-label="Generate Phone QR Code" class="flex items-center justify-center gap-2 py-3 px-4 rounded-lg text-sm font-semibold transition-all cursor-pointer text-slate-400 hover:text-slate-200 border border-transparent">
                 <i data-lucide="phone" class="w-4 h-4"></i> <span data-i18n="navPhone">Phone QR</span>
@@ -250,6 +253,23 @@
                     </button>
                     <button type="button" onclick="fillData('wifi', {ssid: 'Office_Guest', pass: 'Welcome2026'})" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-cyan-400 rounded-lg border border-slate-700/50 transition-colors">
                         🏢 Office Guest
+                    </button>
+                </div>
+            </div>
+
+            <div id="form-url" class="space-y-4 tab-form hidden">
+                <div>
+                    <label for="url-link" class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="urlLink">Website URL</label>
+                    <input type="url" id="url-link" placeholder="https://www.matrixqr.cc" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-500">
+                </div>
+                <!-- URL Quick Fill -->
+                <div class="pt-1 flex items-center gap-2 flex-wrap text-xs">
+                    <span class="text-slate-300" data-i18n="quickFill">Quick Fill:</span>
+                    <button type="button" onclick="fillData('url', {link: 'https://www.matrixqr.cc/'})" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-cyan-400 rounded-lg border border-slate-700/50 transition-colors">
+                        🌐 MatrixQR
+                    </button>
+                    <button type="button" onclick="fillData('url', {link: 'https://www.google.com'})" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-cyan-400 rounded-lg border border-slate-700/50 transition-colors">
+                        🔍 Google
                     </button>
                 </div>
             </div>
@@ -447,84 +467,84 @@
 
         const i18n = {
             en: {
-                navWifi: "WiFi QR", navPhone: "Phone QR", navVcard: "vCard QR", navMenu: "Menu QR", navPro: "Bulk QR",
-                wifiSsid: "Network Name (SSID)", wifiPass: "Network Password",
+                navWifi: "WiFi QR", navUrl: "URL QR", navPhone: "Phone QR", navVcard: "vCard QR", navMenu: "Menu QR", navPro: "Bulk QR",
+                wifiSsid: "Network Name (SSID)", wifiPass: "Network Password", urlLink: "Website URL",
                 phoneNum: "Phone Number", cardName: "Full Name", cardOrg: "Company",
                 cardCell: "Mobile Phone", cardMail: "Email Address", btnGenerate: "⚡ RUN MATRIX CORE",
                 previewTitle: "TERMINAL PREVIEW", btnDownload: "Export",
                 tipText: "System Ready",
                 proTitle: "Matrix Bulk Core", proDesc: "Batch compilation of QR matrices is restricted to premium accounts.",
-                proBtn: "UNLOCK CORE • $0.00/MO", errSsid: "Missing Network Parameter (SSID)", errPhone: "Missing Communications Number", errName: "Missing Personal Identity Marker",
+                proBtn: "UNLOCK CORE • $0.00/MO", errSsid: "Missing Network Parameter (SSID)", errUrl: "Missing Website URL Parameter", errPhone: "Missing Communications Number", errName: "Missing Personal Identity Marker",
                 quickFill: "Quick Fill:",
                 logoLabel: "Center Logo (Optional)", uploadLogo: "Upload Logo", changeLogo: "Change Logo",
                 colorCustomLabel: "🎨 Color Customization", enableColors: "Enable Custom Colors",
                 darkColor: "QR Code Color", lightColor: "Background Color", cornerOuterColor: "Corner Outer Frame", cornerInnerColor: "Corner Inner Dot", presetPresets: "Color Presets:"
             },
             de: {
-                navWifi: "WLAN QR", navPhone: "Telefon QR", navVcard: "vCard QR", navMenu: "Menü-QR", navPro: "Bulk QR",
-                wifiSsid: "Netzwerkname (SSID)", wifiPass: "Netzwerkpasswort",
+                navWifi: "WLAN QR", navUrl: "URL QR", navPhone: "Telefon QR", navVcard: "vCard QR", navMenu: "Menü-QR", navPro: "Bulk QR",
+                wifiSsid: "Netzwerkname (SSID)", wifiPass: "Netzwerkpasswort", urlLink: "Website-URL",
                 phoneNum: "Telefonnummer", cardName: "Vollständiger Name", cardOrg: "Unternehmen",
                 cardCell: "Mobiltelefon", cardMail: "E-Mail-Adresse", btnGenerate: "⚡ MATRIX-KERN AUSFÜHREN",
                 previewTitle: "TERMINAL-VORSCHAU", btnDownload: "Exportieren",
                 tipText: "System bereit",
                 proTitle: "Matrix-Massenkern", proDesc: "Die Batch-Kompilierung von QR-Matrizen ist Premium-Konten vorbehalten.",
-                proBtn: "KERN FREISCHALTEN • 0.00€/Monat", errSsid: "Fehlender Netzwerkparameter (SSID)", errPhone: "Fehlende Kommunikationsnummer", errName: "Fehlendes persönliches Identitätsmerkmal",
+                proBtn: "KERN FREISCHALTEN • 0.00€/Monat", errSsid: "Fehlender Netzwerkparameter (SSID)", errUrl: "Fehlender Website-URL-Parameter", errPhone: "Fehlende Kommunikationsnummer", errName: "Fehlendes persönliches Identitätsmerkmal",
                 quickFill: "Schnellauswahl:",
                 logoLabel: "Zentrales Logo (Optional)", uploadLogo: "Logo hochladen", changeLogo: "Logo ändern",
                 colorCustomLabel: "🎨 Farbanpassung", enableColors: "Benutzerdefinierte Farben aktivieren",
                 darkColor: "QR-Code-Farbe", lightColor: "Hintergrundfarbe", cornerOuterColor: "Ecken-Außenrahmen", cornerInnerColor: "Ecken-Innenpunkt", presetPresets: "Farb-Voreinstellungen:"
             },
             it: {
-                navWifi: "WiFi QR", navPhone: "Telefono QR", navVcard: "vCard QR", navMenu: "Menu QR", navPro: "Bulk QR",
-                wifiSsid: "Nome della rete (SSID)", wifiPass: "Password della rete",
+                navWifi: "WiFi QR", navUrl: "URL QR", navPhone: "Telefono QR", navVcard: "vCard QR", navMenu: "Menu QR", navPro: "Bulk QR",
+                wifiSsid: "Nome della rete (SSID)", wifiPass: "Password della rete", urlLink: "URL del sito web",
                 phoneNum: "Numero di telefono", cardName: "Nome completo", cardOrg: "Azienda",
                 cardCell: "Cellulare", cardMail: "Indirizzo e-mail", btnGenerate: "⚡ ESEGUI CORE MATRIX",
                 previewTitle: "ANTEPRIMA TERMINALE", btnDownload: "Esporta",
                 tipText: "Sistema pronto",
                 proTitle: "Core Matrix di massa", proDesc: "La compilazione batch di matrici QR è limitata agli account premium.",
-                proBtn: "SBLOCCA CORE • €0.00/MESE", errSsid: "Parametro di rete mancante (SSID)", errPhone: "Numero di comunicazione mancante", errName: "Indicatore di identità personale mancante",
+                proBtn: "SBLOCCA CORE • €0.00/MESE", errSsid: "Parametro di rete mancante (SSID)", errUrl: "Parametro URL del sito mancante", errPhone: "Numero di comunicazione mancante", errName: "Indicatore di identità personale mancante",
                 quickFill: "Compilazione rapida:",
                 logoLabel: "Logo centrale (Opzionale)", uploadLogo: "Carica Logo", changeLogo: "Cambia Logo",
                 colorCustomLabel: "🎨 Personalizzazione Colore", enableColors: "Abilita Colori Personalizzati",
                 darkColor: "Colore Codice QR", lightColor: "Colore di Sfondo", cornerOuterColor: "Cornice Esterna Angolo", cornerInnerColor: "Punto Interno Angolo", presetPresets: "Preset Colore:"
             },
             tr: {
-                navWifi: "WiFi QR", navPhone: "Telefon QR", navVcard: "vCard QR", navMenu: "Menü QR", navPro: "Toplu QR",
-                wifiSsid: "Ağ Adı (SSID)", wifiPass: "Ağ Şifresi",
+                navWifi: "WiFi QR", navUrl: "URL QR", navPhone: "Telefon QR", navVcard: "vCard QR", navMenu: "Menü QR", navPro: "Toplu QR",
+                wifiSsid: "Ağ Adı (SSID)", wifiPass: "Ağ Şifresi", urlLink: "Web Sitesi URL'si",
                 phoneNum: "Telefon Numarası", cardName: "Ad Soyad", cardOrg: "Şirket",
                 cardCell: "Cep Telefonu", cardMail: "E-posta Adresi", btnGenerate: "⚡ MATRİS ÇEKİRDEĞİNİ ÇALIŞTIR",
                 previewTitle: "TERMİNAL ÖNİZLEME", btnDownload: "Dışa Aktar",
                 tipText: "Sistem Hazır",
                 proTitle: "Toplu Matris Çekirdeği", proDesc: "QR matrislerinin toplu derlenmesi premium hesaplarla sınırlıdır.",
-                proBtn: "ÇEKİRDEK KİLİDİNİ AÇ • $0.00/AY", errSsid: "Eksik Ağ Parametresi (SSID)", errPhone: "Eksik İletişim Numarası", errName: "Eksik Kişisel Kimlik İşaretçisi",
+                proBtn: "ÇEKİRDEK KİLİDİNİ AÇ • $0.00/AY", errSsid: "Eksik Ağ Parametresi (SSID)", errUrl: "Eksik Web Sitesi URL Parametresi", errPhone: "Eksik İletişim Numarası", errName: "Eksik Kişisel Kimlik İşaretçisi",
                 quickFill: "Hızlı Doldur:",
                 logoLabel: "Merkez Logo (İsteğe Bağlı)", uploadLogo: "Logo Yükle", changeLogo: "Logoyu Değiştir",
                 colorCustomLabel: "🎨 Renk Özelleştirme", enableColors: "Özel Renkleri Etkinleştir",
                 darkColor: "QR Kod Rengi", lightColor: "Arka Plan Rengi", cornerOuterColor: "Köşe Dış Çerçeve", cornerInnerColor: "Köşe İç Nokta", presetPresets: "Renk Önayarları:"
             },
             ko: {
-                navWifi: "WiFi QR", navPhone: "전화번호 QR", navVcard: "전자 명함", navMenu: "메뉴 QR", navPro: "대량 생성",
-                wifiSsid: "네트워크 이름 (SSID)", wifiPass: "네트워크 비밀번호",
+                navWifi: "WiFi QR", navUrl: "URL QR", navPhone: "전화번호 QR", navVcard: "전자 명함", navMenu: "메뉴 QR", navPro: "대량 생성",
+                wifiSsid: "네트워크 이름 (SSID)", wifiPass: "네트워크 비밀번호", urlLink: "웹사이트 URL",
                 phoneNum: "전화번호", cardName: "전체 이름", cardOrg: "회사명",
                 cardCell: "휴대폰 번호", cardMail: "이메일 주소", btnGenerate: "⚡ 매트릭스 코어 실행",
                 previewTitle: "터미널 미리보기", btnDownload: "내보내기",
                 tipText: "시스템 준비 완료",
                 proTitle: "매트릭스 대량 컴파일", proDesc: "대규모 QR 매트릭스의 일괄 컴파일 기능은 프리미엄 계정 전용입니다.",
-                proBtn: "코어 해제 • 월 $0.00", errSsid: "네트워크 필수 매개변수(SSID) 누락", errPhone: "통신 단말기 번호 누락", errName: "개인 식별 마커 누락",
+                proBtn: "코어 해제 • 월 $0.00", errSsid: "네트워크 필수 매개변수(SSID) 누락", errUrl: "웹사이트 URL 필수 매개변수 누락", errPhone: "통신 단말기 번호 누락", errName: "개인 식별 마커 누락",
                 quickFill: "빠른 입력:",
                 logoLabel: "중앙 로고 (선택 사항)", uploadLogo: "로고 업로드", changeLogo: "로고 변경",
                 colorCustomLabel: "🎨 색상 사용자 지정", enableColors: "사용자 지정 색상 활성화",
                 darkColor: "QR 코드 색상", lightColor: "배경 색상", cornerOuterColor: "모서리 외부 프레임", cornerInnerColor: "모서리 내부 점", presetPresets: "색상 사전 설정:"
             },
             zh: {
-                navWifi: "WiFi 二维码", navPhone: "手机号二维码", navVcard: "电子名片", navMenu: "菜单二维码", navPro: "批量生成",
-                wifiSsid: "无线网络名称 (SSID)", wifiPass: "无线网络密码",
+                navWifi: "WiFi 二维码", navUrl: "网址二维码", navPhone: "手机号二维码", navVcard: "电子名片", navMenu: "菜单二维码", navPro: "批量生成",
+                wifiSsid: "无线网络名称 (SSID)", wifiPass: "无线网络密码", urlLink: "网页网址 (URL)",
                 phoneNum: "手机号码", cardName: "真实姓名", cardOrg: "公司名称",
                 cardCell: "移动电话", cardMail: "电子邮箱", btnGenerate: "⚡ 执行矩阵生成",
                 previewTitle: "终端实时预览", btnDownload: "导出文件",
                 tipText: "系统就绪",
                 proTitle: "矩阵批量编译", proDesc: "批量生成大规模二维码阵列属于特权核心功能。",
-                proBtn: "解锁高级核心 • $0.00/月", errSsid: "缺少网络必要参数 (SSID)", errPhone: "通讯终端号码未填", errName: "身份标志名未输入",
+                proBtn: "解锁高级核心 • $0.00/月", errSsid: "缺少网络必要参数 (SSID)", errUrl: "缺少网页网址参数 (URL)", errPhone: "通讯终端号码未填", errName: "身份标志名未输入",
                 quickFill: "快捷填充示例：",
                 logoLabel: "中心 Logo / 头像 (可选)", uploadLogo: "上传 Logo", changeLogo: "更换 Logo",
                 colorCustomLabel: "🎨 彩色二维码自定义", enableColors: "开启自定义颜色",
@@ -543,14 +563,15 @@
 
         function updatePlaceholders(lang) {
             const placeholders = {
-                en: { ssid: "e.g., CyberNet_5G", phone: "e.g., +1 234 567 8900", name: "John Doe", org: "Matrix Labs Ltd." },
-                de: { ssid: "z.B. CyberNet_5G", phone: "z.B. +49 170 1234567", name: "Max Mustermann", org: "Matrix GmbH" },
-                it: { ssid: "es. CyberNet_5G", phone: "es. +39 333 1234567", name: "Mario Rossi", org: "Matrix S.r.l." },
-                tr: { ssid: "örn. CyberNet_5G", phone: "örn. +90 532 123 4567", name: "Ahmet Yılmaz", org: "Matrix Şti." },
-                ko: { ssid: "예: CyberNet_5G", phone: "예: +82 10 1234 5678", name: "홍길동", org: "매트릭스 주식회사" },
-                zh: { ssid: "例如：CyberNet_5G", phone: "例如：+86 13800138000", name: "张三", org: "科技矩阵有限公司" }
+                en: { ssid: "e.g., CyberNet_5G", url: "https://www.matrixqr.cc", phone: "e.g., +1 234 567 8900", name: "John Doe", org: "Matrix Labs Ltd." },
+                de: { ssid: "z.B. CyberNet_5G", url: "https://www.matrixqr.cc", phone: "z.B. +49 170 1234567", name: "Max Mustermann", org: "Matrix GmbH" },
+                it: { ssid: "es. CyberNet_5G", url: "https://www.matrixqr.cc", phone: "es. +39 333 1234567", name: "Mario Rossi", org: "Matrix S.r.l." },
+                tr: { ssid: "örn. CyberNet_5G", url: "https://www.matrixqr.cc", phone: "örn. +90 532 123 4567", name: "Ahmet Yılmaz", org: "Matrix Şti." },
+                ko: { ssid: "예: CyberNet_5G", url: "https://www.matrixqr.cc", phone: "예: +82 10 1234 5678", name: "홍길동", org: "매트릭스 주식회사" },
+                zh: { ssid: "例如：CyberNet_5G", url: "https://www.matrixqr.cc", phone: "例如：+86 13800138000", name: "张三", org: "科技矩阵有限公司" }
             };
             document.getElementById('wifi-ssid').placeholder = placeholders[lang].ssid;
+            document.getElementById('url-link').placeholder = placeholders[lang].url;
             document.getElementById('phone-num').placeholder = placeholders[lang].phone;
             document.getElementById('card-name').placeholder = placeholders[lang].name;
             document.getElementById('card-org').placeholder = placeholders[lang].org;
@@ -558,7 +579,7 @@
 
         function switchTab(mode) {
             currentMode = mode;
-            ['wifi', 'phone', 'vcard'].forEach(m => {
+            ['wifi', 'url', 'phone', 'vcard'].forEach(m => {
                 const btn = document.getElementById(`nav-${m}`);
                 const form = document.getElementById(`form-${m}`);
                 if (m === mode) {
@@ -576,6 +597,8 @@
             if (tab === 'wifi') {
                 document.getElementById('wifi-ssid').value = data.ssid || '';
                 document.getElementById('wifi-pass').value = data.pass || '';
+            } else if (tab === 'url') {
+                document.getElementById('url-link').value = data.link || '';
             } else if (tab === 'phone') {
                 document.getElementById('phone-num').value = data.num || '';
             } else if (tab === 'vcard') {
@@ -684,6 +707,13 @@
                 const pass = document.getElementById('wifi-pass').value.trim();
                 if(!ssid) return alert(i18n[currentLang].errSsid);
                 qrText = `WIFI:T:WPA;S:${ssid};P:${pass};;`;
+            } else if (currentMode === 'url') {
+                let link = document.getElementById('url-link').value.trim();
+                if(!link) return alert(i18n[currentLang].errUrl);
+                if (!/^https?:\/\//i.test(link)) {
+                    link = 'https://' + link;
+                }
+                qrText = link;
             } else if (currentMode === 'phone') {
                 const phone = document.getElementById('phone-num').value.trim();
                 if(!phone) return alert(i18n[currentLang].errPhone);
