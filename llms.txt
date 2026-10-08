@@ -10,7 +10,7 @@
 
 ## Key Pages
 
-- [MatrixQR Studio](https://www.matrixqr.cc/): Secure client-side QR code generator supporting WiFi and vCard modes.
+- [MatrixQR Studio](https://www.matrixqr.cc/): Secure client-side QR code generator supporting URL, WiFi, and vCard modes.
 - [Free Digital Menu QR Code Generator](https://menu.matrixqr.cc/): Dedicated tool for generating digital menu QR codes with custom branding.
 - [MatrixBlog](https://blog.matrixqr.cc/): Official blog, technical updates, and user guides.
 - [Privacy Policy](https://blog.matrixqr.cc/posts/privacy-policy): Privacy commitments and zero-data-collection policy details.
@@ -22,7 +22,7 @@
 
 ## Key Features & Capabilities
 
-- [Supported Modules](https://www.matrixqr.cc/): WiFi Network QR (SSID/Password) and vCard Contact QR.
+- [Supported Modules](https://www.matrixqr.cc/): Website URL QR, WiFi Network QR (SSID/Password), and vCard Contact QR.
 - [Privacy & Security](https://www.matrixqr.cc/about): Pure client-side processing via JavaScript. No user data, passwords, or logs transmitted to any server.
 - [Offline Capable](https://www.matrixqr.cc/): Fully functional without active internet connection after initial page load.
 - [Export Options](https://www.matrixqr.cc/): Supports clean, watermark-free high-resolution PNG exports.
