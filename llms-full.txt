@@ -41,14 +41,18 @@ MatrixQR is built to address privacy concerns associated with commercial QR code
 
 ## Supported QR Code Types
 
-1. **URL / Link**: Encode web addresses, deep links, or specific page paths.
+1. **Website URL**:
+   - Fields: Web Addresses, Domain Names, or Deep Links.
+   - Purpose: Direct instant browser navigation to the targeted link upon scanning.
 2. **WiFi Network Configuration**:
-   - Fields: Network Name (SSID), Password, Encryption Type (WPA/WPA2/WPA3/WEP/None), Hidden SSID toggle.
-   - Purpose: Allows mobile devices to join WiFi networks seamlessly by scanning.
+   - Fields: Network Name (SSID), Network Password, WPA/WPA2 Security.
+   - Purpose: Allows mobile devices to join WiFi networks seamlessly by scanning with zero manual typing.
 3. **vCard (Electronic Business Card)**:
-   - Fields: Full Name, Organization, Title, Phone Number, Email, Address, Website.
-   - Purpose: Direct import of contact details into phone address books upon scanning.
-4. **Plain Text**: Encode arbitrary text messages, cryptographic addresses, or plain notes up to standard QR payload capacity.
+   - Fields: Full Name, Company/Organization, Mobile Phone, Email Address.
+   - Purpose: Direct import of contact details into mobile address books upon scanning.
+4. **Phone Number**:
+   - Fields: Phone/Mobile Communications Number.
+   - Purpose: Instant phone call dialing link upon scanning.
 
 ---
 
