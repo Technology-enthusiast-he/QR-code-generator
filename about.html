@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO & E-E-A-T Meta Tags -->
-    <title>About MatrixQR Ecosystem | Secure, Privacy-First Utility Suite</title>
-    <meta name="description" content="About MatrixQR: MatrixQR is a studio, tech blog, and digital menu platform. It's designed for absolute privacy, instant loading, and client-side reliability.">
-    <meta name="keywords" content="About MatrixQR, Privacy-First QR Code, Client-Side QR Generator, Digital Menu Platform, MatrixQR Ecosystem">
+    <title>About MatrixQR | Privacy-First QR Code Tools</title>
+    <meta name="description" content="Learn about MatrixQR, a privacy-focused QR code toolkit with browser-based QR generation and a connected digital menu and educational blog.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.matrixqr.cc/about">
     <link rel="icon" type="image/png" href="/favicon-64x64.png" sizes="64x64">
@@ -26,7 +25,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="About MatrixQR Ecosystem | Secure, Privacy-First Utility Suite" />
 <meta name="twitter:description" content="About MatrixQR: MatrixQR is a studio, tech blog, and digital menu platform. It's designed for absolute privacy, instant loading, and client-side reliability." />
-<meta name="twitter:image" content=""https://www.matrixqr.cc/og-cover.png" />
+<meta name="twitter:image" content="https://www.matrixqr.cc/og-cover.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="MatrixQR privacy-first offline QR code generator preview" />
@@ -80,42 +79,7 @@
             line-height: 1.65;
         }
     </style>
-    <!-- Google tag (gtag.js) 延迟加载优化 -->
-<script>
-  // 定义加载函数
-  function loadGtag() {
-    if (window.gtagLoaded) return;
-    window.gtagLoaded = true;
-
-    // 1. 动态注入 gtag 脚本
-    const script = document.createElement('script');
-    script.async = true;
-    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-F2RCJE29QT';
-    document.head.appendChild(script);
-
-    // 2. 初始化数据层
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    window.gtag = gtag;
-    gtag('js', new Date());
-    gtag('config', 'G-F2RCJE29QT');
-  }
-
-  // 3. 触发策略：用户首次交互（滚动、点击、移动等）或 4 秒后自动加载
-  const events = ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart', 'click'];
-  const triggerLoad = () => {
-    loadGtag();
-    events.forEach(event => window.removeEventListener(event, triggerLoad, { passive: true }));
-  };
-
-  events.forEach(event => {
-    window.addEventListener(event, triggerLoad, { once: true, passive: true });
-  });
-
-  // 保底机制：如果用户一直没有交互，页面加载 4 秒后也会自动加载统计脚本
-  setTimeout(loadGtag, 4000);
-</script>
-</head>
+    </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans antialiased">
 
     <!-- Header Navigation -->
