@@ -10,33 +10,62 @@ jobs:
   indexnow:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
       - name: Send changed URLs to IndexNow
         env:
           INDEXNOW_KEY: 128b266e75164b4d9796276d274dbf5d
         run: |
           set -euo pipefail
-          key_location="https://www.matrixqr.cc/${INDEXNOW_KEY}.txt"
 
-          urls='["https://www.matrixqr.cc/"]'
+          changed_files="$(git diff-tree --no-commit-id --name-only -r "$GITHUB_SHA")"
+          url_lines=""
 
-          if git diff-tree --no-commit-id --name-only -r "$GITHUB_SHA" | grep -qx 'about.html'; then
-            urls='["https://www.matrixqr.cc/","https://www.matrixqr.cc/about"]'
+          if printf '%s\n' "$changed_files" | grep -Eq '(^|/)index\.html$'; then
+            url_lines="${url_lines}https://www.matrixqr.cc/\n"
+          fi
+          if printf '%s\n' "$changed_files" | grep -qx 'about.html'; then
+            url_lines="${url_lines}https://www.matrixqr.cc/about\n"
+          fi
+          if printf '%s\n' "$changed_files" | grep -qx 'llms.txt'; then
+            url_lines="${url_lines}https://www.matrixqr.cc/llms.txt\n"
+          fi
+          if printf '%s\n' "$changed_files" | grep -qx 'llms-full.txt'; then
+            url_lines="${url_lines}https://www.matrixqr.cc/llms-full.txt\n"
+          fi
+          if printf '%s\n' "$changed_files" | grep -qx 'robots.txt'; then
+            url_lines="${url_lines}https://www.matrixqr.cc/robots.txt\n"
+          fi
+          if printf '%s\n' "$changed_files" | grep -qx 'sitemap.xml'; then
+            url_lines="${url_lines}https://www.matrixqr.cc/sitemap.xml\n"
           fi
 
-          if git diff-tree --no-commit-id --name-only -r "$GITHUB_SHA" | grep -qx 'llms.txt'; then
-            urls="$(printf '%s' "$urls" | python -c 'import json,sys; x=json.load(sys.stdin); x.append("https://www.matrixqr.cc/llms.txt"); print(json.dumps(x))')"
+          if [ -z "$url_lines" ]; then
+            echo "No indexable public URL changed; skipping IndexNow."
+            exit 0
           fi
 
-          if git diff-tree --no-commit-id --name-only -r "$GITHUB_SHA" | grep -qx 'llms-full.txt'; then
-            urls="$(printf '%s' "$urls" | python -c 'import json,sys; x=json.load(sys.stdin); x.append("https://www.matrixqr.cc/llms-full.txt"); print(json.dumps(x))')"
-          fi
+          url_list="$(printf '%b' "$url_lines" | sort -u | python -c 'import json,sys; print(json.dumps([x for x in sys.stdin.read().splitlines() if x]))')"
 
+          python - "$url_list" "$INDEXNOW_KEY" <<'PY' > payload.json
+          import json, sys
+          urls = json.loads(sys.argv[1])
+          key = sys.argv[2]
+          print(json.dumps({
+              "host": "www.matrixqr.cc",
+              "key": key,
+              "keyLocation": f"https://www.matrixqr.cc/{key}.txt",
+              "urlList": urls,
+          }))
+          PY
+
+          cat payload.json
           curl --fail-with-body -X POST "https://api.indexnow.org/indexnow" \
             -H "Content-Type: application/json; charset=utf-8" \
-            -d "$(python -c 'import json,os; print(json.dumps({"host":"www.matrixqr.cc","key":os.environ["INDEXNOW_KEY"],"keyLocation":"https://www.matrixqr.cc/"+os.environ["INDEXNOW_KEY"]+".txt","urlList":json.loads(os.environ["URLS"])}))' )" \
-            || true
-        env:
-          URLS: '["https://www.matrixqr.cc/"]'
+            --data-binary @payload.json
 
       - name: Validate sitemap is reachable
         run: |
