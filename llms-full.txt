@@ -1,107 +1,76 @@
-# MatrixQR QR Code Generator - Full Documentation
+# MatrixQR QR Code Generator — Full Documentation
 
-> MatrixQR is a free, secure, privacy-focused, and client-side QR code generator with a premium tech aesthetic. Designed for privacy-conscious users and developers, all QR code generation logic runs locally in the user's browser with zero server interaction.
+> MatrixQR is a free browser-based QR code generator for WiFi credentials, website URLs, phone numbers, and vCard contact details. QR payload construction and rendering take place locally in the browser.
 
----
+**Last reviewed:** 2026-10-24  
+**Main site:** https://www.matrixqr.cc/
 
-## Table of Contents
+## Contents
 
-1. [Overview & Philosophy](#overview--philosophy)
-2. [Core Features](#core-features)
-3. [Supported QR Code Types](#supported-qr-code-types)
-4. [Privacy & Security Architecture](#privacy--security-architecture)
-5. [Usage Guide](#usage-guide)
-6. [Technical Architecture](#technical-architecture)
-7. [Frequently Asked Questions (FAQ)](#frequently-asked-questions-faq)
-8. [Links & Resources](#links--resources)
+1. Overview
+2. Supported QR types
+3. Privacy model
+4. Customization and export
+5. How to use MatrixQR
+6. Important limitations
+7. Official resources
 
----
+## 1. Overview
 
-## Overview & Philosophy
+MatrixQR provides a simple QR generation interface for common personal and small-business tasks. The main application is served as a static web experience and uses browser-side JavaScript to create QR codes.
 
-MatrixQR is built to address privacy concerns associated with commercial QR code generators that often track usage, redirect links through proprietary servers, or charge for basic custom features.
+The tool is free to use and does not require account registration to generate a QR code.
 
-- **URL**: https://www.matrixqr.cc/
-- **Primary Goal**: Provide an instant, transparent, and beautiful QR code generation utility.
-- **License**: Free to use for personal and commercial purposes.
+## 2. Supported QR Types
 
----
+### Website URL
+Enter a web address. If the address does not start with `http://` or `https://`, the interface adds `https://` before encoding it.
 
-## Core Features
+### WiFi network
+Enter the WiFi network name (SSID) and password. The browser constructs a WiFi QR payload for compatible phone cameras and scanners.
 
-- **100% Client-Side Processing**: No network calls are made during the creation, customization, or rendering of QR codes.
-- **High Customization Options**:
-  - Color styling (Foreground / Background gradient or solid colors).
-  - Shape customization (square modules, rounded dots, custom eyes).
-  - Branding integration (Embedding custom PNG/SVG logos in the center).
-- **Export Formats**: High-resolution PNG and vector-based SVG formats for print and digital publishing.
-- **Offline Reliability**: Can be saved or installed as a PWA / offline static utility.
+### Phone number
+Enter a phone number. The generated QR payload uses a `tel:` link.
 
----
+### vCard contact
+Enter a name and, optionally, organization, phone number, and email address. The tool encodes those fields into a vCard 3.0 payload.
 
-## Supported QR Code Types
+## 3. Privacy Model
 
-1. **Website URL**:
-   - Fields: Web Addresses, Domain Names, or Deep Links.
-   - Purpose: Direct instant browser navigation to the targeted link upon scanning.
-2. **WiFi Network Configuration**:
-   - Fields: Network Name (SSID), Network Password, WPA/WPA2 Security.
-   - Purpose: Allows mobile devices to join WiFi networks seamlessly by scanning with zero manual typing.
-3. **vCard (Electronic Business Card)**:
-   - Fields: Full Name, Company/Organization, Mobile Phone, Email Address.
-   - Purpose: Direct import of contact details into mobile address books upon scanning.
-4. **Phone Number**:
-   - Fields: Phone/Mobile Communications Number.
-   - Purpose: Instant phone call dialing link upon scanning.
+- QR payload construction and rendering are performed in the browser.
+- The text, WiFi credentials, URL, phone number, and contact fields entered for QR generation are used locally to construct the QR payload.
+- The QR payload is not uploaded to a MatrixQR backend for generation.
 
----
+This describes the QR-generation flow. It is not a blanket guarantee about unrelated browser extensions, device software, network monitoring, or third-party services opened after scanning a QR code. Use a trusted, updated browser and device.
 
-## Privacy & Security Architecture
+## 4. Customization and Export
 
-MatrixQR adheres to strict privacy-by-design principles:
+The interface includes foreground/background color customization and separate QR corner-color controls.
 
-- **No Server Processing**: QR codes are rendered locally via HTML5 `<canvas>` or SVG manipulation engines.
-- **Zero Telemetry on Payloads**: The text, passwords, URLs, or contact information entered into the generator never leave the local client environment.
-- **Static Hosting**: Served via CDN-cached static files on Vercel without active backend API database connections.
+Available downloads include PNG and an SVG wrapper. The current SVG wrapper contains an embedded PNG image; it is **not a true vector QR export**. For applications that require scalable vector paths, verify the export format before relying on it for print production.
 
----
+## 5. How to Use MatrixQR
 
-## Usage Guide
+1. Open https://www.matrixqr.cc/.
+2. Choose WiFi, URL, Phone, or vCard.
+3. Enter the information needed for that QR type.
+4. Optionally adjust the available color controls.
+5. Generate the QR code and download it.
 
-1. **Navigate to the Studio**: Open https://www.matrixqr.cc/.
-2. **Select Type**: Choose between URL, WiFi, vCard, or Plain Text tabs.
-3. **Enter Data**: Fill in the required fields.
-4. **Customize Visuals**:
-   - Adjust colors and corner shapes.
-   - Upload an optional center logo (image is processed locally).
-5. **Download / Export**: Click to download the generated QR code in `.png` or `.svg` format.
+Before sharing a QR code, scan-test it with a phone or QR reader to confirm that the encoded information is correct.
 
----
+## 6. Important Limitations
 
-## Technical Architecture
+- A generated QR code is static: it encodes the supplied data and does not automatically update when the underlying URL or contact details change.
+- A QR code that contains a URL depends on that destination remaining available.
+- The SVG download currently wraps a raster PNG image and should not be represented as vector artwork.
+- Do not claim that the application is guaranteed to work fully offline unless offline asset caching/service-worker behavior is independently verified.
 
-- **Hosting Platform**: Vercel (Edge Static Hosting).
-- **Domain**: `matrixqr.cc`
-- **Frontend Stack**: Modern JavaScript / HTML5 Canvas / Web APIs.
-- **Routing & Sitemap**: Clean URL structure, verified via Google Search Console, with sitemap integration.
+## 7. Official Resources
 
----
-
-## Frequently Asked Questions (FAQ)
-
-### Q: Do MatrixQR codes expire?
-A: No. MatrixQR generates static QR codes. The encoded data is written directly into the matrix payload and will work indefinitely as long as the underlying target URL or data remains active.
-
-### Q: Are my WiFi passwords or contact details safe?
-A: Yes. Because all computations occur in your local web browser, no server ever receives or logs your inputs.
-
-### Q: Can I use MatrixQR for commercial projects?
-A: Yes. All exported QR code graphics can be used freely for commercial print materials, packaging, marketing campaigns, or personal use.
-
----
-
-## Links & Resources
-
-- [Main Application Studio](https://www.matrixqr.cc/)
+- [Main QR Generator](https://www.matrixqr.cc/)
+- [About MatrixQR](https://www.matrixqr.cc/about)
+- [MatrixQR Official Blog](https://blog.matrixqr.cc/)
+- [Digital Menu QR Tool](https://menu.matrixqr.cc/)
 - [LLM Context File](https://www.matrixqr.cc/llms.txt)
-- [Full Documentation File](https://www.matrixqr.cc/llms-full.txt)
+- [Full Documentation](https://www.matrixqr.cc/llms-full.txt)
