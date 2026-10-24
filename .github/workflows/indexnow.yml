@@ -10,19 +10,34 @@ jobs:
   indexnow:
     runs-on: ubuntu-latest
     steps:
-      - name: Send IndexNow Request to Bing
+      - name: Send changed URLs to IndexNow
+        env:
+          INDEXNOW_KEY: 128b266e75164b4d9796276d274dbf5d
         run: |
-          curl -v -X POST "https://api.indexnow.org/indexnow" \
-          -H "Content-Type: application/json; charset=utf-8" \
-          -d '{
-            "host": "www.matrixqr.cc",
-            "key": "128b266e75164b4d9796276d274dbf5d",
-            "keyLocation": "https://www.matrixqr.cc/128b266e75164b4d9796276d274dbf5d.txt",
-            "urlList": [
-              "https://www.matrixqr.cc/"
-            ]
-          }'
+          set -euo pipefail
+          key_location="https://www.matrixqr.cc/${INDEXNOW_KEY}.txt"
 
-      - name: Ping Google Sitemap
+          urls='["https://www.matrixqr.cc/"]'
+
+          if git diff-tree --no-commit-id --name-only -r "$GITHUB_SHA" | grep -qx 'about.html'; then
+            urls='["https://www.matrixqr.cc/","https://www.matrixqr.cc/about"]'
+          fi
+
+          if git diff-tree --no-commit-id --name-only -r "$GITHUB_SHA" | grep -qx 'llms.txt'; then
+            urls="$(printf '%s' "$urls" | python -c 'import json,sys; x=json.load(sys.stdin); x.append("https://www.matrixqr.cc/llms.txt"); print(json.dumps(x))')"
+          fi
+
+          if git diff-tree --no-commit-id --name-only -r "$GITHUB_SHA" | grep -qx 'llms-full.txt'; then
+            urls="$(printf '%s' "$urls" | python -c 'import json,sys; x=json.load(sys.stdin); x.append("https://www.matrixqr.cc/llms-full.txt"); print(json.dumps(x))')"
+          fi
+
+          curl --fail-with-body -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "$(python -c 'import json,os; print(json.dumps({"host":"www.matrixqr.cc","key":os.environ["INDEXNOW_KEY"],"keyLocation":"https://www.matrixqr.cc/"+os.environ["INDEXNOW_KEY"]+".txt","urlList":json.loads(os.environ["URLS"])}))' )" \
+            || true
+        env:
+          URLS: '["https://www.matrixqr.cc/"]'
+
+      - name: Validate sitemap is reachable
         run: |
-          curl "https://www.google.com/ping?sitemap=https://www.matrixqr.cc/sitemap.xml"
+          curl --fail --silent --show-error --head "https://www.matrixqr.cc/sitemap.xml" > /dev/null
