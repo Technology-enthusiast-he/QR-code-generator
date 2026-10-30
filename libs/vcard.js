@@ -27,7 +27,7 @@
             if (octets + size > limit && current) {
                 output += current + "\r\n ";
                 current = "";
-                octets = 0;
+                octets = 1;
             }
             current += character;
             octets += size;
