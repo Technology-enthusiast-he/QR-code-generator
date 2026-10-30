@@ -30,8 +30,7 @@ test("omits optional properties when their values are empty", () => {
 test("folds long lines at no more than 75 UTF-8 octets", () => {
     const result = buildVCard3({ formattedName: "名".repeat(40), familyName: "B".repeat(100) });
     for (const line of result.split("\r\n").filter(Boolean)) {
-        const content = line.startsWith(" ") ? line.slice(1) : line;
-        assert.ok(Buffer.byteLength(content, "utf8") <= 75);
+        assert.ok(Buffer.byteLength(line, "utf8") <= 75);
     }
 });
 
