@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
-    "build": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify"
+    "build": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
+    "test": "node --test"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.1"

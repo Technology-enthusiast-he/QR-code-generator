@@ -1,0 +1,32 @@
+name: Test vCard generation
+
+on:
+  pull_request:
+    paths:
+      - "index.html"
+      - "libs/vcard.js"
+      - "tests/vcard.test.js"
+      - "package.json"
+      - ".github/workflows/test-vcard.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "index.html"
+      - "libs/vcard.js"
+      - "tests/vcard.test.js"
+      - "package.json"
+      - ".github/workflows/test-vcard.yml"
+
+jobs:
+  vcard-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Run vCard unit tests
+        run: npm test

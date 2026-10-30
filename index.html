@@ -138,6 +138,7 @@
     <link rel="preconnect" href="https://unpkg.com" crossorigin>
     <script src="libs/lucide.min.js" defer></script>
     <script src="libs/qrcode.min.js" defer></script>
+    <script src="libs/vcard.js" defer></script>
 
     <style>
     #qr-result {
@@ -294,6 +295,16 @@
                         <input type="text" id="card-org" placeholder="Matrix Labs Ltd." class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-500">
                     </div>
                 </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label for="card-family-name" class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="cardFamilyName">Family Name (Optional)</label>
+                        <input type="text" id="card-family-name" placeholder="Doe" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-500">
+                    </div>
+                    <div>
+                        <label for="card-given-name" class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="cardGivenName">Given Name (Optional)</label>
+                        <input type="text" id="card-given-name" placeholder="John" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-500">
+                    </div>
+                </div>
                 <div>
                     <label for="card-cell" class="block text-xs font-bold uppercase text-slate-400 mb-1.5" data-i18n="cardCell">Mobile Phone</label>
                     <input type="tel" id="card-cell" placeholder="+1 234 567 8900" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-200 focus:outline-none focus:border-cyan-500">
@@ -305,7 +316,7 @@
                 <!-- vCard Quick Fill -->
                 <div class="pt-1 flex items-center gap-2 flex-wrap text-xs">
                     <span class="text-slate-300" data-i18n="quickFill">Quick Fill:</span>
-                    <button type="button" onclick="fillData('vcard', {name: 'Alex Mercer', org: 'MatrixQR Studio', cell: '+1 234 567 8900', mail: 'alex@matrixqr.cc'})" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-cyan-400 rounded-lg border border-slate-700/50 transition-colors">
+                    <button type="button" onclick="fillData('vcard', {name: 'Alex Mercer', familyName: 'Mercer', givenName: 'Alex', org: 'MatrixQR Studio', cell: '+1 234 567 8900', mail: 'alex@matrixqr.cc'})" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 text-cyan-400 rounded-lg border border-slate-700/50 transition-colors">
                         👤 Sample Contact
                     </button>
                 </div>
@@ -464,7 +475,7 @@
             en: {
                 navWifi: "WiFi QR", navUrl: "URL QR", navPhone: "Phone QR", navVcard: "vCard QR", navMenu: "Menu QR", navPro: "Bulk QR",
                 wifiSsid: "Network Name (SSID)", wifiPass: "Network Password", urlLink: "Website URL",
-                phoneNum: "Phone Number", cardName: "Full Name", cardOrg: "Company",
+                phoneNum: "Phone Number", cardName: "Full Name", cardFamilyName: "Family Name (Optional)", cardGivenName: "Given Name (Optional)", cardOrg: "Company",
                 cardCell: "Mobile Phone", cardMail: "Email Address", btnGenerate: "⚡ RUN MATRIX CORE",
                 previewTitle: "TERMINAL PREVIEW", btnDownload: "Export",
                 tipText: "System Ready",
@@ -478,7 +489,7 @@
             de: {
                 navWifi: "WLAN QR", navUrl: "URL QR", navPhone: "Telefon QR", navVcard: "vCard QR", navMenu: "Menü-QR", navPro: "Bulk QR",
                 wifiSsid: "Netzwerkname (SSID)", wifiPass: "Netzwerkpasswort", urlLink: "Website-URL",
-                phoneNum: "Telefonnummer", cardName: "Vollständiger Name", cardOrg: "Unternehmen",
+                phoneNum: "Telefonnummer", cardName: "Vollständiger Name", cardFamilyName: "Nachname (optional)", cardGivenName: "Vorname (optional)", cardOrg: "Unternehmen",
                 cardCell: "Mobiltelefon", cardMail: "E-Mail-Adresse", btnGenerate: "⚡ MATRIX-KERN AUSFÜHREN",
                 previewTitle: "TERMINAL-VORSCHAU", btnDownload: "Exportieren",
                 tipText: "System bereit",
@@ -492,7 +503,7 @@
             it: {
                 navWifi: "WiFi QR", navUrl: "URL QR", navPhone: "Telefono QR", navVcard: "vCard QR", navMenu: "Menu QR", navPro: "Bulk QR",
                 wifiSsid: "Nome della rete (SSID)", wifiPass: "Password della rete", urlLink: "URL del sito web",
-                phoneNum: "Numero di telefono", cardName: "Nome completo", cardOrg: "Azienda",
+                phoneNum: "Numero di telefono", cardName: "Nome completo", cardFamilyName: "Cognome (facoltativo)", cardGivenName: "Nome (facoltativo)", cardOrg: "Azienda",
                 cardCell: "Cellulare", cardMail: "Indirizzo e-mail", btnGenerate: "⚡ ESEGUI CORE MATRIX",
                 previewTitle: "ANTEPRIMA TERMINALE", btnDownload: "Esporta",
                 tipText: "Sistema pronto",
@@ -506,7 +517,7 @@
             tr: {
                 navWifi: "WiFi QR", navUrl: "URL QR", navPhone: "Telefon QR", navVcard: "vCard QR", navMenu: "Menü QR", navPro: "Toplu QR",
                 wifiSsid: "Ağ Adı (SSID)", wifiPass: "Ağ Şifresi", urlLink: "Web Sitesi URL'si",
-                phoneNum: "Telefon Numarası", cardName: "Ad Soyad", cardOrg: "Şirket",
+                phoneNum: "Telefon Numarası", cardName: "Ad Soyad", cardFamilyName: "Soyadı (İsteğe Bağlı)", cardGivenName: "Adı (İsteğe Bağlı)", cardOrg: "Şirket",
                 cardCell: "Cep Telefonu", cardMail: "E-posta Adresi", btnGenerate: "⚡ MATRİS ÇEKİRDEĞİNİ ÇALIŞTIR",
                 previewTitle: "TERMİNAL ÖNİZLEME", btnDownload: "Dışa Aktar",
                 tipText: "Sistem Hazır",
@@ -520,7 +531,7 @@
             ko: {
                 navWifi: "WiFi QR", navUrl: "URL QR", navPhone: "전화번호 QR", navVcard: "전자 명함", navMenu: "메뉴 QR", navPro: "대량 생성",
                 wifiSsid: "네트워크 이름 (SSID)", wifiPass: "네트워크 비밀번호", urlLink: "웹사이트 URL",
-                phoneNum: "전화번호", cardName: "전체 이름", cardOrg: "회사명",
+                phoneNum: "전화번호", cardName: "전체 이름", cardFamilyName: "성 (선택 사항)", cardGivenName: "이름 (선택 사항)", cardOrg: "회사명",
                 cardCell: "휴대폰 번호", cardMail: "이메일 주소", btnGenerate: "⚡ 매트릭스 코어 실행",
                 previewTitle: "터미널 미리보기", btnDownload: "내보내기",
                 tipText: "시스템 준비 완료",
@@ -534,7 +545,7 @@
             zh: {
                 navWifi: "WiFi 二维码", navUrl: "网址二维码", navPhone: "手机号二维码", navVcard: "电子名片", navMenu: "菜单二维码", navPro: "批量生成",
                 wifiSsid: "无线网络名称 (SSID)", wifiPass: "无线网络密码", urlLink: "网页网址 (URL)",
-                phoneNum: "手机号码", cardName: "真实姓名", cardOrg: "公司名称",
+                phoneNum: "手机号码", cardName: "真实姓名", cardFamilyName: "姓氏（可选）", cardGivenName: "名字（可选）", cardOrg: "公司名称",
                 cardCell: "移动电话", cardMail: "电子邮箱", btnGenerate: "⚡ 执行矩阵生成",
                 previewTitle: "终端实时预览", btnDownload: "导出文件",
                 tipText: "系统就绪",
@@ -558,17 +569,19 @@
 
         function updatePlaceholders(lang) {
             const placeholders = {
-                en: { ssid: "e.g., CyberNet_5G", url: "https://www.matrixqr.cc", phone: "e.g., +1 234 567 8900", name: "John Doe", org: "Matrix Labs Ltd." },
-                de: { ssid: "z.B. CyberNet_5G", url: "https://www.matrixqr.cc", phone: "z.B. +49 170 1234567", name: "Max Mustermann", org: "Matrix GmbH" },
-                it: { ssid: "es. CyberNet_5G", url: "https://www.matrixqr.cc", phone: "es. +39 333 1234567", name: "Mario Rossi", org: "Matrix S.r.l." },
-                tr: { ssid: "örn. CyberNet_5G", url: "https://www.matrixqr.cc", phone: "örn. +90 532 123 4567", name: "Ahmet Yılmaz", org: "Matrix Şti." },
-                ko: { ssid: "예: CyberNet_5G", url: "https://www.matrixqr.cc", phone: "예: +82 10 1234 5678", name: "홍길동", org: "매트릭스 주식회사" },
-                zh: { ssid: "例如：CyberNet_5G", url: "https://www.matrixqr.cc", phone: "例如：+86 13800138000", name: "张三", org: "科技矩阵有限公司" }
+                en: { ssid: "e.g., CyberNet_5G", url: "https://www.matrixqr.cc", phone: "e.g., +1 234 567 8900", name: "John Doe", family: "Doe", given: "John", org: "Matrix Labs Ltd." },
+                de: { ssid: "z.B. CyberNet_5G", url: "https://www.matrixqr.cc", phone: "z.B. +49 170 1234567", name: "Max Mustermann", family: "Mustermann", given: "Max", org: "Matrix GmbH" },
+                it: { ssid: "es. CyberNet_5G", url: "https://www.matrixqr.cc", phone: "es. +39 333 1234567", name: "Mario Rossi", family: "Rossi", given: "Mario", org: "Matrix S.r.l." },
+                tr: { ssid: "örn. CyberNet_5G", url: "https://www.matrixqr.cc", phone: "örn. +90 532 123 4567", name: "Ahmet Yılmaz", family: "Yılmaz", given: "Ahmet", org: "Matrix Şti." },
+                ko: { ssid: "예: CyberNet_5G", url: "https://www.matrixqr.cc", phone: "예: +82 10 1234 5678", name: "홍길동", family: "홍", given: "길동", org: "매트릭스 주식회사" },
+                zh: { ssid: "例如：CyberNet_5G", url: "https://www.matrixqr.cc", phone: "例如：+86 13800138000", name: "张三", family: "张", given: "三", org: "科技矩阵有限公司" }
             };
             document.getElementById('wifi-ssid').placeholder = placeholders[lang].ssid;
             document.getElementById('url-link').placeholder = placeholders[lang].url;
             document.getElementById('phone-num').placeholder = placeholders[lang].phone;
             document.getElementById('card-name').placeholder = placeholders[lang].name;
+            document.getElementById('card-family-name').placeholder = placeholders[lang].family;
+            document.getElementById('card-given-name').placeholder = placeholders[lang].given;
             document.getElementById('card-org').placeholder = placeholders[lang].org;
         }
 
@@ -598,6 +611,8 @@
                 document.getElementById('phone-num').value = data.num || '';
             } else if (tab === 'vcard') {
                 document.getElementById('card-name').value = data.name || '';
+                document.getElementById('card-family-name').value = data.familyName || '';
+                document.getElementById('card-given-name').value = data.givenName || '';
                 document.getElementById('card-org').value = data.org || '';
                 document.getElementById('card-cell').value = data.cell || '';
                 document.getElementById('card-mail').value = data.mail || '';
@@ -715,11 +730,13 @@
                 qrText = `tel:${phone}`;
             } else if (currentMode === 'vcard') {
                 const name = document.getElementById('card-name').value.trim();
+                const familyName = document.getElementById('card-family-name').value.trim();
+                const givenName = document.getElementById('card-given-name').value.trim();
                 const org = document.getElementById('card-org').value.trim();
                 const cell = document.getElementById('card-cell').value.trim();
                 const mail = document.getElementById('card-mail').value.trim();
                 if(!name) return alert(i18n[currentLang].errName);
-                qrText = `BEGIN:VCARD\nVERSION:3.0\nN:${name}\nORG:${org}\nTEL:${cell}\nEMAIL:${mail}\nEND:VCARD`;
+                qrText = buildVCard3({ formattedName: name, familyName, givenName, organization: org, telephone: cell, email: mail });
             }
 
             const isCustomColor = document.getElementById('enable-custom-color').checked;
