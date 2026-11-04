@@ -1,11 +1,13 @@
-name: Test vCard generation
+name: Test QR payload generation
 
 on:
   pull_request:
     paths:
       - "index.html"
       - "libs/vcard.js"
+      - "libs/wifi.js"
       - "tests/vcard.test.js"
+      - "tests/wifi.test.js"
       - "package.json"
       - ".github/workflows/test-vcard.yml"
   push:
@@ -28,5 +30,5 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - name: Run vCard unit tests
+      - name: Run QR payload unit tests
         run: npm test
