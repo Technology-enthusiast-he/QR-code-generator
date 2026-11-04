@@ -16,12 +16,14 @@ on:
     paths:
       - "index.html"
       - "libs/vcard.js"
+      - "libs/wifi.js"
       - "tests/vcard.test.js"
+      - "tests/wifi.test.js"
       - "package.json"
       - ".github/workflows/test-vcard.yml"
 
 jobs:
-  vcard-tests:
+  qr-payload-tests:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
