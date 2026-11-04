@@ -16,6 +16,20 @@ test("escapes all reserved WiFi field characters", () => {
     );
 });
 
+test("quotes hexadecimal-looking SSIDs to avoid hex interpretation", () => {
+    assert.equal(
+        buildWifiPayload({ ssid: "ABCD1234", password: "passphrase" }),
+        'WIFI:T:WPA;S:"ABCD1234";P:passphrase;;'
+    );
+});
+
+test("does not quote ordinary non-hex SSIDs", () => {
+    assert.equal(
+        buildWifiPayload({ ssid: "Cafe5G", password: "passphrase" }),
+        "WIFI:T:WPA;S:Cafe5G;P:passphrase;;"
+    );
+});
+
 test("escapes SSID and password independently", () => {
     assert.equal(
         buildWifiPayload({ ssid: "Cafe;Guest", password: 'p:a,"b\\c' }),
