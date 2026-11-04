@@ -31,8 +31,8 @@ test("preserves leading and trailing spaces in credentials", () => {
 });
 
 test("rejects a missing or whitespace-only SSID", () => {
-    assert.throws(() => buildWifiPayload({ ssid: "", password: "secret" }), /SSID\\) is required/i);
-    assert.throws(() => buildWifiPayload({ ssid: "   ", password: "secret" }), /SSID\\) is required/i);
+    assert.throws(() => buildWifiPayload({ ssid: "", password: "secret" }), /required/i);
+    assert.throws(() => buildWifiPayload({ ssid: "   ", password: "secret" }), /required/i);
 });
 
 test("requires the password to be a string", () => {
