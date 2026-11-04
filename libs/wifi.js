@@ -2,7 +2,7 @@
     "use strict";
 
     function escapeWifiField(value) {
-        return String(value).replace(/[\\\\;,":]/g, "\\\\$&");
+        return String(value).replace(/[\\;,":]/g, "\\$&");
     }
 
     function buildWifiPayload(options) {
