@@ -138,6 +138,7 @@
     <link rel="preconnect" href="https://unpkg.com" crossorigin>
     <script src="libs/lucide.min.js" defer></script>
     <script src="libs/qrcode.min.js" defer></script>
+    <script src="libs/wifi.js" defer></script>
     <script src="libs/vcard.js" defer></script>
 
     <style>
@@ -713,10 +714,10 @@
         function generateTechQR() {
             let qrText = "";
             if (currentMode === 'wifi') {
-                const ssid = document.getElementById('wifi-ssid').value.trim();
-                const pass = document.getElementById('wifi-pass').value.trim();
-                if(!ssid) return alert(i18n[currentLang].errSsid);
-                qrText = `WIFI:T:WPA;S:${ssid};P:${pass};;`;
+                const ssid = document.getElementById('wifi-ssid').value;
+                const pass = document.getElementById('wifi-pass').value;
+                if(!ssid.trim()) return alert(i18n[currentLang].errSsid);
+                qrText = MatrixQRWifi.buildWifiPayload({ ssid, password: pass });
             } else if (currentMode === 'url') {
                 let link = document.getElementById('url-link').value.trim();
                 if(!link) return alert(i18n[currentLang].errUrl);
