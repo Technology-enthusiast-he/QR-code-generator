@@ -11,15 +11,15 @@ test("builds the standard WPA WiFi payload", () => {
 
 test("escapes all reserved WiFi field characters", () => {
     assert.equal(
-        escapeWifiField(String.raw`A\\B;C,D"E:F`),
-        String.raw`A\\\\B\\;C\\,D\\"E\\:F`
+        escapeWifiField("A\\B;C,D\"E:F"),
+        "A\\\\B\\;C\\,D\\\"E\\:F"
     );
 });
 
 test("escapes SSID and password independently", () => {
     assert.equal(
         buildWifiPayload({ ssid: "Cafe;Guest", password: 'p:a,"b\\c' }),
-        String.raw`WIFI:T:WPA;S:Cafe\\;Guest;P:p\\:a\\,\\"b\\\\c;;`
+        "WIFI:T:WPA;S:Cafe\\;Guest;P:p\\:a\\,\\\"b\\\\c;;"
     );
 });
 
