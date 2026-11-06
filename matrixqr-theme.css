@@ -102,3 +102,26 @@ main > div:first-child button[onclick="generateTechQR()"],
 main > div:first-child button[onclick="generateTechQR()"] * {
   color: #ffffff !important;
 }
+
+
+/* Stronger overall typography: darker body copy and secondary labels */
+:root {
+  --mq-ink: #14263b;
+  --mq-muted: #46576a;
+  --mq-reading: #26394d;
+}
+body { color: #26394d !important; }
+body :is(p,li,label,small,figcaption,summary) { color: #34475b; }
+body :is(.text-slate-400,.text-slate-500,.text-gray-400,.text-gray-500,.text-zinc-400,.text-zinc-500) {
+  color: #46576a !important;
+}
+body > header a, body > header span { color: #14263b !important; }
+body > footer { color: #46576a !important; }
+main > div:first-child label,
+main > div:first-child .text-slate-300,
+main > div:first-child .text-slate-200,
+main > div:first-child .text-slate-400,
+#preview-card .text-slate-200,
+#preview-card .text-slate-300,
+#preview-card .text-slate-400 { color: #46576a !important; }
+body > main p, body > main li { color: #34475b !important; }
