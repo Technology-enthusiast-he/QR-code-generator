@@ -125,3 +125,68 @@ main > div:first-child .text-slate-400,
 #preview-card .text-slate-300,
 #preview-card .text-slate-400 { color: #46576a !important; }
 body > main p, body > main li { color: #34475b !important; }
+
+
+/* Final main-site contrast tuning: prioritize readable labels and supporting copy */
+:root {
+  --mq-ink: #10243a;
+  --mq-muted: #33465a;
+  --mq-reading: #25384d;
+}
+body,
+body :is(p, li, label, small, figcaption, summary, dt, dd, span) {
+  color: #25384d;
+}
+body :is(.text-slate-400,.text-slate-500,.text-gray-400,.text-gray-500,.text-zinc-400,.text-zinc-500) {
+  color: #33465a !important;
+}
+body :is(.text-slate-300,.text-slate-200,.text-gray-300,.text-gray-200,.text-zinc-300,.text-zinc-200) {
+  color: #25384d !important;
+}
+body > header a,
+body > header span,
+[aria-label="QR Code Generator Navigation"] button:not(.bg-slate-800) {
+  color: #10243a !important;
+}
+main > div:first-child label,
+main > div:first-child .text-slate-300,
+main > div:first-child .text-slate-200,
+main > div:first-child .text-slate-400,
+main > div:first-child .text-cyan-400,
+#preview-card .text-slate-200,
+#preview-card .text-slate-300,
+#preview-card .text-slate-400,
+#preview-card #idle-state p {
+  color: #33465a !important;
+}
+main > div:first-child input::placeholder,
+main > div:first-child textarea::placeholder {
+  color: #68798b !important;
+  opacity: 1 !important;
+}
+main > div:first-child .text-xs,
+#preview-card .text-xs {
+  text-shadow: none;
+}
+body > main p,
+body > main li,
+body > section p,
+body > section dd,
+body > section summary {
+  color: #25384d !important;
+}
+body > footer,
+body > footer a {
+  color: #33465a !important;
+}
+/* Keep white text only on intentionally dark/brand action surfaces */
+body > header nav a[class*="bg-slate-800"],
+body > header nav a[class*="bg-slate-800"] *,
+main > div:first-child button[onclick="generateTechQR()"],
+main > div:first-child button[onclick="generateTechQR()"] *,
+body pre,
+body pre *,
+body code[class*="language-"],
+body code[class*="language-"] * {
+  color: #ffffff !important;
+}
