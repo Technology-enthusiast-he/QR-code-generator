@@ -18,6 +18,7 @@ body { background: var(--mq-page) !important; color: var(--mq-ink) !important; b
 body > div.absolute { display: none !important; }
 body > header { background: rgba(255,255,255,.96) !important; border-color: var(--mq-border) !important; box-shadow: 0 1px 3px rgba(23,43,69,.04); backdrop-filter: blur(14px); }
 body > header a, body > header span { color: var(--mq-ink) !important; }
+body > header a span span { color: var(--mq-accent) !important; }
 body > header a:hover { color: var(--mq-accent) !important; }
 body > header .bg-gradient-to-tr { background: var(--mq-navy) !important; box-shadow: none !important; }
 body > header .bg-gradient-to-tr i { color: #fff !important; }
@@ -48,6 +49,8 @@ main > div:first-child button[onclick="generateTechQR()"]:hover { background: va
 #logo-preview-box { background: #f7f9fa !important; border-color: #cbd5dc !important; }
 #logo-preview-box i { color: #82909e !important; }
 #preview-card { color: var(--mq-ink) !important; }
+#preview-card .text-emerald-400 { color: var(--mq-accent) !important; }
+#preview-card .bg-emerald-400 { background: var(--mq-accent) !important; }
 #preview-card > div:first-child { color: var(--mq-muted) !important; }
 #preview-card > div:nth-of-type(2) { background: #f1f4f6 !important; border-color: var(--mq-border) !important; box-shadow: none !important; }
 #preview-card #idle-state .matrix-bg { opacity: .035 !important; }
