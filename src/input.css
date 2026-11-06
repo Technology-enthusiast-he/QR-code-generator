@@ -2,4 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-
+/* MatrixQR Design System — modern minimal tech */
+:root {
+  color-scheme: light;
+  --mq-page: #f6f8fa;
+  --mq-surface: #ffffff;
+  --mq-surface-soft: #eef2f5;
+  --mq-ink: #1b2b40;
+  --mq-muted: #627184;
+  --mq-border: #dce3e9;
+  --mq-accent: #287f78;
+  --mq-accent-hover: #216c66;
+  --mq-accent-soft: #e7f3f1;
+  --mq-navy: #172b45;
+  --mq-focus: rgba(40, 127, 120, .22);
+}
+html { color-scheme: light; background: var(--mq-page); }
+body { background: var(--mq-page) !important; color: var(--mq-ink) !important; background-image: none !important; }
+body > header { background: rgba(255,255,255,.94) !important; border-color: var(--mq-border) !important; box-shadow: 0 1px 3px rgba(23,43,69,.04); backdrop-filter: blur(14px); }
+body > header a, body > header span { color: var(--mq-ink) !important; }
+body > header a:hover { color: var(--mq-accent) !important; }
+body > header .bg-gradient-to-tr { background: var(--mq-navy) !important; box-shadow: none !important; }
+body > header .bg-gradient-to-tr i { color: #fff !important; }
+body > header .bg-gradient-to-r { background: none !important; }
+body > header select { background: var(--mq-surface) !important; color: var(--mq-ink) !important; border-color: var(--mq-border) !important; }
+[aria-label="QR Code Generator Navigation"] > div { background: #e9eef2 !important; border: 1px solid var(--mq-border) !important; border-radius: 14px !important; box-shadow: none !important; }
+[aria-label="QR Code Generator Navigation"] button, [aria-label="QR Code Generator Navigation"] a { border-radius: 10px !important; box-shadow: none !important; }
+[aria-label="QR Code Generator Navigation"] button.bg-slate-800 { background: var(--mq-surface) !important; color: var(--mq-accent) !important; border-color: var(--mq-border) !important; }
+[aria-label="QR Code Generator Navigation"] button:not(.bg-slate-800) { color: var(--mq-muted) !important; }
+[aria-label="QR Code Generator Navigation"] button:hover { background: var(--mq-surface) !important; color: var(--mq-accent) !important; }
+[aria-label="QR Code Generator Navigation"] #nav-menu { color: #287f78 !important; background: #e7f3f1 !important; border-color: #c8e2dd !important; }
+[aria-label="QR Code Generator Navigation"] button[onclick="openProModal()"] { color: #8b632b !important; background: #fbf4e8 !important; border-color: #ead9b8 !important; }
+main > div:first-child, #preview-card { background: var(--mq-surface) !important; border: 1px solid var(--mq-border) !important; border-radius: 18px !important; box-shadow: 0 10px 30px rgba(23,43,69,.06) !important; backdrop-filter: none !important; }
+main > div:first-child label, main > div:first-child .text-slate-300, main > div:first-child .text-slate-200, main > div:first-child .text-slate-400, #preview-card .text-slate-200, #preview-card .text-slate-300, #preview-card .text-slate-400 { color: var(--mq-muted) !important; }
+main > div:first-child .text-cyan-400, #preview-card .text-cyan-400 { color: var(--mq-accent) !important; }
+main > div:first-child input:not([type="checkbox"]):not([type="color"]):not([type="file"]), main > div:first-child select, main > div:first-child textarea { background: #fbfcfd !important; color: var(--mq-ink) !important; border-color: var(--mq-border) !important; border-radius: 10px !important; }
+main > div:first-child input::placeholder { color: #96a2ae !important; }
+main > div:first-child input:focus, main > div:first-child select:focus, main > div:first-child textarea:focus { border-color: var(--mq-accent) !important; box-shadow: 0 0 0 3px var(--mq-focus) !important; }
+main > div:first-child [class*="border-slate-800"], main > div:first-child [class*="border-slate-700"], #preview-card [class*="border-slate-800"] { border-color: var(--mq-border) !important; }
+main > div:first-child .bg-slate-950, main > div:first-child .bg-slate-900, main > div:first-child .bg-slate-800, main > div:first-child [class*="bg-[#0d1527"] { background: var(--mq-surface-soft) !important; }
+main > div:first-child button:not([onclick="generateTechQR()"]):not(#logo-remove-btn) { background: #f1f4f6 !important; color: var(--mq-ink) !important; border-color: var(--mq-border) !important; box-shadow: none !important; }
+main > div:first-child button:hover:not([onclick="generateTechQR()"]) { background: #e7edf0 !important; }
+main > div:first-child button[onclick="generateTechQR()"] { background: var(--mq-accent) !important; color: #fff !important; border: 1px solid var(--mq-accent) !important; box-shadow: 0 5px 14px rgba(40,127,120,.18) !important; }
+main > div:first-child button[onclick="generateTechQR()"]:hover { background: var(--mq-accent-hover) !important; }
+#logo-preview-box { background: #f7f9fa !important; border-color: #cbd5dc !important; }
+#logo-preview-box i { color: #82909e !important; }
+#preview-card { color: var(--mq-ink) !important; }
+#preview-card > div:first-child { color: var(--mq-muted) !important; }
+#preview-card > div:nth-of-type(2) { background: #f1f4f6 !important; border-color: var(--mq-border) !important; box-shadow: none !important; }
+#preview-card #idle-state .matrix-bg { opacity: .035 !important; }
+#preview-card #idle-state p { color: var(--mq-muted) !important; }
+#preview-card #qr-result { background: #fff !important; }
+a { text-underline-offset: 3px; }
+button, select, input, textarea { accent-color: var(--mq-accent); }
+:focus-visible { outline: 3px solid var(--mq-focus); outline-offset: 2px; }
+@media (max-width: 640px) {
+  [aria-label="QR Code Generator Navigation"] > div { gap: 6px !important; }
+  [aria-label="QR Code Generator Navigation"] button, [aria-label="QR Code Generator Navigation"] a { min-height: 44px; padding-inline: 8px !important; }
+  main > div:first-child { padding: 18px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
