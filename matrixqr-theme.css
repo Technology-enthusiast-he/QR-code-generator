@@ -331,8 +331,8 @@ body > header .bg-gradient-to-tr {
   border: 1px solid #29435f !important;
 }
 body > header .bg-gradient-to-tr svg {
-  color: #ffffff !important;
-  stroke: #ffffff !important;
+  color: #ffd166 !important;
+  stroke: #ffd166 !important;
   stroke-width: 2.5 !important;
   opacity: 1 !important;
 }
