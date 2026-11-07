@@ -190,3 +190,72 @@ body code[class*="language-"],
 body code[class*="language-"] * {
   color: #ffffff !important;
 }
+
+
+/* Accessibility audit follow-up: homepage lower content and export controls */
+#preview-card #export-format {
+  background: #ffffff !important;
+  color: #10243a !important;
+  border-color: #cbd5df !important;
+}
+#preview-card #export-format option {
+  background: #ffffff;
+  color: #10243a;
+}
+#preview-card #download-btn {
+  background: #287f78 !important;
+  color: #ffffff !important;
+  border: 1px solid #287f78 !important;
+}
+#preview-card #download-btn:hover {
+  background: #216c66 !important;
+  border-color: #216c66 !important;
+}
+#preview-card #download-btn *,
+#preview-card #download-btn [data-i18n] {
+  color: #ffffff !important;
+}
+
+/* The explanatory / GEO section is a body-level section, not inside main.
+   Convert its legacy dark cards to light surfaces and keep all copy readable. */
+body > section:not([aria-label="QR Code Generator Navigation"]) {
+  color: #25384d !important;
+}
+body > section:not([aria-label="QR Code Generator Navigation"]) :is(
+  [class*="bg-slate-950"],
+  [class*="bg-slate-900"],
+  [class*="bg-slate-800"]
+) {
+  background: #ffffff !important;
+  border-color: #dce3e9 !important;
+  box-shadow: 0 6px 20px rgba(23,43,69,.045) !important;
+}
+body > section:not([aria-label="QR Code Generator Navigation"]) :is(
+  .text-slate-100,.text-slate-200,.text-slate-300,.text-slate-400,
+  .text-cyan-400,.text-emerald-400,.text-amber-400
+) {
+  color: #25384d !important;
+}
+body > section:not([aria-label="QR Code Generator Navigation"]) :is(dt, h2, h3, summary) {
+  color: #10243a !important;
+}
+body > section:not([aria-label="QR Code Generator Navigation"]) dt {
+  font-weight: 700;
+}
+body > section:not([aria-label="QR Code Generator Navigation"]) a {
+  color: #216c66 !important;
+}
+body > section:not([aria-label="QR Code Generator Navigation"]) details,
+body > section:not([aria-label="QR Code Generator Navigation"]) details[open] {
+  background: #ffffff !important;
+  border-color: #dce3e9 !important;
+}
+body > section:not([aria-label="QR Code Generator Navigation"]) details p,
+body > section:not([aria-label="QR Code Generator Navigation"]) dd {
+  color: #33465a !important;
+}
+body > section:not([aria-label="QR Code Generator Navigation"]) .bg-emerald-500\/10,
+body > section:not([aria-label="QR Code Generator Navigation"]) .bg-cyan-500\/10 {
+  background: #e7f3f1 !important;
+  border-color: #c8e2dd !important;
+}
