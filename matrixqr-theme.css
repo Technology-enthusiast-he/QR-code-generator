@@ -259,3 +259,23 @@ body > section:not([aria-label="QR Code Generator Navigation"]) .bg-cyan-500\/10
   background: #e7f3f1 !important;
   border-color: #c8e2dd !important;
 }
+
+
+/* Contrast-safe semantic colors on light comparison tables and footer badges */
+body > section:not([aria-label="QR Code Generator Navigation"]) .text-rose-400 {
+  color: #a12d3b !important;
+}
+body > section:not([aria-label="QR Code Generator Navigation"]) :is(.text-indigo-400,.text-cyan-400,.text-emerald-400,.text-amber-400) {
+  color: #216c66 !important;
+}
+body > footer :is(.text-cyan-400,.text-emerald-400,.text-amber-400) {
+  color: #216c66 !important;
+}
+body > footer [class*="bg-emerald-500"] {
+  background: #e7f3f1 !important;
+  border-color: #c8e2dd !important;
+}
+body > footer [class*="bg-cyan-500"] {
+  background: #e7f3f1 !important;
+  border-color: #c8e2dd !important;
+}
