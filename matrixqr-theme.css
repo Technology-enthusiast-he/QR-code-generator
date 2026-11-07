@@ -279,3 +279,45 @@ body > footer [class*="bg-cyan-500"] {
   background: #e7f3f1 !important;
   border-color: #c8e2dd !important;
 }
+
+
+/* Preserve the dark QR preview surface while restoring high-contrast controls and copy */
+#preview-card {
+  background: #0d1527 !important;
+  color: #e2e8f0 !important;
+}
+#preview-card :is(p, span, label, small, dt, dd, figcaption) {
+  color: #cbd5e1;
+}
+#preview-card :is(h1,h2,h3,h4,strong,b) {
+  color: #f8fafc;
+}
+#preview-card #export-format {
+  background: #070c18 !important;
+  color: #e2e8f0 !important;
+  border-color: #64748b !important;
+}
+#preview-card #export-format option {
+  background: #070c18 !important;
+  color: #e2e8f0 !important;
+}
+#preview-card #download-btn {
+  background: #287f78 !important;
+  color: #ffffff !important;
+}
+#preview-card #download-btn * {
+  color: #ffffff !important;
+}
+
+/* Footer is a light-theme surface; avoid dark text on its legacy dark background */
+body > footer {
+  background: #ffffff !important;
+  border-color: #dce3e9 !important;
+  color: #33465a !important;
+}
+body > footer :is(p,span,a,small,strong) {
+  color: #33465a;
+}
+body > footer a {
+  color: #216c66 !important;
+}
