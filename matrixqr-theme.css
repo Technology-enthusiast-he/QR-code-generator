@@ -321,3 +321,18 @@ body > footer :is(p,span,a,small,strong) {
 body > footer a {
   color: #216c66 !important;
 }
+
+
+/* Header brand mark: Lucide replaces the source <i> with an <svg>.
+   Target the rendered SVG so the QR strokes stay white against the navy tile. */
+body > header .bg-gradient-to-tr {
+  background: #172b45 !important;
+  background-image: none !important;
+  border: 1px solid #29435f !important;
+}
+body > header .bg-gradient-to-tr svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+  stroke-width: 2.5 !important;
+  opacity: 1 !important;
+}
